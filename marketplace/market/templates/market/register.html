@@ -1,0 +1,205 @@
+<html>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".submitbtn").click(function () {
+                var password = $("#pw").val();
+                var confirmPassword = $("#pw2x").val();
+                if (password != confirmPassword) {
+                    alert("Passwords do not match.");
+                    return false;
+                }
+                return true;
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: Helvetica;
+            margin: 0;
+        }
+        
+        .bar-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .bar {
+            height: 1.5em;
+            display: flex;
+            flex-direction: row;
+            justify-content:flex-end;
+            width: 95%;
+            border-bottom-style: ridge;
+            border-bottom-color: #d3d3d3;
+            border-bottom-width: thin;
+        }
+        
+        .item-container {
+            background-color: red;
+            width: 20%;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .logo {
+            background-color: yellow;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 95%;
+        }
+        
+        .menu {
+            background-color: pink;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 95%;
+            height: 2em;
+            border-bottom-style: ridge;
+            border-bottom-color: #d3d3d3;
+            border-bottom-width: thin;
+            border-top-style: ridge;
+            border-top-color: #d3d3d3;
+            border-top-width: thin;
+            
+        }
+        
+        .b-container {
+            background-color: aquamarine;
+            width: 40%;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .home, .post, .tag-search {
+            width: 4em;
+            border-right-style: ridge;
+            border-right-color: #d3d3d3;
+            border-right-width: thin;
+            
+        }
+        
+        .container {
+            margin: 2em;
+        }
+        
+        .field {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .field-lbl {
+            width: 12em;
+        }
+        
+        .data {
+            background-color: aqua;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        input[type=text], input[type=password] {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cancelbtn {
+            padding: 14px 20px;
+            background-color: #f44336;
+        }
+        
+        .cancelbtn,.submitbtn {
+            float: left;
+            width: 15%;
+        }
+    
+    </style>
+    <body>
+        <div class = "homepage">
+            <div class = "bar-container">
+                <div class = "bar">
+                    <div class = "item-container">
+                        <div class = "bar-item">
+                            My Account
+                        </div>
+                        <div class = "bar-item">
+                            Logout
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "bar-container">
+                <div class = "logo">
+                    <div class = "a-container">
+                        <div class = "logo"> a </div>
+                        <div class = "search-bar"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "bar-container">
+                <div class = "menu">
+                    <div class = "b-container">
+                    <div class = "home"> Home </div>
+                    <div class = "post"> Post an Item </div>
+                    <div class = "tag-search"> Search per Tag </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "container"> 
+                <div class = "regNewUser"> 
+                    <div class = "Title"><h1> Register a New User Account </h1></div>
+                    <form>
+                        <div class = "data">
+                            <div class = "field">
+                                <div class = "field-lbl">
+                                    <label><b>Name*</b></label>
+                                </div>
+                                <input type="text" placeholder="Enter First & Last Name" name="name" required>
+                            </div>
+                            <div class = "field">
+                                <div class = "field-lbl">
+                                    <label><b>Password*</b></label>
+                                </div>
+                                <input type="password" placeholder="Enter Password" name="pw" id="pw" required>
+                            </div>
+                            <div class = "field">
+                                <div class = "field-lbl">
+                                    <label><b>Retype password*</b></label>
+                                </div>
+                                
+                                <input type="password" placeholder="Retype Password" name="pw2x" id="pw2x" required>
+                            </div>
+                            <div class = "field">
+                                <div class = "field-lbl">
+                                    <label><b>Degree name / Office*</b></label>
+                                </div>
+                                <input type="text" placeholder="Enter Degree Name/Office" name="other" required>
+                            </div>
+                            <p> <i> * Required fields </i> </p>
+                            
+                            <div class = "buttons">
+                                <a href = "http://www.google.com"><button type="button" class="cancelbtn"> CANCEL </button> </a>
+                                <button type="submit" class="submitbtn" onclick=""> SUBMIT </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
