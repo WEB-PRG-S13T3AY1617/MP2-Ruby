@@ -1,18 +1,16 @@
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-    </head>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-    </script>
-    <script>
+
+<!-- saved from url=(0121)file:///Users/staceyreyes/Documents/College/Soph%20Term%203/WEB-PRG/MP2/marketplace/market/templates/market/register.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link rel="stylesheet" type="text/css" href="file://fonts.googleapis.com/css?family=Open+Sans">
+    <script type="text/javascript" src="./register_files/jquery.min.js">
+    </script><script src="file:///Users/staceyreyes/Documents/College/Soph%20Term%203/WEB-PRG/MP2/marketplace/market/templates/market/jquery-3.2.1.min.js"></script><script>
         $(document).on("keypress", ".search", function(e) {
             if (e.which == 13) {
              alert("IT WORKS THANK THE LORD");
             }
         });
     
-    </script>
-    <script type="text/javascript">
+    </script><script type="text/javascript">
         $(function () {
             $(".submitbtn").click(function () {
                 var password = $("#pw").val();
@@ -24,8 +22,7 @@
                 return true;
             });
         });
-    </script>
-    <script type="text/javascript">
+    </script><script type="text/javascript">
             var changeType = function() {
                 var type = document.getElementById("type");
                 var selectedType = type.options[type.selectedIndex].value;
@@ -45,8 +42,7 @@
                 $("#types").attr("placeholder", newPlaceHolder);
                 
             }
-        </script>
-    <style>
+        </script><style>
         body {
             margin: 0;
         }
@@ -113,19 +109,16 @@
             width: 35%;
             display: flex;
             align-items: center;
+            background-color: aqua
         }
         
         .middle-container {
             width: 35%;
-        }
-        
-        .rcc {
-            position: relative;
-            bottom: 3.2em;
-            right: 0.8em;
+            background-color: red;
         }
         
         .right-container {
+            background-color: dodgerblue;
             width: 30%;
             display: flex;
             flex-direction: row;
@@ -149,19 +142,11 @@
         .home, .post {
             
             vertical-align: baseline;
-            line-height: 2.1em;
+            line-height: 2em;
             border-right-style: ridge;
             border-right-color: #d3d3d3;
             border-right-width: thin;
             
-        }
-        
-        a:link {
-            text-decoration: none;
-        }
-        
-        a:hover {
-            cursor: pointer;
         }
         
         .t {
@@ -263,82 +248,92 @@
             width: 15%;
         }
     
-    </style>
+    </style></head>
+    
+    
+    
+    
+    
+    
     <body>
-        <div class = "homepage">
-            <div class = "bar-container">
-                <div class = "bar">
-                    <div class = "item-container">
-                        <a href="http://www.twitter.com"><div class = "bar-item">My Account</div></a>
-                        <a href="http://www.wikipedia.org"><div class = "bar-item">Logout</div></a>
+        <div class="homepage">
+            <div class="bar-container">
+                <div class="bar">
+                    <div class="item-container">
+                        <div class="bar-item">
+                            My Account
+                        </div>
+                        <div class="bar-item">
+                            Logout
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class = "bar-container">
-                <div class = "a-container">
-                    <div class = "left-container"> </div>
-                    <div class = "middle-container">
-                        <img src = "rccshop.png" width="300" height="200" class = "rcc"/>
+            <div class="bar-container">
+                <div class="a-container">
+                    <div class="left-container"> </div>
+                    <div class="middle-container">
+                        <img src="./register_files/rccshop.png" width="300" height="200">
                     </div>
-                    <div class = "right-container">
+                    <div class="right-container">
                         <!--<div class = "search-bar"> -->
                             <input type="text" class="search" placeholder="Search tag...">
                         <!--</div> -->
                     </div>
                 </div>
             </div>
-            <div class = "bar-container">
-                <div class = "menu">
-                    <div class = "b-container">
-                        <a href="http://www.neopets.com"><div class = "home"> <span class = "t"> Home </span> </div></a>
-                        <a href="post_item.html"><div class = "post"> <span class = "s"> Post an Item </span> </div></a>
+            <div class="bar-container">
+                <div class="menu">
+                    <div class="b-container">
+                    <div class="home"> <span class="t"> Home </span> </div>
+                    <div class="post"> <span class="s"> Post an Item </span> </div>
                     </div>
                 </div>
             </div>
-            <div class = "container"> 
-                <div class = "regNewUser"> 
-                    <div class = "Title"><h1> Register a New User Account </h1></div>
+            <div class="container"> 
+                <div class="regNewUser"> 
+                    <div class="Title"><h1> Register a New User Account </h1></div>
                     <form>
-                        <div class = "data">
-                            <div class = "field">
-                                <div class = "field-lbl">
+                        <div class="data">
+                            <div class="field">
+                                <div class="field-lbl">
                                     <label>*Name</label>
                                 </div>
-                                <input type="text" placeholder="Enter First & Last Name" name="name" class="inputs" required>
+                                <input type="text" placeholder="Enter First &amp; Last Name" name="name" class="inputs" required="">
                             </div>
-                            <div class = "field">
-                                <div class = "field-lbl">
+                            <div class="field">
+                                <div class="field-lbl">
                                     <label>*Password</label>
                                 </div>
-                                <input type="password" placeholder="Enter Password" name="pw" id="pw" class="inputs" required>
+                                <input type="password" placeholder="Enter Password" name="pw" id="pw" class="inputs" required="">
                             </div>
-                            <div class = "field">
-                                <div class = "field-lbl">
+                            <div class="field">
+                                <div class="field-lbl">
                                     <label>*Retype password</label>
                                 </div>
                                 
-                                <input type="password" placeholder="Retype Password" name="pw2x" class="inputs" id="pw2x" required>
+                                <input type="password" placeholder="Retype Password" name="pw2x" class="inputs" id="pw2x" required="">
                             </div>
-                            <div class = "field">
-                                <div class = "field-lbl">
+                            <div class="field">
+                                <div class="field-lbl">
                                     <label>*Type</label>
                                 </div>
-                                <select id="type" onChange = "changeType();">
-                                    <option value = "0">Student</option>
-                                    <option value = "1">Professional</option>
+                                <select id="type" onchange="changeType();">
+                                    <option value="0">Student</option>
+                                    <option value="1">Professional</option>
                                 </select>
                             
                             </div>
-                            <div class = "field">
-                                <div class = "field-lbl">
-                                    <label id = "lbl">*Degree name</label>
+                            <div class="field">
+                                <div class="field-lbl">
+                                    <label id="lbl">*Degree name</label>
                                 </div>
-                                <input type="text" id = "types" placeholder="Enter Degree Name" name="other" class="inputs" required>
+                                <input type="text" id="types" placeholder="Enter Degree Name" name="other" class="inputs" required="">
                             </div>
                             <p>*Required fields</p> 
                             
-                            <div class = "buttons">
-                                <a href = "http://www.google.com"><button type="button" class="cancelbtn"> CANCEL </button> </a>
+                            <div class="buttons">
+                                <a href="http://www.google.com/"><button type="button" class="cancelbtn"> CANCEL </button> </a>
                                 <button type="submit" class="submitbtn" onclick=""> SUBMIT </button>
                             </div>
                         </div>
@@ -346,5 +341,5 @@
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    
+</body></html>
