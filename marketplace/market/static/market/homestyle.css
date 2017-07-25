@@ -1,31 +1,15 @@
-<html>
-    <head>
-        
-    </head>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-    </script>
-    <script>
-        $(document).on("keypress", ".search", function(e) {
-            if (e.which == 13) {
-             alert("IT WORKS THANK THE LORD");
-            }
-        });
-    
-    </script>
-    
-    <style>
-        
-        body {
-            margin: 0;
-        }
-        
-        .homepage {
-            display: flex;
-            flex-direction: column;
-            align-content: center;
-        }
-        
-        /*header styling*/
+body {
+    font-family: Helvetica;
+    overflow-x: hidden;
+    margin: 0; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+}
+
+/*header styling*/
         a:link {
             text-decoration: none;
         }
@@ -57,7 +41,7 @@
             right: 0.8em;
         }
         
-        .bar-item, .home, .post {
+        .bar-item, .home, .ppost {
             font-family: "Open Sans";
             font-size: 15px;
             font-style:normal;
@@ -120,7 +104,7 @@
             
         }
         
-        .home, .post {
+        .home, .ppost {
             
             vertical-align: baseline;
             line-height: 2.1em;
@@ -152,56 +136,166 @@
             background-repeat: no-repeat;
             border-style:inset;
         }
-        
-        /*other styling*/
-        
-        .container {    
-            margin: 15em;
-            margin-top: 1em;
-        }
-        
-        h1 {
-            text-align: center;
-        }
-        
-        
-        
-    </style>
-    <body>
-        <div class = "homepage">
-            <div class = "bar-container">
-                <div class = "bar">
-                    <div class = "item-container">
-                        <a href="userprofile.html"><div class = "bar-item">My Account</div></a>
-                        <a href="http://www.wikipedia.org"><div class = "bar-item">Logout</div></a>
-                    </div>
-                </div>
-            </div>
-            <div class = "bar-container">
-                <div class = "a-container">
-                    <div class = "left-container"> </div>
-                    <div class = "middle-container">
-                        <img src = "rccshop.png" width="300" height="200" class = "rcc"/>
-                    </div>
-                    <div class = "right-container">
-                        <!--<div class = "search-bar"> -->
-                            <input type="text" class="search" placeholder="Search tag...">
-                        <!--</div> -->
-                    </div>
-                </div>
-            </div>
-            <div class = "bar-container">
-                <div class = "menu">
-                    <div class = "b-container">
-                        <a href="http://www.neopets.com"><div class = "home"> <span class = "t"> Home </span> </div></a>
-                        <a href="post_item.html"><div class = "post"> <span class = "s"> Post an Item </span> </div></a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class = "container">
-                <h1> Search Results </h1>
-            </div>
-        </div>
-    </body>
-</html>
+
+
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    text-decoration-color: darkgrey;
+    cursor: pointer;
+    
+    
+}
+
+
+.header {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    top:0px;
+    right: 0px;
+    height: 50px;
+    width:100%;
+    background-color:white;
+    box-shadow: 1px 9px 5px -8px rgba(0,0,0,1);
+ 
+    justify-content: space-around;
+}
+
+.account
+{
+    display: flex;
+    margin-right: -13em;
+    padding:1em;
+    flex-direction: row;
+    justify-content: space-between;
+
+   
+}
+
+h1 {
+    font-size: 25px;
+    color: dimgrey;
+    font-family: Helvetica;
+}
+
+h2 {
+    padding-right: 3em;
+    font-size: 15px;
+    color: dimgrey;
+}
+
+#page
+{
+    display: flex;
+    flex-direction: column;
+    background-size: auto;
+}
+
+
+
+#more {
+
+    align-self: flex-end;
+    color: #FFFFFF;
+    border-radius: 10px;
+    align-self: center;
+    width: 80%;
+    height: 40px;
+    font-size:25;
+    font-family: fantasy;
+    cursor: pointer;
+    color: white;
+    transition-duration: 0.4s;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    background-color: lightskyblue;
+
+
+
+}
+
+
+
+/*Resize the wrap to see the search bar change!*/
+
+
+#post_container
+{
+	
+	font-family:helvetica;
+    background-color:;
+    display: flex;
+    height:200%;
+    flex-direction: column;
+    border-radius: 5px;
+}
+.footer {
+    
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    margin-bottom: 5px;
+    margin-top: 50px;
+
+}
+
+#post_box
+{
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    padding-left: 7em;
+   
+
+}
+
+#thumb {
+   margin: 1.5em;
+    padding: 10px;
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+}
+
+.post 
+{
+    
+    
+	margin:2em;
+    height:13%;
+    width: 40%;
+    box-shadow: 2px 8px 18px -3px rgba(0,0,0,0.22);
+    background-color:white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+      
+}
+.post:hover {
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+
+
+.info
+{
+    font-size: 15px;
+    font-family: helvetica;
+    padding-top: 2em;
+    display: block;
+    
+}
+
+.info div
+{
+    padding:1mm;
+  
+}

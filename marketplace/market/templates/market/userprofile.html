@@ -1,0 +1,94 @@
+{% load static %}
+<html>
+	<head><title>User Profile</title>
+		<link rel="stylesheet" type="text/css" href="{%static 'market/userstyle.css' %}"/>
+      
+	</head>
+    
+    
+   	<body>
+        <div id = page>
+			<div class = "bar-container">
+                <div class = "bar">
+                    <div class = "item-container">
+                        <a href="/market/user"><div class = "bar-item">My Account</div></a>
+                        <a href="http://www.wikipedia.org"><div class = "bar-item">Logout</div></a>
+                    </div>
+                </div>
+            </div>
+            <div class = "bar-container">
+                <div class = "a-container">
+                    <div class = "left-container"> </div>
+                    <div class = "middle-container">
+                        <img src = "{%static 'photos/rccshop.png' %}" width="300" height="200" class = "rcc"/>
+                    </div>
+                    <div class = "right-container">
+                        <!--<div class = "search-bar"> -->
+                            <input type="text" class="search" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
+                        <!--</div> -->
+                    </div>
+                </div>
+            </div>
+            <div class = "bar-container">
+                <div class = "menu">
+                    <div class = "b-container">
+                        <a href="/market"><div class = "home"> <span class = "t"> Home </span> </div></a>
+                        <a href="/market/postanitem"><div class = "ppost"> <span class = "s"> Post an Item </span> </div></a>
+                    </div>
+                </div>
+            </div>
+            
+			<div class = full_container>
+				<div class = mydata>
+					<div class = name_container>
+                        <div class = name_text>{{post.user.name}}</div>
+                        <div></div>
+                        <div class = uname>@{{post.user.username}}</div>
+                    
+                    </div>
+                
+                    
+                    <div id = info_container>
+                        <div class = listinfo>
+                            
+                                <div class = types ><span>User Type: Student/Staff </span></div>
+                                <div class = types_place ><span>Degree Program/Office : </span></div>
+
+                        </div> 
+                        
+       
+                    </div>
+				</div>
+					
+				
+				
+				
+				<div id = psection>
+					{% if latest_posts %}
+					<div id = post_container>
+                        {% for post in latest_posts %}
+                        <div id = post_box>
+                            <div class = post id = 1 >
+                                <a href ="Itemdetails.html"><img id ="thumb"  alt="no photo loaded yet"></a>
+                                <div class = info>
+                                    <div>{{post.itemname}}</div>
+                                    <div>{{post.tag}}</div>
+                                     
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                      
+                        </div>
+                       
+                        
+						                      
+						<div class = all> <span>View All</span> </div>
+					</div>
+				</div>
+		
+            </div>
+        </div>
+	</body>
+  
+</html>

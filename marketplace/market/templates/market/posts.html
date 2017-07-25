@@ -1,10 +1,7 @@
 <html>
     <head>
-        
-    </head>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-    </script>
-    <script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script>
         $(document).on("keypress", ".search", function(e) {
             if (e.which == 13) {
              alert("IT WORKS THANK THE LORD");
@@ -12,17 +9,10 @@
         });
     
     </script>
-    
     <style>
-        
         body {
+            font-family: Helvetica;
             margin: 0;
-        }
-        
-        .homepage {
-            display: flex;
-            flex-direction: column;
-            align-content: center;
         }
         
         /*header styling*/
@@ -153,20 +143,53 @@
             border-style:inset;
         }
         
-        /*other styling*/
         
-        .container {    
-            margin: 15em;
-            margin-top: 1em;
-        }
         
-        h1 {
+        
+        
+
+        .footer {
+            position: relative;
+            right: 0;
+            bottom: 0;
+            left: 0;
             text-align: center;
+            margin-bottom: 10px;
+            margin-top: 20px;
+
+        }
+    
+        .blog{
+            background-color: lightcyan;
+            height: 200px;
+            width: 580px;
+            border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 10px;
+            flex-direction: column;
         }
         
+        .userpost{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 2em;
+        }
         
+        #parentpost{
+            column-count: 2;
+            column-gap: normal;
+        }
         
+        .header{
+            margin: 2em;
+        }
+        
+
     </style>
+    </head>
+    
     <body>
         <div class = "homepage">
             <div class = "bar-container">
@@ -198,10 +221,78 @@
                     </div>
                 </div>
             </div>
-            
-            <div class = "container">
-                <h1> Search Results </h1>
-            </div>
+    
+        
+        <div class = "header">
+            <input type="text" placeholder="Looking for something...">
+            <button>Search</button>
         </div>
+
+    <div class = "userpost" id = "postparent">
+
+                <div class = "blog" id = 1 >
+                <div class =title>title</div>
+                <div class =msg>description</div>
+                <div class =posted>posted</div>
+                </div>
+                <div class = "blog" id = 2>
+                <div class =title>title</div>
+                <div class =msg>description</div>
+                <div class =posted>posted</div>
+                </div>
+                <div class = "blog" id = 3 >
+                <div class =title>title</div>
+                <div class =msg>description</div>
+                <div class =posted>posted</div>
+                </div>
+                <div class = "blog" id = 4>
+                <div class =title>title</div>
+                <div class =msg>description</div>
+                <div class =posted>posted</div>
+                </div>
+                <div class = "blog" id = 5 >
+                <div class =title>title</div>
+                <div class =msg>description</div> 
+                <div class =posted>posted</div>
+                </div>
+                <div class = "blog" id = 6 >
+                <div class =title>title</div>
+                <div class =msg>description</div> 
+                <div class =posted>posted</div>
+                </div>
+                <div class = "blog" id = 7>
+                <div class =title>title</div>
+                <div class =msg>description</div> 
+                <div class =posted>posted</div>
+                </div>
+                <div class = "blog" id = 8 >
+                <div class =title>title</div>
+                <div class =msg>description</div>
+                <div class =posted>posted</div>
+                </div>
+                <div class = "blog" id = 9>
+                <div class =title>title</div>
+                <div class =msg>description</div> 
+                <div class =posted>posted</div>
+                </div>
+                <div class = "blog" id = 10 >
+                <div class =title>title</div>
+                <div class =msg>description</div> 
+                <div class =posted>posted</div>
+                </div>
+       
+        </div>
+        <div class = "footer">
+            <button id = "more" class = "button2" id = "more" value = "">
+                More...
+            </button>
+            <select class = "drop">
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+        </div>
+    
     </body>
+
 </html>

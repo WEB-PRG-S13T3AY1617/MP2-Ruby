@@ -10,6 +10,9 @@ class User(models.Model):
     password = models.CharField(max_length=15)
     types = models.IntegerField(default=0)
     
+    def __str__(self):
+        return self.name
+    
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     itemname = models.CharField(max_length=50)
@@ -19,5 +22,9 @@ class Post(models.Model):
     tb_img = models.CharField(max_length = 200)
     tag = models.CharField(max_length = 50)
     pub_date = models.DateTimeField('date published')
+    
+    def __str__(self):
+        return self.itemname
+    
 
 # Create your models here.

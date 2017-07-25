@@ -1,10 +1,7 @@
 <html>
     <head>
-        
-    </head>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-    </script>
-    <script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script>
         $(document).on("keypress", ".search", function(e) {
             if (e.which == 13) {
              alert("IT WORKS THANK THE LORD");
@@ -12,17 +9,10 @@
         });
     
     </script>
-    
     <style>
-        
         body {
+            font-family: Helvetica;
             margin: 0;
-        }
-        
-        .homepage {
-            display: flex;
-            flex-direction: column;
-            align-content: center;
         }
         
         /*header styling*/
@@ -153,20 +143,43 @@
             border-style:inset;
         }
         
-        /*other styling*/
-        
-        .container {    
-            margin: 15em;
-            margin-top: 1em;
+        .field {
+            display: flex;
+            flex-direction: row;
         }
         
-        h1 {
-            text-align: center;
+        .field-lbl {
+            width: 12em;
         }
         
+        .data {
+            
+            display: flex;
+            flex-direction: column;
+        }
         
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+        }
         
+        .cancelbtn {
+            padding: 14px 20px;
+            background-color: #f44336;
+        }
+        
+        .cancelbtn,.submitbtn {
+            float: left;
+            width: 15%;
+        }
+    
     </style>
+    </head>
+    
     <body>
         <div class = "homepage">
             <div class = "bar-container">
@@ -199,8 +212,35 @@
                 </div>
             </div>
             
-            <div class = "container">
-                <h1> Search Results </h1>
+           
+            <div class = "container"> 
+                
+            <div class = "logIn"> 
+                
+                <div class = "Title"><h1> Log In </h1></div>
+                    <form action=" ">
+                        <div class = "data">
+                            
+                            <div class = "field">
+                                <div class = "field-lbl">
+                                    <label><b>Username</b></label>
+                                </div>
+                                <input type="text" name="name" required>
+                            </div>
+                            <div class = "field">
+                                <div class = "field-lbl">
+                                    <label><b>Password</b></label>
+                                </div>
+                                <input type="password" name="pw" id="pw" required>
+                            </div>
+                        </div>
+                            
+                        <div class = "buttons">
+                            <a href = "http://www.google.com"><button type="button" class="cancelbtn"> CANCEL </button> </a>
+                            <button type="submit" class="submitbtn" onclick=""> SUBMIT </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </body>
