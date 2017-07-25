@@ -247,7 +247,8 @@
             </div>
             
             <div class = "container">
-                <form>
+                <form action="{% url 'market:postanitem' post.id %}">
+                    {% csrf_token %}
                     <p>Add a Photo</p>
 
                         <input type="file" class="pic" name="photo" accept="image/*">
