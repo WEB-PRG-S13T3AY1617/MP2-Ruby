@@ -1,0 +1,125 @@
+{% load static %}
+<html>
+    <head><title>View Album's Photos</title>
+        <link rel="stylesheet" type="text/css" href="{%static 'market/itemstyle.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+    </head>
+   
+    <body>
+        <div id = page>
+           <div class = "bar-container">
+                <div class = "bar">
+                    <div class = "item-container">
+                        <a href="userprofile.html"><div class = "bar-item">My Account</div></a>
+                        <a href="http://www.wikipedia.org"><div class = "bar-item">Logout</div></a>
+                    </div>
+                </div>
+            </div>
+            <div class = "bar-container">
+                <div class = "a-container">
+                    <div class = "left-container"> </div>
+                    <div class = "middle-container">
+                        <img src = "{%static 'photos/rccshop.png' %}" width="300" height="200" class = "rcc"/>
+                    </div>
+                    <div class = "right-container">
+                        <!--<div class = "search-bar"> -->
+                            <input type="text" class="search" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
+                        <!--</div> -->
+                    </div>
+                </div>
+            </div>
+            <div class = "bar-container">
+                <div class = "menu">
+                    <div class = "b-container">
+                        <a href="/market/user"><div class = "home"> <span class = "t"> Home </span> </div></a>
+                        <a href="/market/postanitem"><div class = "ppost"> <span class = "s"> Post an Item </span> </div></a>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div id ="main-container">
+                <div id="photobox">
+                    <div class="pics" id="p1" > 
+                       <img id ="thumb" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" alt="no photo loaded yet">
+                    </div>       
+                </div>
+                
+                <div class = "detail-info">
+                    <div>Name Item</div>
+                    <div>quantity</div>
+                    <div>Condition</div>
+                    <div>Type(Academic/Office)</div>
+                    <div>tags</div>
+                    <a href = "userprofile.html"><div>Username</div></a>
+                </div>
+                    
+                
+
+               
+            </div>
+
+            <div id="zoomed-photo">
+                <span class="close cursor" onclick="closeModal()">x</span>
+                <div class="modal-content">
+                    <div class ="slide-container">
+                        <div id="s1" class="mySlides">
+                            <img id="photo" alt="No photo loaded yet">
+                        </div>
+                        
+
+                    </div>
+                   
+
+                   
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <script>
+            function openModal() {
+                document.getElementById('zoomed-photo').style.display = "block";
+            }
+            function closeModal() {
+                document.getElementById('zoomed-photo').style.display = "none";
+            }
+
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+            
+            function showSlides(n) {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                var capt = document.getElementsByClassName("details");
+                
+                if (n > slides.length)
+                    slideIndex = 1
+                if (n < 1) 
+                    slideIndex = slides.length
+                for (i = 0; i < slides.length; i++)
+                    slides[i].style.display = "none";
+                for (i = 0; i < capt.length; i++)
+                    capt[i].style.display = "none";
+                
+                
+                slides[slideIndex-1].style.display = "block";
+                
+                capt[slideIndex-1].style.display = "block";
+                
+                var captionText = captionText = capt.valueOf();
+               
+                
+            }
+        </script>
+    </body>
+</html>

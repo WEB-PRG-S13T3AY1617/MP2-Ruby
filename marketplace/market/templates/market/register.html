@@ -1,0 +1,350 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    </head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+    </script>
+    <script>
+        $(document).on("keypress", ".search", function(e) {
+            if (e.which == 13) {
+             alert("IT WORKS THANK THE LORD");
+            }
+        });
+    
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $(".submitbtn").click(function () {
+                var password = $("#pw").val();
+                var confirmPassword = $("#pw2x").val();
+                if (password != confirmPassword) {
+                    alert("Passwords do not match.");
+                    return false;
+                }
+                return true;
+            });
+        });
+    </script>
+    <script type="text/javascript">
+            var changeType = function() {
+                var type = document.getElementById("type");
+                var selectedType = type.options[type.selectedIndex].value;
+                var newLabel;
+                var newPlaceHolder;
+                console.log(selectedType);
+                if(selectedType === "0") {
+                    newLabel = "*Degree name";
+                    newPlaceHolder = "Enter Degree Name";
+                }
+                else if(selectedType === "1") {
+                    newLabel = "*Office";
+                    newPlaceHolder = "Enter Name of Office";
+                }
+                
+                document.getElementById("lbl").textContent = newLabel;
+                $("#types").attr("placeholder", newPlaceHolder);
+                
+            }
+        </script>
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        .bar-item, .home, .post {
+            font-family: "Open Sans";
+            font-size: 15px;
+            font-style:normal;
+            font-variant:normal;
+            font-weight:500;
+            line-height: 26.4px;
+            color: darkgray;
+        }
+        
+        .bar-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .bar {
+            height: 1.5em;
+            display: flex;
+            flex-direction: row;
+            justify-content:flex-end;
+            width: 95%;
+            border-bottom-style: ridge;
+            border-bottom-color: #d3d3d3;
+            border-bottom-width: thin;
+        }
+        
+        .item-container {
+            width: 20%;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        
+        
+        .menu {
+          
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 95%;
+            height: 2em;
+            border-bottom-style: ridge;
+            border-bottom-color: #d3d3d3;
+            border-bottom-width: thin;
+            border-top-style: ridge;
+            border-top-color: #d3d3d3;
+            border-top-width: thin;
+            
+        }
+        
+        .a-container {
+           
+            display: flex;
+            flex-direction: row;
+            width: 95%;
+            height: 5em;
+        }
+        
+        .left-container {
+            width: 35%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .middle-container {
+            width: 35%;
+        }
+        
+        .rcc {
+            position: relative;
+            bottom: 3.2em;
+            right: 0.8em;
+        }
+        
+        .right-container {
+            width: 30%;
+            display: flex;
+            flex-direction: row;
+            align-content:flex-end;
+        }
+        
+        .search-bar {
+           
+            display: flex;
+            justify-content:flex-start;
+        }
+        
+        
+        .b-container {
+            
+            width: 25%;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .home, .post {
+            
+            vertical-align: baseline;
+            line-height: 2.1em;
+            border-right-style: ridge;
+            border-right-color: #d3d3d3;
+            border-right-width: thin;
+            
+        }
+        
+        a:link {
+            text-decoration: none;
+        }
+        
+        a:hover {
+            cursor: pointer;
+        }
+        
+        .t {
+            margin-right: 1.8em;
+        }
+        
+        .s {
+            margin-right: 3.7em;
+        }
+        
+        .container {
+            margin: 2em;
+        }
+        
+        h1 {
+            font-family: "Open Sans";
+            font-size: 30px;
+            font-style:normal;
+            font-variant:small-caps;
+            font-weight: bolder;
+            line-height: 26.4px;
+            
+        }
+        
+        p {
+            font-family: "Open Sans";
+            font-size: 15px;
+            font-style:oblique;
+            font-variant:normal;
+            margin-left: 1em;
+        }
+        
+        .field {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .field-lbl {
+            width: 12em;
+        }
+        
+        .data {
+            
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .search {
+            width: 65%;
+            height: 55%;
+            
+            padding: 12px 20px 12px 40px;
+            margin-top: 1.4em;
+            margin-left: 11.3em;
+            display: inline-flex;
+            box-sizing: border-box;
+            background-image: url('magnifyglass.png');
+            background-position: 10px 8px; 
+            background-size: 25px;
+            background-repeat: no-repeat;
+            border-style:inset;
+        }
+        
+        .inputs, input[type=password], select {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        
+        label {
+            line-height: 3.5em;
+            margin-left: 0.7em;
+            font-family: "Open Sans";
+            font-size: 15px;
+            font-style:normal;
+            font-weight: bold;
+            font-variant:normal;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cancelbtn {
+            padding: 14px 20px;
+            background-color: #f44336;
+        }
+        
+        .cancelbtn,.submitbtn {
+            float: left;
+            width: 15%;
+        }
+    
+    </style>
+    <body>
+        <div class = "homepage">
+            <div class = "bar-container">
+                <div class = "bar">
+                    <div class = "item-container">
+                        <a href="userprofile.html"><div class = "bar-item">My Account</div></a>
+                        <a href="http://www.wikipedia.org"><div class = "bar-item">Logout</div></a>
+                    </div>
+                </div>
+            </div>
+            <div class = "bar-container">
+                <div class = "a-container">
+                    <div class = "left-container"> </div>
+                    <div class = "middle-container">
+                        <img src = "rccshop.png" width="300" height="200" class = "rcc"/>
+                    </div>
+                    <div class = "right-container">
+                        <!--<div class = "search-bar"> -->
+                            <input type="text" class="search" placeholder="Search tag...">
+                        <!--</div> -->
+                    </div>
+                </div>
+            </div>
+            <div class = "bar-container">
+                <div class = "menu">
+                    <div class = "b-container">
+                        <a href="http://www.neopets.com"><div class = "home"> <span class = "t"> Home </span> </div></a>
+                        <a href="post_item.html"><div class = "post"> <span class = "s"> Post an Item </span> </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class = "container"> 
+                <div class = "regNewUser"> 
+                    <div class = "Title"><h1> Register a New User Account </h1></div>
+                    <form>
+                        <div class = "data">
+                            <div class = "field">
+                                <div class = "field-lbl">
+                                    <label>*Name</label>
+                                </div>
+                                <input type="text" placeholder="Enter First & Last Name" name="name" class="inputs" required>
+                            </div>
+                            <div class = "field">
+                                <div class = "field-lbl">
+                                    <label>*Password</label>
+                                </div>
+                                <input type="password" placeholder="Enter Password" name="pw" id="pw" class="inputs" required>
+                            </div>
+                            <div class = "field">
+                                <div class = "field-lbl">
+                                    <label>*Retype password</label>
+                                </div>
+                                
+                                <input type="password" placeholder="Retype Password" name="pw2x" class="inputs" id="pw2x" required>
+                            </div>
+                            <div class = "field">
+                                <div class = "field-lbl">
+                                    <label>*Type</label>
+                                </div>
+                                <select id="type" onChange = "changeType();">
+                                    <option value = "0">Student</option>
+                                    <option value = "1">Professional</option>
+                                </select>
+                            
+                            </div>
+                            <div class = "field">
+                                <div class = "field-lbl">
+                                    <label id = "lbl">*Degree name</label>
+                                </div>
+                                <input type="text" id = "types" placeholder="Enter Degree Name" name="other" class="inputs" required>
+                            </div>
+                            <p>*Required fields</p> 
+                            
+                            <div class = "buttons">
+                                <a href = "http://www.google.com"><button type="button" class="cancelbtn"> CANCEL </button> </a>
+                                <button type="submit" class="submitbtn" onclick=""> SUBMIT </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
