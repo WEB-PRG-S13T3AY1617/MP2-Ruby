@@ -1,3 +1,4 @@
+{% load static %}
 <html>
     <head>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -136,7 +137,6 @@
             margin-left: 11.3em;
             display: inline-flex;
             box-sizing: border-box;
-            background-image: url('magnifyglass.png');
             background-position: 10px 8px; 
             background-size: 25px;
             background-repeat: no-repeat;
@@ -185,7 +185,7 @@
             <div class = "bar-container">
                 <div class = "bar">
                     <div class = "item-container">
-                        <a href="userprofile.html"><div class = "bar-item">My Account</div></a>
+                        <a href="/market/user"><div class = "bar-item">My Account</div></a>
                         <a href="http://www.wikipedia.org"><div class = "bar-item">Logout</div></a>
                     </div>
                 </div>
@@ -194,11 +194,11 @@
                 <div class = "a-container">
                     <div class = "left-container"> </div>
                     <div class = "middle-container">
-                        <img src = "rccshop.png" width="300" height="200" class = "rcc"/>
+                        <img src = "{%static 'photos/rccshop.png' %}" width="300" height="200" class = "rcc"/>
                     </div>
                     <div class = "right-container">
                         <!--<div class = "search-bar"> -->
-                            <input type="text" class="search" placeholder="Search tag...">
+                            <input type="text" class="search" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
                         <!--</div> -->
                     </div>
                 </div>
@@ -206,8 +206,8 @@
             <div class = "bar-container">
                 <div class = "menu">
                     <div class = "b-container">
-                        <a href="http://www.neopets.com"><div class = "home"> <span class = "t"> Home </span> </div></a>
-                        <a href="post_item.html"><div class = "post"> <span class = "s"> Post an Item </span> </div></a>
+                        <a href="/market"><div class = "home"> <span class = "t"> Home </span> </div></a>
+                        <a href="/market/postanitem"><div class = "post"> <span class = "s"> Post an Item </span> </div></a>
                     </div>
                 </div>
             </div>
@@ -216,9 +216,10 @@
             <div class = "container"> 
                 
             <div class = "logIn"> 
-                
+                {% block content %}
                 <div class = "Title"><h1> Log In </h1></div>
-                    <form action=" ">
+                    <form method="post">
+                        {% csrf_token %}
                         <div class = "data">
                             
                             <div class = "field">
@@ -240,6 +241,7 @@
                             <button type="submit" class="submitbtn" onclick=""> SUBMIT </button>
                         </div>
                     </form>
+                {% endblock %}
                 </div>
             </div>
         </div>

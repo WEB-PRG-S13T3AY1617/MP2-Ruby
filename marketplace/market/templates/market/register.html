@@ -298,13 +298,20 @@
             <div class = "container"> 
                 <div class = "regNewUser"> 
                     <div class = "Title"><h1> Register a New User Account </h1></div>
-                    <form>
+                    <form method="post">
+                        {% csrf_token %}
                         <div class = "data">
                             <div class = "field">
                                 <div class = "field-lbl">
                                     <label>*Name</label>
                                 </div>
                                 <input type="text" placeholder="Enter First & Last Name" name="name" class="inputs" required>
+                            </div>
+                            <div class = "field">
+                                <div class = "field-lbl">
+                                    <label>*Userame</label>
+                                </div>
+                                <input type="text" placeholder="Enter Username" name="username" class="inputs" required>
                             </div>
                             <div class = "field">
                                 <div class = "field-lbl">
@@ -323,7 +330,7 @@
                                 <div class = "field-lbl">
                                     <label>*Type</label>
                                 </div>
-                                <select id="type" onChange = "changeType();">
+                                <select id="type" onChange = "changeType();" name="numType">
                                     <option value = "0">Student</option>
                                     <option value = "1">Professional</option>
                                 </select>

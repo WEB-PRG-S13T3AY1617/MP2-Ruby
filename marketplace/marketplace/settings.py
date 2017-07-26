@@ -124,3 +124,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# the URL Django will redirect the user after a successful authentication
+LOGIN_REDIRECT_URL = '/market'
