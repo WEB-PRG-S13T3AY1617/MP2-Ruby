@@ -19,7 +19,7 @@ class Post(models.Model):
     quantity = models.IntegerField(default=0)
     condition = models.CharField(max_length=200)
     Usertypes = models.CharField(max_length=50)
-    degprog = models.CharField(max_length=200, default="none")
+    degprog = models.CharField(max_length=200, default='none')
     # remove photos from inside 
     tb_img = models.CharField(max_length = 200)
     tag = models.CharField(max_length = 50)

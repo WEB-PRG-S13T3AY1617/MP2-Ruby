@@ -218,7 +218,7 @@
             <div class = "logIn"> 
                 {% block content %}
                 <div class = "Title"><h1> Log In </h1></div>
-                    <form method="post">
+                    <form method="post" action="{% url 'market:login' user.id %}">
                         {% csrf_token %}
                         <div class = "data">
                             

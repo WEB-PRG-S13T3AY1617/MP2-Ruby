@@ -9,7 +9,8 @@ app_name = 'market'
 urlpatterns = [
     url(r'^$', views.index, name='index'), #shows what is inside views.py
     #url(r'^signup/$', core_views.signup, name='signup'),
-    url(r'^login/$', views.login, name='login'),   
+    #url(r'^loggedin/$', views.logged, name='logged'),
+    url(r'^login/$', auth_views.login, name='login'),   
     url(r'^user/$', views.user, name='user'),
     url(r'^postanitem/$', views.postanitem, name='postanitem'),
 ]

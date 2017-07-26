@@ -28,7 +28,7 @@ def user(request):
     return render(request, 'market/userprofile.html', context)
 
 def postanitem(request, user_id):
-    user = get_object_or_404(User, pk=post_id)
+    user = get_object_or_404(User, pk=user_id)
     try:
         selected_post = user.post_set.get(pk=request.POST['post'])
     except (KeyError, Post.DoesNotExist):
@@ -38,7 +38,7 @@ def postanitem(request, user_id):
         })
     else:
         selected_post.save()
-        return HttpResponseRedirect(reverse('market/post_item.html', args=(user.id,)))
+        return HttpResponseRedirect(reverse('market:postanitem', args=(user.id,)))
 
 def signup(request):
     if request.method == 'POST':
@@ -57,25 +57,31 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'register.html', {'form': form})
 
-
-
 def login(request):
-    username = 'not_logged_in'
-    
-    if request.method == 'POST':
-        MyLoginForm = LoginForm(request.POST)
-    
-    if MyLoginForm.is_valid():
-        username = MyLoginForm.cleaned_data['username']
-        request.session['username'] = username
+    u = User.objects.get(username=request.POST['name'])
+    if u.password == request.POST['pw']:
+        request.session['user_id'] = u.username
+        return HttpResponse("You're logged in.")
     else:
-        MyLoginForm = LoginForm()
-        
-    return render(request, 'homepage.html', {'username' : username})
+        return HttpResponse("Your username and password didn't match.")
 
-def formView(request):
-    if request.session.has_key('username'):
-        username = request.session['username']
-        return render(request, 'homepage.html', {'username': username})
-    else:
-        return render(request, 'login.html', {})
+#def login(request):
+#    username = 'not_logged_in'
+#    
+#    if request.method == 'POST':
+#        MyLoginForm = LoginForm(request.POST)
+##    
+#    if MyLoginForm.is_valid():
+#        username = MyLoginForm.cleaned_data['username']
+#        request.session['username'] = username
+#    else:
+#        MyLoginForm = LoginForm()
+#        
+#    return render(request, 'homepage.html', {'username' : username})
+
+#def formView(request):
+#    if request.session.has_key('username'):
+#        username = request.session['username']
+#        return render(request, 'homepage.html', {'username': username})
+#    else:
+#        return render(request, 'login.html', {})
