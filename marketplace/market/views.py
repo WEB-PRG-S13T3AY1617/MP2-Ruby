@@ -57,10 +57,12 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'register.html', {'form': form})
 
+
+
 def login(request):
     username = 'not_logged_in'
     
-    if request.method = 'POST':
+    if request.method == 'POST':
         MyLoginForm = LoginForm(request.POST)
     
     if MyLoginForm.is_valid():
@@ -69,11 +71,11 @@ def login(request):
     else:
         MyLoginForm = LoginForm()
         
-    return render(request, 'homepage.html'. {"username" : username})
+    return render(request, 'homepage.html', {'username' : username})
 
 def formView(request):
     if request.session.has_key('username'):
-      username = request.session['username']
-      return render(request, 'loggedin.html', {"username" : username})
-   else:
-      return render(request, 'login.html', {})
+        username = request.session['username']
+        return render(request, 'homepage.html', {'username': username})
+    else:
+        return render(request, 'login.html', {})

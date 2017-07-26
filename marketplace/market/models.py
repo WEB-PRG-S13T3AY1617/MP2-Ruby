@@ -19,6 +19,8 @@ class Post(models.Model):
     quantity = models.IntegerField(default=0)
     condition = models.CharField(max_length=200)
     Usertypes = models.CharField(max_length=50)
+    degree = models.CharField(max_length=200) #deg program - academic 
+    # remove photos from inside 
     tb_img = models.CharField(max_length = 200)
     tag = models.CharField(max_length = 50)
     pub_date = models.DateTimeField('date published')
