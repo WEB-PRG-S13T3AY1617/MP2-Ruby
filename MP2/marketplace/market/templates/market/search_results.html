@@ -1,0 +1,207 @@
+<html>
+    <head>
+        
+    </head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+    </script>
+    <script>
+        $(document).on("keypress", ".search", function(e) {
+            if (e.which == 13) {
+             alert("IT WORKS THANK THE LORD");
+            }
+        });
+    
+    </script>
+    
+    <style>
+        
+        body {
+            margin: 0;
+        }
+        
+        .homepage {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+        }
+        
+        /*header styling*/
+        a:link {
+            text-decoration: none;
+        }
+        
+        a:hover {
+            cursor: pointer;
+        }
+        
+        .left-container {
+            width: 35%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .middle-container {
+            width: 35%;
+        }
+        
+        .right-container {
+            width: 30%;
+            display: flex;
+            flex-direction: row;
+            align-content:flex-end;
+        }
+        
+        .rcc {
+            position: relative;
+            bottom: 3.2em;
+            right: 0.8em;
+        }
+        
+        .bar-item, .home, .post {
+            font-family: "Open Sans";
+            font-size: 15px;
+            font-style:normal;
+            font-variant:normal;
+            font-weight:500;
+            line-height: 26.4px;
+            color: darkgray;
+        }
+        
+        .bar-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .bar {
+            height: 1.5em;
+            display: flex;
+            flex-direction: row;
+            justify-content:flex-end;
+            width: 95%;
+            border-bottom-style: ridge;
+            border-bottom-color: #d3d3d3;
+            border-bottom-width: thin;
+        }
+        
+        .item-container {
+            width: 20%;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .a-container {
+           
+            display: flex;
+            flex-direction: row;
+            width: 95%;
+            height: 5em;
+        }
+        
+        .b-container {
+            
+            width: 25%;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .menu {
+          
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 95%;
+            height: 2em;
+            border-bottom-style: ridge;
+            border-bottom-color: #d3d3d3;
+            border-bottom-width: thin;
+            border-top-style: ridge;
+            border-top-color: #d3d3d3;
+            border-top-width: thin;
+            
+        }
+        
+        .home, .post {
+            
+            vertical-align: baseline;
+            line-height: 2.1em;
+            border-right-style: ridge;
+            border-right-color: #d3d3d3;
+            border-right-width: thin;
+            
+        }
+        
+        .t {
+            margin-right: 1.8em;
+        }
+        
+        .s {
+            margin-right: 3.7em;
+        }
+        
+        .search {
+            width: 65%;
+            height: 55%;
+            padding: 12px 20px 12px 40px;
+            margin-top: 1.4em;
+            margin-left: 11.3em;
+            display: inline-flex;
+            box-sizing: border-box;
+            background-image: url('magnifyglass.png');
+            background-position: 10px 8px; 
+            background-size: 25px;
+            background-repeat: no-repeat;
+            border-style:inset;
+        }
+        
+        /*other styling*/
+        
+        .container {    
+            margin: 15em;
+            margin-top: 1em;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        
+        
+    </style>
+    <body>
+        <div class = "homepage">
+            <div class = "bar-container">
+                <div class = "bar">
+                    <div class = "item-container">
+                        <a href="userprofile.html"><div class = "bar-item">My Account</div></a>
+                        <a href="http://www.wikipedia.org"><div class = "bar-item">Logout</div></a>
+                    </div>
+                </div>
+            </div>
+            <div class = "bar-container">
+                <div class = "a-container">
+                    <div class = "left-container"> </div>
+                    <div class = "middle-container">
+                        <img src = "rccshop.png" width="300" height="200" class = "rcc"/>
+                    </div>
+                    <div class = "right-container">
+                        <!--<div class = "search-bar"> -->
+                            <input type="text" class="search" placeholder="Search tag...">
+                        <!--</div> -->
+                    </div>
+                </div>
+            </div>
+            <div class = "bar-container">
+                <div class = "menu">
+                    <div class = "b-container">
+                        <a href="http://www.neopets.com"><div class = "home"> <span class = "t"> Home </span> </div></a>
+                        <a href="post_item.html"><div class = "post"> <span class = "s"> Post an Item </span> </div></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class = "container">
+                <h1> Search Results </h1>
+            </div>
+        </div>
+    </body>
+</html>
