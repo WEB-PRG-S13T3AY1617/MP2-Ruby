@@ -1,4 +1,5 @@
 {% load static %}
+
 <html>
     <head>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -158,7 +159,7 @@
             flex-direction: column;
         }
         
-        button {
+        #button {
             background-color: #4CAF50;
             color: white;
             padding: 14px 20px;
@@ -218,8 +219,8 @@
             <div class = "logIn"> 
                 {% block content %}
                 <div class = "Title"><h1> Log In </h1></div>
-                    <form method="post" action="{% url 'market:login' user.id %}">
-                        {% csrf_token %}
+                
+                    <form method="post" action="{% url 'market:login' %}">{% csrf_token %}
                         <div class = "data">
                             
                             <div class = "field">
@@ -235,13 +236,10 @@
                                 <input type="password" name="pw" id="pw" required>
                             </div>
                         </div>
-                            
-                        <div class = "buttons">
-                            <a href = "/market"><button type="button" class="cancelbtn"> CANCEL </button> </a>
-                            <button type="submit" class="submitbtn" onclick=""> SUBMIT </button>
-                        </div>
+                        <input type="submit" class="submitbtn" id = "button"/>
+                        
                     </form>
-                {% endblock %}
+                {% endblock content %}
                 </div>
             </div>
         </div>

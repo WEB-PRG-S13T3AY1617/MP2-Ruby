@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib import auth
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, get_object_or_404, redirect
@@ -58,12 +59,17 @@ def signup(request):
     return render(request, 'register.html', {'form': form})
 
 def login(request):
-    u = User.objects.get(username=request.POST['name'])
-    if u.password == request.POST['pw']:
-        request.session['user_id'] = u.username
-        return HttpResponse("You're logged in.")
+    username=request.POST.get('username', '')
+    password=request.POST.get('password', '')
+    user = auth.authenticate(username=username, password=password)
+    if user is not None and user.is_active:
+        # Correct password, and the user is marked "active"
+        auth.login(request, user)
+        # Redirect to a success page.
+        return HttpResponseRedirect("/account/loggedin/")
     else:
-        return HttpResponse("Your username and password didn't match.")
+        # Show an error page
+        return HttpResponseRedirect("/account/invalid/")
 
 #def login(request):
 #    username = 'not_logged_in'
