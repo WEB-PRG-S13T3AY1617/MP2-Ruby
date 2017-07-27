@@ -11,9 +11,9 @@ urlpatterns = [
     url(r'^$', views.index, name='index'), #shows what is inside views.py
     #url(r'^signup/$', core_views.signup, name='signup'),
     url(r'^login/$', auth_views.login, name='login'),   
-    url(r'^(?P<user_id>[0-9]+)/$', views.user, name='user'),
+    url(r'^(?P<user_id>[0-9]+)/user/$', views.user, name='user'),
     url(r'^postanitem/$', views.postanitem, name='postanitem'),
-   
+    url(r'^(?P<post_id>[0-9]+)/itemdetail/$', views.itemdetail, name='itemdetail'),
 ]
 
 # S O M E  N O T E S : #######################

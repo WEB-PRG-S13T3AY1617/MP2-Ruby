@@ -131,3 +131,6 @@ STATICFILES_FINDERS = ['django.contrib.staticfiles.finders.FileSystemFinder',
 
 # the URL Django will redirect the user after a successful authentication
 LOGIN_REDIRECT_URL = '/market'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

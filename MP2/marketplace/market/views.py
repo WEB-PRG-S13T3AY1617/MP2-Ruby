@@ -28,18 +28,28 @@ def user(request, user_id):
     }
     return render(request, 'market/userprofile.html', context)
     
-def postanitem(request, user_id):
-    user = get_object_or_404(User, pk=post_id)
+def postanitem(request):
+    user_id = 1;
+    user = get_object_or_404(User, pk=user_id)
     try:
         selected_post = user.post_set.get(pk=request.POST['post'])
     except (KeyError, Post.DoesNotExist):
-        return render(request, 'market/postanitem.html', {
+        return render(request, 'market/post_item.html', {
             'user': user,
             'error_message': "Invalid.",
         })
     else:
+        
         selected_post.save()
-        return HttpResponseRedirect(reverse('market/post_item.html', args=(user.id,)))
+        return HttpResponseRedirect(reverse('market/userprofile.html', args=(user.id,)))
+def itemdetail(request, post_id):
+    post =get_object_or_404(Post,pk=post_id)
+    user = get_object_or_404(User,pk=post.user.id)
+    context = { 
+        'user':user,
+        'post': post,
+    }
+    return render(request, 'market/itemdetail.html', context)
 
 def signup(request):
     if request.method == 'POST':

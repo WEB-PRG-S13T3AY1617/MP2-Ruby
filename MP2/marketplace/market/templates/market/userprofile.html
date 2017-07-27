@@ -50,10 +50,10 @@
                     
                     <div id = info_container>
                         <div class = listinfo>
-                                {% if user.types == 0 %}
+                                {% if user.types == 1 %}
                                     <div class = types ><span>User Type: Student</span></div>
                                  {% endif %}
-                                {%if  user.types == 1 %}    
+                                {%if  user.types == 0 %}    
                                     <div class = types ><span>User Type: Staff</span></div>
                                 {% endif %}
                                 <div class = types_place ><span>Degree Program/Office : {{user.types_place}}</span></div>
@@ -72,7 +72,7 @@
                         {% for post in latest_posts %}
                         <div id = post_box>
                             <div class = post id = 1 >
-                                <a href ="Itemdetails.html"><img src = "{%static post.tb_img %}" id ="thumb"  alt="no photo loaded yet"></a>
+                               <a href = "{% url 'market:itemdetail' post.id %}"><img src = "{%static post.tb_img %}" id ="thumb"  alt="no photo loaded yet"></a>
                                 <div class = info>
                                     <div>{{post.itemname}}</div>
                                     <div>{{post.tag}}</div>

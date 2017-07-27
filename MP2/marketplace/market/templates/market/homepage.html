@@ -103,7 +103,7 @@
                 <div id = post_box>
                     {% for post in latest_posts %}
                     <div class = post id = 1 >
-                        <a href ="Itemdetails.html"><img src= "{%static post.tb_img %}" id ="thumb"  alt="no photo loaded yet"></a>
+                        <a href = "{% url 'market:itemdetail' post.id %}"><img src= "{%static post.tb_img %}" id ="thumb"  alt="no photo loaded yet"></a>
                         <div class = info>
                             <div class = itemname>{{post.itemname}}</div>
                             <div class = tag>{{post.tag}}</div>
