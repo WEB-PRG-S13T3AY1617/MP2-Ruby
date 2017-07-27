@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.contrib import auth
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate, get_user_model, logout
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.urls import reverse
 
+from .forms import UserLoginForm, UserRegisterForm
 from .models import User, Post
 
 # Create your views here.
@@ -41,53 +40,36 @@ def postanitem(request, user_id):
         selected_post.save()
         return HttpResponseRedirect(reverse('market:postanitem', args=(user.id,)))
 
-def signup(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            name = form.cleaned_data.get('name')
-            raw_password = form.cleaned_data.get('pw')
-            numType = form.cleaned_data.get('numType')
-            theType = form.cleaned_data.get('other')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('/market')
-    else:
-        form = UserCreationForm()
-    return render(request, 'register.html', {'form': form})
+def login_view(request):
+    print(request.user.is_authenticated())
+    title = "Login"
+    form = UserLoginForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password")
+        user = authenticate(username=username, password=password)
+        login(request,user)
+        return redirect("/market/")
+    return render(request, "login.html", {"form":form, "title":title})
 
-def login(request):
-    username=request.POST.get('username', '')
-    password=request.POST.get('password', '')
-    user = auth.authenticate(username=username, password=password)
-    if user is not None and user.is_active:
-        # Correct password, and the user is marked "active"
-        auth.login(request, user)
-        # Redirect to a success page.
-        return HttpResponseRedirect("/account/loggedin/")
-    else:
-        # Show an error page
-        return HttpResponseRedirect("/account/invalid/")
+def register_view(request):
+    print(request.user.is_authenticated())
+    title = "Register"
+    form = UserRegisterForm(request.POST or None)
+    if form.is_valid():
+        user = form.save(commit=False)
+        password = form.cleaned_data.get('password')
+        user.set_password(password)
+        user.save()
+        new_user = authenticate(username=user.username, password=password)
+        login(request,new_user)
+        return redirect("/market/")
+    context = {
+        "form": form,
+        "title": title
+    }
+    return render(request, "login.html", context)
 
-#def login(request):
-#    username = 'not_logged_in'
-#    
-#    if request.method == 'POST':
-#        MyLoginForm = LoginForm(request.POST)
-##    
-#    if MyLoginForm.is_valid():
-#        username = MyLoginForm.cleaned_data['username']
-#        request.session['username'] = username
-#    else:
-#        MyLoginForm = LoginForm()
-#        
-#    return render(request, 'homepage.html', {'username' : username})
-
-#def formView(request):
-#    if request.session.has_key('username'):
-#        username = request.session['username']
-#        return render(request, 'homepage.html', {'username': username})
-#    else:
-#        return render(request, 'login.html', {})
+def logout_view(request):
+    logout(request)
+    return redirect("/market/")
