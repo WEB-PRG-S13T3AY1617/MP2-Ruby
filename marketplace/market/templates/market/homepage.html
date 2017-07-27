@@ -3,8 +3,65 @@
     <head><title>View Album's Photos</title>
         
         <link rel="stylesheet" type="text/css" href="{%static 'market/homestyle.css' %}"/>
-      
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
     </head>
+    <script>
+        var idnum =11; <!-- start sa 11 posts--> 
+          $(".more").click(function loadpost()
+             {
+                 
+                 var i =1;
+                 if(idnum <= 100) <!--size of the number of posts should b placed here-->
+                 for(i=1;i <= 5; i++)
+                {
+                  
+                    addNewPost(idnum); 
+                    idnum++;
+                   
+                }
+             
+               
+               $("html, body").animate({ scrollTop: $("#post_container").children().height() }, "slow"); 
+             });
+        
+          function addNewPost(idnum)
+             {
+                
+                 var new_post = document.createElement("div");
+                 new_post.className = "post";
+                 var new_img = document.createElement("img");
+                 new_img.id = "thumb";
+                 new_img.setAttribute("src","{%static 'photos/rccshop.png' %}" );
+                 var ref = document.createElement("a");
+                 ref.setAttribute('href', "Itemdetails.html")
+                 ref.appendChild(new_img);
+                 var new_info = document.createElement("div");
+                 new_info.className = "info";
+                 var new_itemname = document.createElement("div");
+                 new_itemname.className = "itemname";
+                 var new_tag = document.createElement("div");
+                 new_tag.className = "tag";
+                 var ref2 = document.createElement("a");
+                 ref2.setAttribute('href', "userprofile.html")
+                 var new_uname = document.createElement("div");
+                 new_uname.className = "uname";
+                 ref2.appendChild(new_uname);
+                 new_info.appendChild(new_itemname);
+                 new_info.appendChild(new_tag);
+                 new_info.appendChild(ref2);
+                 
+                 new_post.appendChild(ref);
+                 new_post.appendChild(new_info);
+                 
+                 new_post.id =idnum;
+                 $(new_post).hide();
+                 $("#post_box").append(new_post);
+                 $("#post_container").height(function (index, height) {return (height + 150);});
+                 $(new_post).show(0);
+                 
+                
+             }
+    </script>
    
     <body>
         <div id = page>
@@ -38,6 +95,15 @@
                 </div>
             </div>
             
+            <div id = "display">
+                
+               <select id='sel' name='selectview' onchange="checkAndSubmit()">
+                    <option value="10">default</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                   
+                </select>
+            </div>
 
          
 
@@ -46,11 +112,11 @@
                 <div id = post_box>
                     {% for post in latest_posts %}
                     <div class = post id = 1 >
-                        <a href ="Itemdetails.html"><img id ="thumb"  alt="no photo loaded yet"></a>
+                        <a href = "{% url 'market:itemdetail' post.id %}"><img src= "{%static post.tb_img %}" id ="thumb"  alt="no photo loaded yet"></a>
                         <div class = info>
-                            <div>{{post.itemname}}</div>
-                            <div>#{{post.tag}}</div>
-                             <a href = "userprofile.html"><div>{{post.user.username}}</div></a>
+                            <div class = itemname>{{post.itemname}}</div>
+                            <div class = tag>{{post.tag}}</div>
+                           <a href = "{% url 'market:user' post.user.id %}"><div class = uname>{{post.user.username}}</div></a>
                         </div>
                     </div>
                     {% endfor %}

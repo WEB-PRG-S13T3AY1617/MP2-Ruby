@@ -31,14 +31,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'market.apps.MarketConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'market.apps.MarketConfig',
+    'crispy_forms',
 ]
+
+
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -127,3 +131,5 @@ STATIC_URL = '/static/'
 
 # the URL Django will redirect the user after a successful authentication
 LOGIN_REDIRECT_URL = '/market'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

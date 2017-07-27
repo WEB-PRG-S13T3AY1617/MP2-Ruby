@@ -31,7 +31,7 @@
             <div class = "bar-container">
                 <div class = "menu">
                     <div class = "b-container">
-                        <a href="/market/user"><div class = "home"> <span class = "t"> Home </span> </div></a>
+                        <a href="/market"><div class = "home"> <span class = "t"> Home </span> </div></a>
                         <a href="/market/postanitem"><div class = "ppost"> <span class = "s"> Post an Item </span> </div></a>
                     </div>
                 </div>
@@ -41,17 +41,24 @@
             <div id ="main-container">
                 <div id="photobox">
                     <div class="pics" id="p1" > 
-                       <img id ="thumb" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" alt="no photo loaded yet">
+                       <img src= "{%static post.tb_img %}" id ="thumb" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" alt="no photo loaded yet">
                     </div>       
                 </div>
                 
                 <div class = "detail-info">
-                    <div>Name Item</div>
-                    <div>quantity</div>
-                    <div>Condition</div>
-                    <div>Type(Academic/Office)</div>
+                    <div>{{post.itemname}}</div>
+                    <div>{{post.quantity}}</div>
+                    <div>{{post.condition}}</div>
+                    {% if user.types == 1 %}
+                    <div>Type: Academic</div>
+                    {% endif %}
+                    
+                    {% if user.types == 0 %}
+                    <div>Type: Office</div>
+                    {% endif %}
+                    <div>Course Name: {{post.UserTypes}}</div>
                     <div>tags</div>
-                    <a href = "userprofile.html"><div>Username</div></a>
+                   <div> posted by <a href = "{% url 'market:user' user.id %}">{{post.user.username}}</a></div>
                 </div>
                     
                 
@@ -64,7 +71,7 @@
                 <div class="modal-content">
                     <div class ="slide-container">
                         <div id="s1" class="mySlides">
-                            <img id="photo" alt="No photo loaded yet">
+                            <img  src= "{%static post.tb_img %}" id="photo" alt="No photo loaded yet">
                         </div>
                         
 
