@@ -132,4 +132,15 @@ STATIC_URL = '/static/'
 # the URL Django will redirect the user after a successful authentication
 LOGIN_REDIRECT_URL = '/market'
 
+STATIC_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+
+
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

@@ -11,8 +11,21 @@
 			<div class = "bar-container">
                 <div class = "bar">
                     <div class = "item-container">
-                        <a href="/market/user"><div class = "bar-item">My Account</div></a>
-                        <a href="http://www.wikipedia.org"><div class = "bar-item">Logout</div></a>
+                        {% if user.is_authenticated == True %}
+                        <div class = "bar-item">Hi, <a href="/market/user"> {{ user.username }} </a> !</div>
+                        {% else %}
+                        <a href="/register/"><div class = "bar-item">Register</div></a>
+                        {% endif %}
+                        
+                        {% if user.is_authenticated == True %}
+                        <a href="/logout/">
+                            <div class = "bar-item">Logout</div>
+                            </a>
+                        {% else %}
+                        <a href="/login/">
+                            <div class = "bar-item">Login</div>
+                        </a>
+                         {% endif %}
                     </div>
                 </div>
             </div>
@@ -41,21 +54,24 @@
 			<div class = full_container>
 				<div class = mydata>
 					<div class = name_container>
-                        <div class = name_text>{{post.user.name}}</div>
+                        <div class = name_text>{{user.first_name}} {{user.last_name}}</div>
                         <div></div>
-                        <div class = uname>@{{post.user.username}}</div>
+                        <div class = uname>@{{user.username}}</div>
                     
                     </div>
                 
                     
                     <div id = info_container>
                         <div class = listinfo>
-                            
-                                <div class = types ><span>User Type: Student/Staff </span></div>
-                                <div class = types_place ><span>Degree Program/Office : </span></div>
-
-                        </div> 
-                        
+                                {% if user.types == 1 %}
+                                    <div class = types ><span>User Type: Student</span></div>
+                                 {% endif %}
+                                {%if  user.types == 0 %}    
+                                    <div class = types ><span>User Type: Staff</span></div>
+                                {% endif %}
+                                <div class = types_place ><span>Degree Program/Office : {{user.types_place}}</span></div>
+                                
+                        </div>
        
                     </div>
 				</div>
@@ -69,7 +85,7 @@
                         {% for post in latest_posts %}
                         <div id = post_box>
                             <div class = post id = 1 >
-                                <a href ="Itemdetails.html"><img id ="thumb"  alt="no photo loaded yet"></a>
+                               <a href = "{% url 'market:itemdetail' post.id %}"><img src = "{{ post.tb_img.url }}" id ="thumb"  alt="no photo loaded yet"></a>
                                 <div class = info>
                                     <div>{{post.itemname}}</div>
                                     <div>{{post.tag}}</div>

@@ -1,9 +1,9 @@
 from django import forms
 from django.contrib.auth import login, authenticate, get_user_model, logout
 from django.contrib.auth.models import User
-from .models import User, Post
+from .models import Post, Profile
 
-User = get_user_model()
+#User = get_user_model()
 
 class UserLoginForm(forms.Form):
     username = forms.CharField()
@@ -23,7 +23,8 @@ class UserLoginForm(forms.Form):
                 raise forms.ValidationError("This user is no longer active")
         return super(UserLoginForm, self).clean(*args, **kwargs)
     
-class UserRegisterForm(forms.ModelForm):
+#class UserRegisterForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = User
@@ -34,4 +35,25 @@ class UserRegisterForm(forms.ModelForm):
             'last_name',
         ]
         
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = [
+            'user',
+            'tb_img',
+            'itemname',
+            'quantity',
+            'condition',
+            'tag',
+            'Usertypes',
+        ]
         
+#class UserExtendRegisterForm(forms.ModelForm):
+class ProfileForm(forms.ModelForm):
+    class Meta:
+#        model = UserExtend
+        model = Profile
+        fields = [
+            'types',
+            'Degree_Program_or_Office',
+        ]

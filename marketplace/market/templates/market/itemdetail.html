@@ -10,8 +10,21 @@
            <div class = "bar-container">
                 <div class = "bar">
                     <div class = "item-container">
-                        <a href="userprofile.html"><div class = "bar-item">My Account</div></a>
-                        <a href="http://www.wikipedia.org"><div class = "bar-item">Logout</div></a>
+                        {% if user.is_authenticated == True %}
+                        <div class = "bar-item">Hi, <a href="/market/user"> {{ user.username }} </a> !</div>
+                        {% else %}
+                        <a href="/register/"><div class = "bar-item">Register</div></a>
+                        {% endif %}
+                        
+                        {% if user.is_authenticated == True %}
+                        <a href="/logout/">
+                            <div class = "bar-item">Logout</div>
+                            </a>
+                        {% else %}
+                        <a href="/login/">
+                            <div class = "bar-item">Login</div>
+                        </a>
+                         {% endif %}
                     </div>
                 </div>
             </div>
@@ -31,7 +44,7 @@
             <div class = "bar-container">
                 <div class = "menu">
                     <div class = "b-container">
-                        <a href="/market/user"><div class = "home"> <span class = "t"> Home </span> </div></a>
+                        <a href="/market"><div class = "home"> <span class = "t"> Home </span> </div></a>
                         <a href="/market/postanitem"><div class = "ppost"> <span class = "s"> Post an Item </span> </div></a>
                     </div>
                 </div>
@@ -41,17 +54,18 @@
             <div id ="main-container">
                 <div id="photobox">
                     <div class="pics" id="p1" > 
-                       <img id ="thumb" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" alt="no photo loaded yet">
+                       <img src= "{{ post.tb_img.url }}" id ="thumb" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" alt="no photo loaded yet">
                     </div>       
                 </div>
                 
                 <div class = "detail-info">
-                    <div>Name Item</div>
-                    <div>quantity</div>
-                    <div>Condition</div>
-                    <div>Type(Academic/Office)</div>
-                    <div>tags</div>
-                    <a href = "userprofile.html"><div>Username</div></a>
+                    <div>{{post.itemname}}</div>
+                    <div>{{post.quantity}}</div>
+                    <div>{{post.condition}}</div>
+                    <div>Type: {{userext.types}}</div>
+                    <div>Course Name: {{post.Usertypes}}</div>
+                    <div>tags: {{post.tag}}</div> 
+                   <div> posted by <a href = "{% url 'market:user' user.id %}">{{user.username}}</a></div>
                 </div>
                     
                 
@@ -64,7 +78,7 @@
                 <div class="modal-content">
                     <div class ="slide-container">
                         <div id="s1" class="mySlides">
-                            <img id="photo" alt="No photo loaded yet">
+                            <img  src= "{{ post.tb_img.url }}" id="photo" alt="No photo loaded yet">
                         </div>
                         
 

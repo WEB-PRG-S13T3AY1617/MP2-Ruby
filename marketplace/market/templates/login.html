@@ -224,6 +224,7 @@
                 <hr/>
                 <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
                     {{ form|crispy }}
+                    {{ form2|crispy }}
                      <input type="submit" class="submitbtn" id = "button" value = "{{title}}"/>
                     </form>
                 </div>  

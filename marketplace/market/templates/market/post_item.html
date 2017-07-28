@@ -175,7 +175,7 @@
         
         /*other styling*/
         
-        .container {    
+        #container {    
             margin: 15em;
             margin-top: 1em;
         }
@@ -203,7 +203,7 @@
             
         }
         
-        button {
+        .button {
             background-color: #4CAF50;
             color: white;
             padding: 12px 20px;
@@ -219,8 +219,21 @@
             <div class = "bar-container">
                 <div class = "bar">
                     <div class = "item-container">
-                        <a href="/market/user"><div class = "bar-item">My Account</div></a>
-                        <a href="http://www.wikipedia.org"><div class = "bar-item">Logout</div></a>
+                        {% if user.is_authenticated == True %}
+                        <div class = "bar-item">Hi, <a href="/market/user"> {{ user.username }} </a> !</div>
+                        {% else %}
+                        <a href="/register/"><div class = "bar-item">Register</div></a>
+                        {% endif %}
+                        
+                        {% if user.is_authenticated == True %}
+                        <a href="/logout/">
+                            <div class = "bar-item">Logout</div>
+                            </a>
+                        {% else %}
+                        <a href="/login/">
+                            <div class = "bar-item">Login</div>
+                        </a>
+                         {% endif %}
                     </div>
                 </div>
             </div>
@@ -246,45 +259,14 @@
                 </div>
             </div>
             
-            <div class = "container">
-                <form action="{% url 'market:postanitem' post.id %}" method="post">
-                    {% csrf_token %}
-                    <p>Add a Photo</p>
-
-                        <input type="file" class="pic" name="photo" accept="image/*">
-
-                    <p>What are you selling?</p>
-
-                        <input type="text" class="inputs" name="item" placeholder="Item Name" required>
-
-                    <p>Quantity</p>
-
-                        <input type="number" class="inputs" name="quantity" min="1" placeholder="Quantity" required>
-
-                    <p>What is its condition?</p>
-
-                        <input type="text" class="inputs" name="condition" placeholder="Condition of Item" required>
+            <div id = "container" class="col-sm-6 col-sm-offset-3">
+                {% block content %}
+                <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    {{ form.as_p }}
                     
-                    <p>Add a Tag</p>
-                    
-                        <input type="text" class="inputs" name="tag" placeholder="Item Tag" required>
-                    
-                    <p>Type</p>
-                    
-                        <select id="type" onChange = "changeType();">
-                            <option value = "1">For office</option>
-                            <option value = "0">For academic use</option>
-                        </select>
-                    
-                    <p id="lbl"></p>
-                    <div class = "this">
-                        
-                    </div>
+                    <input type="submit" class="button"value = "Post your item now "/>
                 </form>
-                
-                <div class = "buttons">
-                    <button type="button" class="postbtn"  onclick=""> Post your item now </button>
-                </div>
+                {% endblock content %}
             </div>
         </div>
     </body>
