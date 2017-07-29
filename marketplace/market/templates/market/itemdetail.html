@@ -4,6 +4,16 @@
         <link rel="stylesheet" type="text/css" href="{%static 'market/itemstyle.css' %}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
     </head>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+        <script>
+        $(document).on("keypress", ".search", function(e) {
+            if (e.which == 13) {
+            
+            }
+        });
+    
+</script>
    
     <body>
         <div id = page>
@@ -11,7 +21,7 @@
                 <div class = "bar">
                     <div class = "item-container">
                         {% if user.is_authenticated == True %}
-                        <div class = "bar-item">Hi, <a href="/market/user"> {{ user.username }} </a> !</div>
+                        <div class = "bar-item">Hi, <a href="{% url 'market:user' user.id %}"> {{ user.username }} </a> !</div>
                         {% else %}
                         <a href="/register/"><div class = "bar-item">Register</div></a>
                         {% endif %}
@@ -35,10 +45,11 @@
                         <img src = "{%static 'photos/rccshop.png' %}" width="300" height="200" class = "rcc"/>
                     </div>
                     <div class = "right-container">
-                        <!--<div class = "search-bar"> -->
-                            <input type="text" class="search" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
-                        <!--</div> -->
-                    </div>
+     <form action="{% url 'market:searchpic' %}">
+     	<input type="text" class="search" name = "tag" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
+     </form>
+</div>
+
                 </div>
             </div>
             <div class = "bar-container">
@@ -62,10 +73,10 @@
                     <div>{{post.itemname}}</div>
                     <div>{{post.quantity}}</div>
                     <div>{{post.condition}}</div>
-                    <div>Type: {{userext.types}}</div>
+                    <div>Type: {{post.user.profile.types}}</div>
                     <div>Course Name: {{post.Usertypes}}</div>
-                    <div>tags: {{post.tag}}</div> 
-                   <div> posted by <a href = "{% url 'market:user' user.id %}">{{user.username}}</a></div>
+                    <div>Tags:<a href = "{% url 'market:searchtag' post.tag %}"> {{post.tag}}</a></div>
+                   <div> posted by <a href = "{% url 'market:user' post.user.id %}">{{post.user.username}}</a></div>
                 </div>
                     
                 

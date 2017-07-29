@@ -25,27 +25,27 @@ def upload_location(instance, filename):
 #        return self.Degree_Program_or_Office
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    Degree_Program_or_Office = models.CharField(max_length=50, blank=True)
+    user = models.ForeignKey(User,  related_name='profile', on_delete=models.CASCADE)
+    Degree_Program_or_Office = models.CharField(max_length=50)
     Professional = 'Professional'
     Student = 'Student'
     TYPES_CHOICES = (
         (Student, 'Student'),
         (Professional, 'Professional'),
     )
-    types = models.CharField(max_length=12,choices=TYPES_CHOICES,default=Student,)
+    types = models.CharField(max_length=12,choices=TYPES_CHOICES,default=Student)
     
     def __str__(self):
         return str(self.user)
     
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
+#@receiver(post_save, sender=User)
+#def create_user_profile(sender, instance, created, **kwargs):
+#    if created:
+#        Profile.objects.create(user=instance)
 
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+#@receiver(post_save, sender=User)
+#def save_user_profile(sender, instance, **kwargs):
+#    instance.profile.save()
 
     
 class Post(models.Model):

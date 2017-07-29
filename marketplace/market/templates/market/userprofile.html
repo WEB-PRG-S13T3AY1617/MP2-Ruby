@@ -4,7 +4,15 @@
 		<link rel="stylesheet" type="text/css" href="{%static 'market/userstyle.css' %}"/>
       
 	</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+        <script>
+        $(document).on("keypress", ".search", function(e) {
+            if (e.which == 13) {
+            
+            }
+        });
     
+</script>
     
    	<body>
         <div id = page>
@@ -12,7 +20,7 @@
                 <div class = "bar">
                     <div class = "item-container">
                         {% if user.is_authenticated == True %}
-                        <div class = "bar-item">Hi, <a href="/market/user"> {{ user.username }} </a> !</div>
+                        <div class = "bar-item">Hi, <a href="{% url 'market:user' user.id %}"> {{ user.username }} </a> !</div>
                         {% else %}
                         <a href="/register/"><div class = "bar-item">Register</div></a>
                         {% endif %}
@@ -36,10 +44,11 @@
                         <img src = "{%static 'photos/rccshop.png' %}" width="300" height="200" class = "rcc"/>
                     </div>
                     <div class = "right-container">
-                        <!--<div class = "search-bar"> -->
-                            <input type="text" class="search" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
-                        <!--</div> -->
-                    </div>
+     <form action="{% url 'market:searchpic' %}">
+     	<input type="text" class="search" name = "tag" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
+     </form>
+</div>
+
                 </div>
             </div>
             <div class = "bar-container">
@@ -54,22 +63,17 @@
 			<div class = full_container>
 				<div class = mydata>
 					<div class = name_container>
-                        <div class = name_text>{{user.first_name}} {{user.last_name}}</div>
+                        <div class = name_text>{{user2.first_name}} {{user2.last_name}}</div>
                         <div></div>
-                        <div class = uname>@{{user.username}}</div>
+                        <div class = uname>@{{user2.username}}</div>
                     
                     </div>
                 
                     
                     <div id = info_container>
                         <div class = listinfo>
-                                {% if user.types == 1 %}
-                                    <div class = types ><span>User Type: Student</span></div>
-                                 {% endif %}
-                                {%if  user.types == 0 %}    
-                                    <div class = types ><span>User Type: Staff</span></div>
-                                {% endif %}
-                                <div class = types_place ><span>Degree Program/Office : {{user.types_place}}</span></div>
+                                <div class = types ><span>User Type: {{user2.profile.types}}</span></div>
+                                <div class = types_place ><span>Degree Program/Office : {{user2.profile.Degree_Program_or_Office}}</span></div>
                                 
                         </div>
        
@@ -97,9 +101,21 @@
                       
                         </div>
                        
-                        
-						                      
-						<div class = all> <span>View All</span> </div>
+                        <div class="pagination">
+                    <span class="step-links">
+                        {% if latest_posts.has_previous %}
+                        <a href="?page={{ latest_posts.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ latest_posts.number }} of {{ latest_posts.paginator.num_pages }}.
+                        </span>
+
+                        {% if latest_posts.has_next %}
+                        <a href="?page={{ latest_posts.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+					</div>
 					</div>
 				</div>
 		

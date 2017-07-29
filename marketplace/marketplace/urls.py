@@ -17,13 +17,14 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls.static import static
-from market.views import (login_view, register_view, logout_view)
+from market.views import (login_view, register_view, logout_view, register)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/', login_view, name='login'),
     url(r'^logout/', logout_view, name='logout'),
-    url(r'^register/$', register_view, name='register'),
+    url(r'^register/$', register_view, name='register_view'),
+    url(r'^aregister/$', register, name='register'),
     url(r'^market/', include('market.urls')),
 ]
 

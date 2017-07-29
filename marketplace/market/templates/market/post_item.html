@@ -5,14 +5,15 @@
     </head>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
     </script>
-    <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+        <script>
         $(document).on("keypress", ".search", function(e) {
             if (e.which == 13) {
-             alert("IT WORKS THANK THE LORD");
+            
             }
         });
     
-    </script>
+</script>
     <script type="text/javascript">
             var changeType = function() {
                 var type = document.getElementById("type");
@@ -45,6 +46,17 @@
             flex-direction: column;
             align-content: center;
         }
+        
+        .container
+{    
+            margin: 15em;
+            margin-top: 1em;
+            display: flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+            width:70%;
+            height:50%;
+}
         
         /*header styling*/
         a:link {
@@ -220,7 +232,7 @@
                 <div class = "bar">
                     <div class = "item-container">
                         {% if user.is_authenticated == True %}
-                        <div class = "bar-item">Hi, <a href="/market/user"> {{ user.username }} </a> !</div>
+                        <div class = "bar-item">Hi, <a href="{% url 'market:user' user.id %}"> {{ user.username }} </a> !</div>
                         {% else %}
                         <a href="/register/"><div class = "bar-item">Register</div></a>
                         {% endif %}
@@ -244,10 +256,11 @@
                         <img src = "{%static 'photos/rccshop.png' %}" width="300" height="200" class = "rcc"/>
                     </div>
                     <div class = "right-container">
-                        <!--<div class = "search-bar"> -->
-                            <input type="text" class="search" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
-                        <!--</div> -->
-                    </div>
+     <form action="{% url 'market:searchpic' %}">
+     	<input type="text" class="search" name = "tag" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
+     </form>
+</div>
+
                 </div>
             </div>
             <div class = "bar-container">

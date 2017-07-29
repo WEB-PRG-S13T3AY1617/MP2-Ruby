@@ -1,3 +1,4 @@
+{% load static %}
 <html>
     <head>
         
@@ -9,6 +10,7 @@
             if (e.which == 13) {
              alert("IT WORKS THANK THE LORD");
             }
+           
         });
     
     </script>
@@ -57,7 +59,7 @@
             right: 0.8em;
         }
         
-        .bar-item, .home, .post {
+        .bar-item, .home, .ppost {
             font-family: "Open Sans";
             font-size: 15px;
             font-style:normal;
@@ -97,7 +99,7 @@
             height: 5em;
         }
         
-        .b-container {
+       .b-container {
             
             width: 25%;
             display: flex;
@@ -158,13 +160,38 @@
         .container {    
             margin: 15em;
             margin-top: 1em;
+            display: flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+            width:70%;
+            height:50%;
         }
         
-        h1 {
-            text-align: center;
+        .home, .ppost {
+            
+            vertical-align: baseline;
+            line-height: 2.1em;
+            border-right-style: ridge;
+            border-right-color: #d3d3d3;
+            border-right-width: thin;
+            
         }
         
+        .t {
+            margin-right: 1.8em;
+        }
         
+        .s {
+            margin-right: 3.7em;
+        }
+        
+        #thumb {
+            padding: 10px;
+            width: 150px;
+            height: 150px;
+            margin: 1em;
+        }
+
         
     </style>
     <body>
@@ -173,7 +200,7 @@
                 <div class = "bar">
                     <div class = "item-container">
                         {% if user.is_authenticated == True %}
-                        <div class = "bar-item">Hi, <a href="/market/user"> {{ user.username }} </a> !</div>
+                         <div class = "bar-item">Hi, <a href="{% url 'market:user' user.id %}"> {{ user.username }} </a> !</div>
                         {% else %}
                         <a href="/register/"><div class = "bar-item">Register</div></a>
                         {% endif %}
@@ -194,26 +221,30 @@
                 <div class = "a-container">
                     <div class = "left-container"> </div>
                     <div class = "middle-container">
-                        <img src = "rccshop.png" width="300" height="200" class = "rcc"/>
+                        <img src = "{%static 'photos/rccshop.png' %}" width="300" height="200" class = "rcc"/>
                     </div>
                     <div class = "right-container">
-                        <!--<div class = "search-bar"> -->
-                            <input type="text" class="search" placeholder="Search tag...">
-                        <!--</div> -->
+                       <form action="{% url 'market:searchpic' %}">
+                            <input type="text" class="search" name = "tag" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
+                        </form>
                     </div>
                 </div>
             </div>
             <div class = "bar-container">
                 <div class = "menu">
                     <div class = "b-container">
-                        <a href="http://www.neopets.com"><div class = "home"> <span class = "t"> Home </span> </div></a>
-                        <a href="post_item.html"><div class = "post"> <span class = "s"> Post an Item </span> </div></a>
+                        <a href="/market"><div class = "home"> <span class = "t"> Home </span> </div></a>
+                        <a href="/market/postanitem"><div class = "ppost"> <span class = "s"> Post an Item </span> </div></a>
                     </div>
                 </div>
             </div>
             
             <div class = "container">
-                <h1> Search Results </h1>
+                {% for post in latest_posts %}
+                    <div class = photo id = 1 >
+                        <a href = "{% url 'market:itemdetail' post.id %}"><img src= "{{ post.tb_img.url }}" id ="thumb"  alt="no photo loaded yet"></a>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </body>

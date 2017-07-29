@@ -12,6 +12,9 @@ app_name = 'market'
 urlpatterns = [
     url(r'^$', views.index, name='index'), #shows what is inside views.py   
     url(r'^postanitem/$', views.postanitem, name='postanitem'),
+    url(r'^searchpic/$', views.searchpic, name='searchpic'),
     url(r'^(?P<user_id>[0-9]+)/user/$', views.user, name='user'),
     url(r'^(?P<post_id>[0-9]+)/itemdetail/$', views.itemdetail, name='itemdetail'),
+    url(r'^(?P<post_tag>[-\w]+)/searchtag/$', views.searchtag, name='searchtag'),
+    
 ]

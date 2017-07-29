@@ -4,19 +4,31 @@
 <html>
     <head>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
         <script>
         $(document).on("keypress", ".search", function(e) {
             if (e.which == 13) {
-             alert("IT WORKS THANK THE LORD");
+            
             }
         });
     
-    </script>
+</script>
     <style>
         body {
             font-family: Helvetica;
             margin: 0;
         }
+        
+        .container
+{    
+            margin: 15em;
+            margin-top: 1em;
+            display: flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+            width:70%;
+            height:50%;
+}
         
         /*header styling*/
         a:link {
@@ -187,8 +199,21 @@
             <div class = "bar-container">
                 <div class = "bar">
                     <div class = "item-container">
-                        <a href="/market/user"><div class = "bar-item">My Account</div></a>
-                        <a href="http://www.wikipedia.org"><div class = "bar-item">Logout</div></a>
+                        {% if user.is_authenticated == True %}
+                        <div class = "bar-item">Hi, <a href="{% url 'market:user' user.id %}"> {{ user.username }} </a> !</div>
+                        {% else %}
+                        <a href="/register/"><div class = "bar-item">Register</div></a>
+                        {% endif %}
+                        
+                        {% if user.is_authenticated == True %}
+                        <a href="/logout/">
+                            <div class = "bar-item">Logout</div>
+                            </a>
+                        {% else %}
+                        <a href="/login/">
+                            <div class = "bar-item">Login</div>
+                        </a>
+                         {% endif %}
                     </div>
                 </div>
             </div>
@@ -199,10 +224,11 @@
                         <img src = "{%static 'photos/rccshop.png' %}" width="300" height="200" class = "rcc"/>
                     </div>
                     <div class = "right-container">
-                        <!--<div class = "search-bar"> -->
-                            <input type="text" class="search" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
-                        <!--</div> -->
-                    </div>
+     <form action="{% url 'market:searchpic' %}">
+     	<input type="text" class="search" name = "tag" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
+     </form>
+</div>
+
                 </div>
             </div>
             <div class = "bar-container">
@@ -224,7 +250,7 @@
                 <hr/>
                 <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
                     {{ form|crispy }}
-                    {{ form2|crispy }}
+                    {{ this|crispy }}
                      <input type="submit" class="submitbtn" id = "button" value = "{{title}}"/>
                     </form>
                 </div>  

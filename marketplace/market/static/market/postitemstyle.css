@@ -139,9 +139,15 @@ a:hover {
 
 /*other styling*/
 
-.container {    
-    margin: 15em;
-    margin-top: 1em;
+.container
+{    
+            margin: 15em;
+            margin-top: 1em;
+            display: flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+            width:70%;
+            height:50%;
 }
 
 .inputs, select {
