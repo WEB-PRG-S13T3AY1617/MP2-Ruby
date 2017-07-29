@@ -70,10 +70,10 @@
                 </div>
                 
                 <div class = "detail-info">
-                    <div>{{post.itemname}}</div>
-                    <div>{{post.quantity}}</div>
-                    <div>{{post.condition}}</div>
-                    <div>Type: {{post.user.profile.types}}</div>
+                    <div>Itemname: {{post.itemname}}</div>
+                    <div>Quantity x {{post.quantity}}</div>
+                    <div>Condition: {{post.condition}}</div>
+                    <div>Type: {{post.user.Profile.types}}</div>
                     <div>Course Name: {{post.Usertypes}}</div>
                     <div>Tags:<a href = "{% url 'market:searchtag' post.tag %}"> {{post.tag}}</a></div>
                    <div> posted by <a href = "{% url 'market:user' post.user.id %}">{{post.user.username}}</a></div>

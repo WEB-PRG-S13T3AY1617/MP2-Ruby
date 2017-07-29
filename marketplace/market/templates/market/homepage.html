@@ -57,7 +57,7 @@
                 <div class = "menu">
                     <div class = "b-container">
                         <a href="/market"><div class = "home"> <span class = "t"> Home </span> </div></a>
-                        <a href="/market/postanitem"><div class = "ppost"> <span class = "s"> Post an Item </span> </div></a>
+                        <a href="{% url 'market:postanitem' %}"><div class = "ppost"> <span class = "s"> Post an Item </span> </div></a>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,8 @@
                 
 
                     <form action="" method="get">
-                    <select name="paginate_by" onchange="this.form.submit()">
+                    <select name="paginate_by" class = pager onchange="this.form.submit()" >
+                        <option></option>
                         <option value = "10">10</option>
                         <option value = "15">15</option>
                         <option value = "20">20</option>

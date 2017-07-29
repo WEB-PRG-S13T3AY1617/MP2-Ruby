@@ -25,7 +25,8 @@ def upload_location(instance, filename):
 #        return self.Degree_Program_or_Office
 
 class Profile(models.Model):
-    user = models.ForeignKey(User,  related_name='profile', on_delete=models.CASCADE)
+    #client = models.OneToOneField(User)
+    user = models.ForeignKey(User, primary_key=True,  related_name='profile', on_delete=models.CASCADE)
     Degree_Program_or_Office = models.CharField(max_length=50)
     Professional = 'Professional'
     Student = 'Student'

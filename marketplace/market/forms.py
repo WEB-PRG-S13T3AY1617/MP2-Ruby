@@ -36,8 +36,10 @@ class UserForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = [
+        exclude = [
             'user',
+        ]
+        fields = [
             'tb_img',
             'itemname',
             'quantity',

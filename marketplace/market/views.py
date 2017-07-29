@@ -41,6 +41,7 @@ def index(request):
 
 def user(request, user_id):
     user2 =get_object_or_404(User,pk=user_id)
+    userprof = get_object_or_404(Profile,pk=user_id)
     latest_post_list = Post.objects.filter(user_id=user_id).order_by('-pub_date')[:10]
     m = 10
     
@@ -61,21 +62,26 @@ def user(request, user_id):
         latest_post_list = paginator.page(paginator.num_pages)
     context = { 
         'user2':user2,
+        'userprof':userprof,
         'latest_posts': latest_post_list,
     }
     return render(request, 'market/userprofile.html', context)
 
 def postanitem(request, **kwargs):
-    form = PostForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.save()
-        # message success
-        return redirect("/market/")
-    context = {
-        "form": form,
-    }
-    return render(request, "market/post_item.html", context)
+    if request.user.is_authenticated():
+        form = PostForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            # message success
+            return redirect("/market/")
+        context = {
+            "form": form,
+        }
+        return render(request, "market/post_item.html", context)
+    else:
+        return index(request)
 
 def itemdetail(request, post_id):
     post =get_object_or_404(Post,pk=post_id)
