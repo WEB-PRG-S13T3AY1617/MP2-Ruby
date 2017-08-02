@@ -16,5 +16,8 @@ urlpatterns = [
     url(r'^(?P<user_id>[0-9]+)/user/$', views.user, name='user'),
     url(r'^(?P<post_id>[0-9]+)/itemdetail/$', views.itemdetail, name='itemdetail'),
     url(r'^(?P<post_tag>[-\w]+)/searchtag/$', views.searchtag, name='searchtag'),
+    url(r'^(?P<post_type>[-\w]+)/searchtype/$', views.searchtype, name='searchtype'),
+    url(r'^(?P<post_condition>[-\w]+)/searchcondition/$', views.searchcondition, name='searchcondition'),
+    url(r'^(?P<post_course>[-\w]+)/searchcourse/$', views.searchcourse, name='searchcourse'),
     
 ]

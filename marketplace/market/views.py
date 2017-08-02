@@ -189,3 +189,77 @@ def searchtag(request, post_tag):
         'latest_posts': latest_post_list,
     }
     return render(request, 'market/homepage.html', context)
+def searchcondition(request, post_condition):
+    latest_post_list = Post.objects.filter(condition=post_condition).order_by('-pub_date')
+    
+    m = 10
+    
+    if request.GET:
+        m = request.GET.get('paginate_by', 10)
+    
+    paginator = Paginator(latest_post_list, m) # Show 10 posts per page
+
+    page = request.GET.get('page')
+
+    try:
+        latest_post_list = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        latest_post_list = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        latest_post_list = paginator.page(paginator.num_pages)
+    context = { 
+        'latest_posts': latest_post_list,
+    }
+    return render(request, 'market/homepage.html', context)
+def searchtype(request, post_type):
+    latest_post_list = Post.objects.filter(posttypes=post_type).order_by('-pub_date')
+    
+    m = 10
+    
+    if request.GET:
+        m = request.GET.get('paginate_by', 10)
+    
+    paginator = Paginator(latest_post_list, m) # Show 10 posts per page
+
+    page = request.GET.get('page')
+
+    try:
+        latest_post_list = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        latest_post_list = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        latest_post_list = paginator.page(paginator.num_pages)
+    context = { 
+        'latest_posts': latest_post_list,
+    }
+    return render(request, 'market/homepage.html', context)
+def searchcourse(request, post_course):
+    latest_post_list = Post.objects.filter(coursename=post_course).order_by('-pub_date')
+    
+    m = 10
+    
+    if request.GET:
+        m = request.GET.get('paginate_by', 10)
+    
+    paginator = Paginator(latest_post_list, m) # Show 10 posts per page
+
+    page = request.GET.get('page')
+
+    try:
+        latest_post_list = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        latest_post_list = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        latest_post_list = paginator.page(paginator.num_pages)
+    context = { 
+        'latest_posts': latest_post_list,
+    }
+    return render(request, 'market/homepage.html', context)
+
+
