@@ -48,6 +48,7 @@ class PostForm(forms.ModelForm):
             'posttypes',
             'coursename',
         ]
+        
     def clean_photo(self):
         photo = self.cleaned_data.get('tb_img', False)
         if photo:
