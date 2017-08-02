@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth import login, authenticate, get_user_model, logout
 from django.contrib.auth.models import User
-from .models import Post, Profile
-
+from .models import Post, Offer, Profile
+#superclass??
 
 class UserLoginForm(forms.Form):
     username = forms.CharField()
@@ -45,9 +45,9 @@ class PostForm(forms.ModelForm):
             'quantity',
             'condition',
             'tag',
-            'Usertypes',
+            'posttypes',
+            'coursename',
         ]
-
         
 class ProfileForm(forms.ModelForm):
     class Meta:
@@ -57,5 +57,18 @@ class ProfileForm(forms.ModelForm):
         ]
         fields = [
             'Degree_Program_or_Office',
-            'types'
+            'usertypes'
+        ]
+
+        
+class OfferForm(forms.ModelForm):
+    class Meta:
+        model = Offer
+        exclude = [
+            'post',
+        ]
+        fields = [
+            'offertypes',
+            'amount',
+            'status',
         ]

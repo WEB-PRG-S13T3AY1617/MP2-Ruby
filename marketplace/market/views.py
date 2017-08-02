@@ -8,8 +8,8 @@ from django.urls import reverse
 
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .forms import UserLoginForm, UserForm, ProfileForm, PostForm
-from .models import User, Post, Profile
+from .forms import UserLoginForm, UserForm, PostForm, ProfileForm
+from .models import User, Post, Offer, Profile
 
 # Create your views here.
 
@@ -132,7 +132,7 @@ def register(request):
         that = form.save(commit=False)
         that.user = request.user
         that.save()
-        return redirect("/market/")
+        return redirect("/aregister/")
     context = {
         "this": form,
         "title": title
