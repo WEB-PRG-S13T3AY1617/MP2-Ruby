@@ -48,13 +48,6 @@ class PostForm(forms.ModelForm):
             'posttypes',
             'coursename',
         ]
-    def clean_photo(self):
-        photo = self.cleaned_data.get('tb_img', False)
-        if photo:
-            fileType = photo.content_type
-            if fileType in settings.VALID_IMAGE_FILETYPES: #png and jpeg
-                return photo
-        raise forms.ValidationError('FileType not supported: only upload jpegs and pngs.')
         
 class ProfileForm(forms.ModelForm):
     class Meta:
