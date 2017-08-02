@@ -132,7 +132,7 @@ def register(request):
         that = form.save(commit=False)
         that.user = request.user
         that.save()
-        return redirect("/aregister/")
+        return redirect("/market/")
     context = {
         "this": form,
         "title": title
