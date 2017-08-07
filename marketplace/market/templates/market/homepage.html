@@ -71,7 +71,7 @@
                         <a href = "{% url 'market:itemdetail' post.id %}"><img src= "{{ post.tb_img.url }}" id ="thumb"  alt="no photo loaded yet"></a>
                         <div class = info>
                         <div class = itemname>{{post.itemname}}</div>
-                        <div class = tag>{{post.tag}}</div>
+                        <div class = tag>#{{post.tag}}</div>
                         <a href = "{% url 'market:user' post.user.id %}"><div class = uname>{{post.user.username}}</div></a>
                         </div>
                     </div>

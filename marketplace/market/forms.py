@@ -1,7 +1,9 @@
 from django import forms
+from django.forms import widgets
 from django.contrib.auth import login, authenticate, get_user_model, logout
 from django.contrib.auth.models import User
 from .models import Post, Offer, Profile
+
 
 class UserLoginForm(forms.Form):
     username = forms.CharField()
@@ -31,11 +33,25 @@ class UserForm(forms.ModelForm):
             'first_name',
             'last_name',
         ]
+        widgets = {
+            'username': forms.TextInput(attrs={'required': True, 'placeholder':'Enter a username'}),
+            'password': forms.PasswordInput(attrs={'required': True, 'placeholder':'Enter a password'}),
+            'first_name': forms.TextInput(attrs={'required': True, 'placeholder':'Enter first name'}),
+            'last_name': forms.TextInput(attrs={'required': True,'placeholder':'Enter last name'}),
+        }
+        
+        labels = {
+            'username': 'Username',
+            'password': 'Password',
+            'first_name': 'First Name',
+            'last_name': 'Last Name',
+        }
 
         
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
+        coursename = forms.CharField(required=False)
         exclude = [
             'user',
         ]
@@ -48,6 +64,25 @@ class PostForm(forms.ModelForm):
             'posttypes',
             'coursename',
         ]
+        
+        widgets = {
+            'itemname': forms.TextInput(attrs={'required': True, 'placeholder':'Enter item name'}),
+            'condition': forms.TextInput(attrs={'required': True, 'placeholder': 'Enter condition of item'}),
+            'tag': forms.TextInput(attrs={'required': True, 'placeholder': 'Enter tag for item'}),
+            #'posttypes': forms.TextInput(attrs={'required': True}),
+            'coursename': forms.TextInput(attrs={'required': False, 'placeholder': 'Enter coursename'}),
+            
+        }
+        
+        labels = {
+            'tb_img':'Image',
+            'itemname':'Name of Item',
+            'quantity':'Quantity',
+            'condition':'Condition of Item',
+            'tag':'Item Tag',
+            'posttypes':'What is the item for?',
+            'coursename':'Course Name',
+        }
         
         
 class ProfileForm(forms.ModelForm):

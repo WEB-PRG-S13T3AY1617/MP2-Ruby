@@ -43,7 +43,7 @@ class Post(models.Model):
         (Academic, 'Academic'),
     )
     posttypes = models.CharField(max_length=9,choices=TYPES_POST,default=Office)
-    coursename = models.CharField(max_length=50, null=True)
+    coursename = models.CharField(max_length=50, null=True, blank=True)
     
     def __str__(self):
         return self.itemname

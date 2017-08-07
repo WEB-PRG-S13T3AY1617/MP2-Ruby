@@ -77,7 +77,7 @@
                     {%if post.posttypes == " Academic"%}
                     <div>Course Name: <a href = "{% url 'market:searchcourse' post.coursename %}">{{post.coursename}}</a></div>
                     {%endif%}
-                    <div>Tags:<a href = "{% url 'market:searchtag' post.tag %}"> {{post.tag}}</a></div>
+                    <div>Tag:<a href = "{% url 'market:searchtag' post.tag %}"> #{{post.tag}}</a></div>
                    <div> posted by <a href = "{% url 'market:user' post.user.id %}">{{post.user.username}}</a></div>
                 </div>
                     
