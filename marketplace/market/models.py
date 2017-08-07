@@ -47,6 +47,9 @@ class Post(models.Model):
     
     def __str__(self):
         return self.itemname
+    
+    def me(self):
+        return self.condition.replace('-',' ')
 
 class Offer(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
