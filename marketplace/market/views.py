@@ -17,10 +17,17 @@ def index(request):
     
     latest_post_list = Post.objects.order_by('-pub_date')
     
-    m = 10
+    request.session['paginate_by'] = 10
     
-    if request.GET:
-        m = request.GET.get('paginate_by', 10)
+    if request.GET and ('paginate_by' in request.session or 'paginate_by' in request.get):
+
+        if request.session['paginate_by'] != int(request.GET.get('paginate_by', 10)):
+            request.session['paginate_by'] = int(request.GET.get('paginate_by', 10))
+        
+    if 'paginate_by' in request.session:
+        m = request.session['paginate_by']
+    else: 
+        m = 10
     
     paginator = Paginator(latest_post_list, m) # Show 10 posts per page
 
@@ -36,6 +43,7 @@ def index(request):
         latest_post_list = paginator.page(paginator.num_pages)
     context = { 
         'latest_posts': latest_post_list,
+        'paginate_by': m,
     }
     return render(request, 'market/homepage.html', context)
 
@@ -191,7 +199,6 @@ def searchtag(request, post_tag):
     return render(request, 'market/homepage.html', context)
 def searchcondition(request, post_condition):
     latest_post_list = Post.objects.filter(condition=post_condition).order_by('-pub_date')
-    
     m = 10
     
     if request.GET:

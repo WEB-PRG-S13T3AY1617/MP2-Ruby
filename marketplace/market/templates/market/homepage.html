@@ -82,7 +82,7 @@
                 <div class="pagination">
                     <span class="step-links">
                         {% if latest_posts.has_previous %}
-                        <a href="?page={{ latest_posts.previous_page_number }}">previous</a>
+                        <a href="?page={{ latest_posts.previous_page_number }} &paginate_by={{ paginate_by }}">previous</a>
                         {% endif %}
 
                         <span class="current">
@@ -90,7 +90,7 @@
                         </span>
 
                         {% if latest_posts.has_next %}
-                        <a href="?page={{ latest_posts.next_page_number }}">next</a>
+                        <a href="?page={{ latest_posts.next_page_number }} &paginate_by={{ paginate_by }}">next</a>
                         {% endif %}
                     </span>
                 </div>
