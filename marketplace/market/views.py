@@ -82,7 +82,6 @@ def postanitem(request, **kwargs):
             instance = form.save(commit=False)
             instance.user = request.user
             instance.save()
-            print(form.Quantity)
             # message success
             return redirect("/market/")
         context = {
