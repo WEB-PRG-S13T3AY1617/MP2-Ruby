@@ -53,6 +53,7 @@ class Post(models.Model):
 
 class Offer(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, primary_key=True, on_delete=models.CASCADE)
     Exchange = 'Exchange'
     Purchase = 'Purchase'
     TYPES_OFFER = (

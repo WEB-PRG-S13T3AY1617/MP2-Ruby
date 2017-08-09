@@ -149,6 +149,14 @@ body {
         }
 
 
+#page
+{
+    display: flex;
+    flex-direction: column;
+    background-size: auto;
+}
+
+
 
 a {
     text-decoration: none;
@@ -198,13 +206,6 @@ h2 {
     padding-right: 3em;
     font-size: 15px;
     color: dimgrey;
-}
-
-#page
-{
-    display: flex;
-    flex-direction: column;
-    background-size: auto;
 }
 
 
