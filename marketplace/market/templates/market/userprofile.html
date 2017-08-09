@@ -78,6 +78,16 @@
                         </div>
        
                     </div>
+                      {%if user.username == user2.username %}
+                    <div id = offer_container>
+                        <div class =  offerinfo>
+                            <div class = offer><span>OFFER</span></div>
+                            {% for offer in list_offer %}
+                            <div>1{{offer.post.itemname}}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {%endif%}
 				</div>
 					
 				
@@ -118,9 +128,69 @@
 					</div>
 					</div>
 				</div>
+                
+               
 		
             </div>
         </div>
+         <div id="zoomed-photo">
+                <span class="close cursor" onclick="closeModal()">x</span>
+                <div class="modal-content">
+                    <div class ="slide-container">
+                        <div id="s1" class="mySlides">
+                            <img  src= "{{ post.tb_img.url }}" id="photo" alt="No photo loaded yet">
+                        </div>
+                        
+
+                    </div>
+                   
+
+                   
+                </div>
+        </div>
+         <script>
+            function openModal() {
+                document.getElementById('zoomed-photo').style.display = "block";
+            }
+            function closeModal() {
+                document.getElementById('zoomed-photo').style.display = "none";
+            }
+
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+            
+            function showSlides(n) {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                var capt = document.getElementsByClassName("details");
+                
+                if (n > slides.length)
+                    slideIndex = 1
+                if (n < 1) 
+                    slideIndex = slides.length
+                for (i = 0; i < slides.length; i++)
+                    slides[i].style.display = "none";
+                for (i = 0; i < capt.length; i++)
+                    capt[i].style.display = "none";
+                
+                
+                slides[slideIndex-1].style.display = "block";
+                
+                capt[slideIndex-1].style.display = "block";
+                
+                var captionText = captionText = capt.valueOf();
+               
+                
+            }
+        </script>
 	</body>
   
 </html>

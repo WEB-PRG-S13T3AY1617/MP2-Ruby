@@ -253,6 +253,18 @@ h2 {
     
 	
 }
+#offer_container
+{
+     margin-top:20px;
+	display:flex;
+    flex-direction: column;
+    height: 100px;
+	width:300px;
+    border-radius: 5px;
+    padding:1em;
+    background-color: azure ;
+}
+
 
 a:hover {
     text-decoration-line: underline;
