@@ -63,6 +63,7 @@ class Offer(models.Model):
     offertypes = models.CharField(max_length=9,choices=TYPES_OFFER,default=Exchange)
     amount = models.DecimalField(max_digits=10, decimal_places=2, null = True, blank = True)
     status = models.IntegerField(default=0)
+    pub_date = models.DateTimeField(auto_now_add = True)
     
     def __str__(self):
         return self.post.itemname + " made by " + self.user.username

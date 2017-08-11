@@ -51,7 +51,7 @@ def user(request, user_id):
     user2 =get_object_or_404(User,pk=user_id)
     userprof = get_object_or_404(Profile,pk=user_id)
     latest_post_list = Post.objects.filter(user_id=user_id).order_by('-pub_date')[:10]
-    list_offer = Offer.objects.filter(post=latest_post_list).order_by('-pub_date')
+    list_offer = Offer.objects.order_by('-pub_date')
     m = 10
     
     if request.GET:
