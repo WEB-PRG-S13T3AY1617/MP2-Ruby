@@ -92,9 +92,18 @@ class ProfileForm(forms.ModelForm):
             'user',
         ]
         fields = [
+            'usertypes',
             'Degree_Program_or_Office',
-            'usertypes'
         ]
+        widgets = {
+            #'usertypes': forms.TextInput(attrs={'required': True}),
+            'Degree_Program_or_Office': forms.TextInput(attrs={'required': True, 'placeholder':'Degree Program/Office'}),
+        }
+        
+        labels = {
+            'usertypes':'Occupation',
+            'Degree_Program_or_Office':'Degree Program/Office',
+        }
 
         
 class OfferForm(forms.ModelForm):
