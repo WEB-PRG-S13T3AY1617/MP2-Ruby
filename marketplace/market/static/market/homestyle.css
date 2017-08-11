@@ -149,14 +149,6 @@ body {
         }
 
 
-#page
-{
-    display: flex;
-    flex-direction: column;
-    background-size: auto;
-}
-
-
 
 a {
     text-decoration: none;
@@ -208,6 +200,14 @@ h2 {
     color: dimgrey;
 }
 
+#page
+{
+    display: flex;
+    flex-direction: column;
+    background-size: auto;
+    flex-wrap: wrap;
+}
+
 
 
 #more {
@@ -239,21 +239,23 @@ h2 {
 {
 	
 	font-family:helvetica;
-    background-color:;
-    display: flex;
-    height:200%;
-    flex-direction: column;
+    background-color: white;
+    height: 200%;
+    flex-direction: row;
     border-radius: 5px;
+    flex-wrap: wrap;
 }
+
 .footer {
-    
+    flex-wrap: wrap;
     right: 0;
     bottom: 0;
     left: 0;
     text-align: center;
     margin-bottom: 5px;
-    margin-top: 50px;
-
+    margin-top: 20px;
+    position: relative;
+    flex-basis: auto;
 }
 
 #post_box
@@ -262,9 +264,7 @@ h2 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    
     padding-left: 7em;
-   
 
 }
 
@@ -279,7 +279,6 @@ h2 {
 .post 
 {
     
-    
 	margin:2em;
     height:13%;
     width: 40%;
@@ -288,6 +287,7 @@ h2 {
     border-radius: 5px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
       
 }
 .post:hover {
@@ -302,7 +302,8 @@ h2 {
     font-size: 15px;
     font-family: helvetica;
     padding-top: 2em;
-    display: block;
+    display: flex;
+    flex-direction: column;
     
 }
 
