@@ -8,7 +8,7 @@ from django.urls import reverse
 
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .forms import UserLoginForm, UserForm, PostForm, ProfileForm
+from .forms import UserLoginForm, UserForm, PostForm, ProfileForm, OfferForm
 from .models import User, Post, Offer, Profile
 
 # Create your views here.
@@ -270,5 +270,21 @@ def searchcourse(request, post_course):
         'latest_posts': latest_post_list,
     }
     return render(request, 'market/homepage.html', context)
+
+def makeanoffer(request, **kwargs):
+    if request.user.is_authenticated():
+        form = OfferForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            # message success
+            return redirect("/market/")
+        context = {
+            "form": form,
+        }
+        return render(request, "market/itemdetail.html", context)
+    else:
+        return index(request)
 
 
