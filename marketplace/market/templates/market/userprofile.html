@@ -82,8 +82,12 @@
                     <div id = offer_container>
                         <div class =  offerinfo>
                             <div class = offer><span>OFFER</span></div>
-                             {% for offer in list_offer %}             
-                                <div>1{{offer.post.itemname}}</div>
+                             {% for offer in list_offer %}   
+                                {% for post in latest_posts %} 
+                                    {%if offer.post == post%}
+                                    <div>1{{offer.post.itemname}}</div>
+                                    {%endif%}
+                                {% endfor %}
                             {% endfor %}
                         </div>
                     </div>
