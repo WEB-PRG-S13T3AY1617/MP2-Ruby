@@ -82,13 +82,16 @@
                     <div id = offer_container>
                         <div class =  offerinfo>
                             <div class = offer><span>OFFER</span></div>
+                            <div></div>
+                            <div class = list>
                              {% for offer in list_offer %}   
                                 {% for post in latest_posts %} 
                                     {%if offer.post == post%}
-                                    <div>1{{offer.post.itemname}}</div>
+                                    <div onclick="openModal();currentSlide(1)" >{{offer.post.itemname}} made by {{offer.user.username}}</div>
                                     {%endif%}
                                 {% endfor %}
                             {% endfor %}
+                            </div>
                         </div>
                     </div>
                     {%endif%}
@@ -136,22 +139,38 @@
                
 		
             </div>
-        </div>
-         <div id="zoomed-photo">
+              <div id="zoomed-photo">
                 <span class="close cursor" onclick="closeModal()">x</span>
                 <div class="modal-content">
                     <div class ="slide-container">
                         <div id="s1" class="mySlides">
-                            <img  src= "{{ post.tb_img.url }}" id="photo" alt="No photo loaded yet">
+                            <div>HIHIHIHI</div>
                         </div>
-                        
-
-                    </div>
-                   
-
-                   
+                    </div> 
                 </div>
+            </div>
+            
+            <!-- The Modal -->
+            <div id="myModal1" class="modal1">
+
+              <!-- Modal content -->
+              <div class="modal-content1">
+                <div class="modal-header1">
+                  <span class="close1">&times;</span>
+                  <h2>Modal Header</h2>
+                </div>
+                <div class="modal-body1">
+                  <p>Some text in the Modal Body</p>
+                  <p>Some other text...</p>
+                </div>
+                <div class="modal-footer1">
+                  <h3>Modal Footer</h3>
+                </div>
+              </div>
+
+            </div>
         </div>
+        
          <script>
             function openModal() {
                 document.getElementById('zoomed-photo').style.display = "block";
