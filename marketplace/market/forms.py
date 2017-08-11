@@ -111,9 +111,17 @@ class OfferForm(forms.ModelForm):
         model = Offer
         exclude = [
             'post',
+            'user',
         ]
         fields = [
             'offertypes',
             'amount',
-            'status',
         ]
+        widgets = {
+            'amount': forms.TextInput(attrs={'required': True, 'placeholder':'Enter amount'}),
+        }
+        
+        labels = {
+            'offertypes':'Type of Offer',
+            'amount':'Amount',
+        }
