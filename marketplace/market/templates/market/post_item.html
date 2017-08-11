@@ -171,7 +171,17 @@
             margin-right: 3.7em;
         }
         
-        .search {
+        input[type="text"] {
+           margin-top: 1em;
+    width: 90%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+        
+        .search, input[name="tags"] {
             width: 77%;
             height: 55%;
             padding: 12px 20px 12px 40px;
@@ -179,10 +189,12 @@
             margin-left: 6.9em;
             display: inline-flex;
             box-sizing: border-box;
+            background-image: url('magnifyglass.png');
             background-position: 10px 8px; 
             background-size: 25px;
             background-repeat: no-repeat;
             border-style:inset;
+            border-radius: 0px;
         }
         
         /*other styling*/
@@ -219,8 +231,7 @@
             background-color: #4CAF50;
             color: white;
             padding: 12px 20px;
-            margin: 2em 2em;
-            width: 89%;
+            width: 86%;
             border: none;
             cursor: pointer;
         }
@@ -257,7 +268,7 @@
                     </div>
                     <div class = "right-container">
      <form action="{% url 'market:searchpic' %}">
-     	<input type="text" class="search" name = "tag" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
+     	<input type="text" class="search" name = "tags" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
      </form>
 </div>
 
