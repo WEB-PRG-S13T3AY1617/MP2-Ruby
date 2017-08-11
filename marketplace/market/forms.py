@@ -118,7 +118,7 @@ class OfferForm(forms.ModelForm):
             'amount',
         ]
         widgets = {
-            'amount': forms.TextInput(attrs={'required': True, 'placeholder':'Enter amount'}),
+            'amount': forms.TextInput(attrs={'required': True, 'placeholder':'Enter amount', 'name':'offer'}),
         }
         
         labels = {
