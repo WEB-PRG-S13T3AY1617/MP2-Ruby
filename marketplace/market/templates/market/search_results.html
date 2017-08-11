@@ -122,7 +122,7 @@
             
         }
         
-        .home, .post {
+        .home {
             
             vertical-align: baseline;
             line-height: 2.1em;
@@ -192,7 +192,70 @@
             margin: 1em;
         }
 
+        .post 
+{
+    
+	margin:2em;
+    height:13%;
+    width: 40%;
+    box-shadow: 2px 8px 18px -3px rgba(0,0,0,0.22);
+    background-color:white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+      
+}
+.post:hover {
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
         
+        #post_box
+{
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 7em;
+
+}
+
+#thumb {
+   margin: 1.5em;
+    padding: 10px;
+    width: 100px;
+    height: 100px;
+    
+}
+        
+        #post_container
+{
+	
+	font-family:helvetica;
+    background-color: white;
+    height: 200%;
+    flex-direction: row;
+    border-radius: 5px;
+    flex-wrap: wrap;
+}
+        
+        
+.info
+{
+    font-size: 15px;
+    font-family: helvetica;
+    padding-top: 2em;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.info div
+{
+    padding:1mm;
+  
+}
     </style>
     <body>
         <div class = "homepage">
@@ -239,12 +302,20 @@
                 </div>
             </div>
             
-            <div class = "container">
-                {% for post in latest_posts %}
-                    <div class = photo id = 1 >
+                        <div id ="post_container">
+                <div id = post_box>
+                    {% for post in latest_posts %}
+                    <div class = post id = 1 >
                         <a href = "{% url 'market:itemdetail' post.id %}"><img src= "{{ post.tb_img.url }}" id ="thumb"  alt="no photo loaded yet"></a>
+                        <div class = info>
+                        <div class = itemname>{{post.itemname}}</div>
+                        <div class = tag>{{post.tag}}</div>
+                        <a href = "{% url 'market:user' post.user.id %}"><div class = uname>{{post.user.username}}</div></a>
+                        </div>
                     </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
+
             </div>
         </div>
     </body>
