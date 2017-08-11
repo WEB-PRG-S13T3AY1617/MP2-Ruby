@@ -96,11 +96,26 @@ def postanitem(request, **kwargs):
 def itemdetail(request, post_id):
     post =get_object_or_404(Post,pk=post_id)
     user2 = get_object_or_404(User,pk=post.user.id)
-    context = { 
-        'user2':user2,
-        'post': post,
-    }
-    return render(request, 'market/itemdetail.html', context)
+    
+    if request.user.is_authenticated():
+        form = OfferForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            # message success
+            return redirect("/market/")
+        context = {
+            'user2':user2,
+            'post': post,
+            "form": form,
+        }
+        return render(request, "market/itemdetail.html", context)
+    else:
+        return render(request, 'market/itemdetail.html', context)
+
+
+
 
 def login_view(request):
     print(request.user.is_authenticated())
