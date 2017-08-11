@@ -53,7 +53,7 @@ class Post(models.Model):
 
 class Offer(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, primary_key=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     Exchange = 'Exchange'
     Purchase = 'Purchase'
     TYPES_OFFER = (
@@ -61,8 +61,10 @@ class Offer(models.Model):
         (Purchase, 'Purchase'),
     )
     offertypes = models.CharField(max_length=9,choices=TYPES_OFFER,default=Exchange)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, null = True, blank = True)
     status = models.IntegerField(default=0)
     
+    def __str__(self):
+        return self.post.itemname + " made by " + self.user.username
 
 # Create your models here.
