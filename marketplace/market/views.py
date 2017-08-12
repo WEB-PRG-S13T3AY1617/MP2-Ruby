@@ -96,7 +96,10 @@ def postanitem(request, **kwargs):
 def itemdetail(request, post_id):
     post =get_object_or_404(Post,pk=post_id)
     user2 = get_object_or_404(User,pk=post.user.id)
-    
+    context = {
+            'user2':user2,
+            'post': post,
+    }
     if request.user.is_authenticated():
         form = OfferForm(request.POST or None, request.FILES or None)
         if form.is_valid():
@@ -106,8 +109,6 @@ def itemdetail(request, post_id):
             # message success
             return redirect("/market/")
         context = {
-            'user2':user2,
-            'post': post,
             "form": form,
         }
         return render(request, "market/itemdetail.html", context)
