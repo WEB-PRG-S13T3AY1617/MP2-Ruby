@@ -67,9 +67,11 @@
                     <div class="pics" id="p1" > 
                        <a href="#openModal1"><img src= "{{ post.tb_img.url }}" id ="thumb" class="hover-shadow cursor" alt="no photo loaded yet"></a>
                     </div>
+                    {% if user.username != post.user.username %}
                     <div>
                         <a href="#openModal2"><p id="myBtn2"> Make an offer? </p></a>
                     </div>
+                    {% endif %}
                 </div>
                 
                 <div class = "detail-info">
