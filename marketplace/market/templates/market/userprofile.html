@@ -1,6 +1,6 @@
 {% load static %}
 <html>
-	<head><title>{{user2.username}}'s  Profile</title>
+	<head><title>User Profile</title>
 		<link rel="stylesheet" type="text/css" href="{%static 'market/userstyle.css' %}"/>
       
 	</head>
@@ -83,15 +83,17 @@
                         <div class =  offerinfo>
                             <div class = offer><span>OFFER</span></div>
                             <div></div>
+                            <form action="" method="get">
                             <div class = list>
                              {% for offer in list_offer %}   
                                 {% for post in latest_posts %} 
                                     {%if offer.post == post%}
-                                    <div onclick="openModal();currentSlide(1)" >{{offer.post.itemname}} made by {{offer.user.username}}</div>
+                                <div id="obj" name="offerby" ><a href="?offerid={{offer.id}}">{{offer.post.itemname}} made by {{offer.user.username}}</a></div>
                                     {%endif%}
                                 {% endfor %}
                             {% endfor %}
                             </div>
+                            </form>
                         </div>
                     </div>
                     {%endif%}
@@ -144,7 +146,8 @@
                 <div class="modal-content">
                     <div class ="slide-container">
                         <div id="s1" class="mySlides">
-                            <div>HIHIHIHI</div>
+                            <div >HIHIHI</div>
+                            
                         </div>
                     </div> 
                 </div>
@@ -167,53 +170,24 @@
                   <h3>Modal Footer</h3>
                 </div>
               </div>
+                
 
             </div>
         </div>
-        
-         <script>
+        <script>
+            
             function openModal() {
                 document.getElementById('zoomed-photo').style.display = "block";
+                console.log("HELLO");
+                alert('You triggered an alert!');
             }
             function closeModal() {
                 document.getElementById('zoomed-photo').style.display = "none";
             }
 
-            var slideIndex = 1;
-            showSlides(slideIndex);
 
-            function plusSlides(n) {
-                showSlides(slideIndex += n);
-            }
-
-            function currentSlide(n) {
-                showSlides(slideIndex = n);
-            }
-            
-            function showSlides(n) {
-                var i;
-                var slides = document.getElementsByClassName("mySlides");
-                var capt = document.getElementsByClassName("details");
-                
-                if (n > slides.length)
-                    slideIndex = 1
-                if (n < 1) 
-                    slideIndex = slides.length
-                for (i = 0; i < slides.length; i++)
-                    slides[i].style.display = "none";
-                for (i = 0; i < capt.length; i++)
-                    capt[i].style.display = "none";
-                
-                
-                slides[slideIndex-1].style.display = "block";
-                
-                capt[slideIndex-1].style.display = "block";
-                
-                var captionText = captionText = capt.valueOf();
-               
-                
-            }
         </script>
+
 	</body>
   
 </html>
