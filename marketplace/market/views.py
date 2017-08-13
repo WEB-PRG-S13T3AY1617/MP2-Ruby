@@ -16,7 +16,7 @@ from .models import User, Post, Offer, Profile
 def index(request):
     
     latest_post_list = Post.objects.order_by('-pub_date')
-    
+
     request.session['paginate_by'] = 10
     
     if request.GET and ('paginate_by' in request.session or 'paginate_by' in request.get):

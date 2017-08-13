@@ -144,7 +144,7 @@
             <div id="openModal1" class="modalDialog">
                 <div>
                     <a href="#x" title="Close" class="x"><span class="close2">&times;</span></a>
-                     {%if offerobj != None%}
+                     {%if offerobj != None and offerobj.status != 3%}
                      <div id = detailoff>
                          <div class = "offername">{{offerobj.post.itemname}}</div>
                          <img src={{offerobj.post.tb_img.url}} alt="no photo avail" width="60" height="60"  />
