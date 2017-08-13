@@ -82,72 +82,14 @@ def user(request, user_id):
     return render(request, 'market/userprofile.html', context)
 def accept(request, offer_id):
     print("Accept")
-    offerobj = get_object_or_404(Offer,pk=offer_id)
-    user2 =get_object_or_404(User,pk=offerobj.post.user.id)
-    userprof = get_object_or_404(Profile,pk=offerobj.post.user.id)
-    latest_post_list = Post.objects.filter(user_id=offerobj.post.user.id).order_by('-pub_date')[:10]
-    list_offer = Offer.objects.order_by('-pub_date')
-    
-    offerobj = None;
-    oid = request.GET.get('offerid')
-    print(oid)
-    if oid != None:
-        offerobj = get_object_or_404(Offer,pk=oid)
-    m = 10
-    paginator = Paginator(latest_post_list, m) # Show 10 posts per page
-
-    page = request.GET.get('page')
-
-    try:
-        latest_post_list = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        latest_post_list = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        latest_post_list = paginator.page(paginator.num_pages)
-    context = { 
-        'user2':user2,
-        'userprof':userprof,
-        'latest_posts': latest_post_list,
-        'list_offer':list_offer,
-        'offerobj':offerobj,
-    }
-    return render(request, 'market/userprofile.html', context)
 def decline(request, offer_id):
     print("Decline")
     offerobj = get_object_or_404(Offer,pk=offer_id)
-    user2 =get_object_or_404(User,pk=offerobj.post.user.id)
-    userprof = get_object_or_404(Profile,pk=offerobj.post.user.id)
-    latest_post_list = Post.objects.filter(user_id=offerobj.post.user.id).order_by('-pub_date')[:10]
-    list_offer = Offer.objects.order_by('-pub_date')
+    user_id = offerobj.post.user.id
     
-    offerobj = None;
-    oid = request.GET.get('offerid')
-    print(oid)
-    if oid != None:
-        offerobj = get_object_or_404(Offer,pk=oid)
-    m = 10
-    paginator = Paginator(latest_post_list, m) # Show 10 posts per page
-
-    page = request.GET.get('page')
-
-    try:
-        latest_post_list = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        latest_post_list = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        latest_post_list = paginator.page(paginator.num_pages)
-    context = { 
-        'user2':user2,
-        'userprof':userprof,
-        'latest_posts': latest_post_list,
-        'list_offer':list_offer,
-        'offerobj':offerobj,
-    }
-    return render(request, 'market/userprofile.html', context)
+    offerobj.delete()
+    return user(request, user_id)
+    
     
 def postanitem(request):
     if request.user.is_authenticated():
