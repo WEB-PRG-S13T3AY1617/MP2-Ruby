@@ -158,12 +158,15 @@
                          {% endif %}
                          <div class = "offerby">Offer made by <a href = "{% url 'market:user' offerobj.user.id %}">@{{offerobj.user.username}}</a></div>
                          <div class = date>Date offered: {{offerobj.pub_date}}</div>
-                        <form method="get" action="/page2">
-                            <button class="btnacc"  name="accept" type="submit">Accept</button>
+                        <form action="{% url 'market:accept' offerobj.id %}" method="post"> <!--post updates the value instead of GET-->
+                        {% csrf_token %}
+                            <button class="btnacc"  name="accept" type="submit" > Accept</button>
                             <div class="spacer"></div>
-                            <button class="btndec" name="decline" type="submit">Decline</button>
+                            <button class="btndec" name="decline" type="submit" >Decline</button>
                             <div class="spacer"></div>
                         </form>
+                    </div>
+                         
                     
                     </div>
                     {%endif%}
@@ -200,7 +203,10 @@
                    window.location.hash = '#openModal1';
                 }
             });
-          
+            function closeModal()
+             {
+                  window.location.hash = '#x';
+             }
           
         </script>
 	</body>

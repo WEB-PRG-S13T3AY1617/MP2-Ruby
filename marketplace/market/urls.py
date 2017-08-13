@@ -19,5 +19,7 @@ urlpatterns = [
     url(r'^(?P<post_type>[-\w]+)/searchtype/$', views.searchtype, name='searchtype'),
     url(r'^(?P<post_condition>[-\w]+)/searchcondition/$', views.searchcondition, name='searchcondition'),
     url(r'^(?P<post_course>[-\w]+)/searchcourse/$', views.searchcourse, name='searchcourse'),
+    url(r'^(?P<offer_id>[0-9]+)/user/accept$', views.accept, name='accept'),
+    url(r'^(?P<offer_id>[0-9]+)/user/decline$', views.decline, name='decline'),
     
 ]
