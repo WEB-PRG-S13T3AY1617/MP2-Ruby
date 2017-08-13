@@ -86,7 +86,8 @@
                             <div class = list >
                              {% for offer in list_offer %}   
                                 {% for post in latest_posts %} 
-                                    {%if offer.post == post%}
+                                    {%if offer.post == post and offer.status != 2 %}
+                                    
                                 <a href="?offerid={{offer.id}}"><div id="obj" name="offerby">{{offer.post.itemname}} made by {{offer.user.username}}</div></a>
                                     {%endif%}
                                 {% endfor %}
@@ -144,7 +145,7 @@
             <div id="openModal1" class="modalDialog">
                 <div>
                     <a href="#x" title="Close" class="x"><span class="close2">&times;</span></a>
-                     {%if offerobj != None and offerobj.status != 3%}
+                     {%if offerobj != None and offerobj.status != 2%}
                      <div id = detailoff>
                          <div class = "offername">{{offerobj.post.itemname}}</div>
                          <img src={{offerobj.post.tb_img.url}} alt="no photo avail" width="60" height="60"  />
@@ -157,18 +158,35 @@
                          <div class = status>Status: Already Bought!</div>
                          {% endif %}
                          <div class = "offerby">Offer made by <a href = "{% url 'market:user' offerobj.user.id %}">@{{offerobj.user.username}}</a></div>
-                         <div class = date>Date offered: {{offerobj.pub_date}}</div>
-                         <div class="btnbox">
+                         <div class = date>Date offered: {{offerobj.pub_date}}
+                         </div>
+                         <div id="btnbox2">
+                             <div id="btna"class="btnacc" name="accept" onclick="openbtnboxA();">Accept</div>
+                             <div class="spacer"></div>
+                             
+                             <div id="btnd"class="btndec" name="decline" onclick="openbtnboxD();">Decline</div>
+                             <div class="spacer"></div>
+
+                         </div>
+                    </div>
+                    <div id = confirm>
+                        <div class ="confirmname">Confirmation</div>
+                         <div id="btnbox">
+                             <div class ="btn">
                             <form action="{% url 'market:accept' offerobj.id %}" method="post"> <!--post updates the value instead of GET-->
+                               <div id="reasonA" >Reason:<br><input type="text" name="reason" value=""></div>
                             {% csrf_token %}
-                                <button class="btnacc"  name="accept" type="submit" > Accept</button>
+                                <button  class="btnacc"  name="accept" type="submit" > Accept</button>
                                 <div class="spacer"></div>
                              </form>
                             <form action="{% url 'market:decline' offerobj.id %}" method="post">
                                 {% csrf_token %}
+                                <div id="reasonD" >
+                                    Reason:<br><input type="text" name="reason" value=""></div>
                                 <button class="btndec" name="decline" type="submit" >Decline</button>
                                 <div class="spacer"></div>
                             </form>
+                            </div>
                          </div>
                     </div>
                          
@@ -206,13 +224,28 @@
                 if(window.location.href.indexOf("offerid") != -1) 
                 {
                    window.location.hash = '#openModal1';
+                   $("#confirm").css({"visibility": "hidden"});
+                
+                  //  $("#detailoff").css({"visibility": "hidden"});
                 }
             });
             function closeModal()
              {
                   window.location.hash = '#x';
              }
+             function openbtnboxA()
+             {
+                  $("#confirm").css({"visibility": "visible"});
+                 $("#reasonD").css({"visibility": "hidden"});
+                 $("#detailoff").css({"visibility": "hidden"});
+             }
           
+             function openbtnboxD()
+             {
+                  $("#confirm").css({"visibility": "visible"});
+                 $("#reasonA").css({"visibility": "hidden"});
+                 $("#detailoff").css({"visibility": "hidden"});
+             }
         </script>
 	</body>
   

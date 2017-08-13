@@ -82,12 +82,15 @@ def user(request, user_id):
     return render(request, 'market/userprofile.html', context)
 def accept(request, offer_id):
     print("Accept")
+    
 def decline(request, offer_id):
     print("Decline")
     offerobj = get_object_or_404(Offer,pk=offer_id)
     user_id = offerobj.post.user.id
-    
-    offerobj.delete()
+    reason = request.POST.get('reason')
+    print(reason+"hello")
+    offerobj.status = 2
+    offerobj.save()
     return user(request, user_id)
     
     

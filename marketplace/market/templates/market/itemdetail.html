@@ -81,7 +81,7 @@
                     <div>Quantity x {{post.quantity}}</div>
                     <div>Condition: <a href = "{% url 'market:searchcondition' post.condition %}"> {{post.me}}</a></div>
                     <div>Type: <a href = "{% url 'market:searchtype' post.posttypes %}">{{post.posttypes}}</a></div>
-                    {%if post.posttypes == " Academic"%}
+                    {%if post.posttypes == "Academic"%}
                     <div>Course Name: <a href = "{% url 'market:searchcourse' post.coursename %}">{{post.coursename}}</a></div>
                     {%endif%}
                     <div>Tag:<a href = "{% url 'market:searchtag' post.tag %}"> #{{post.tag}}</a></div>
