@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import widgets
+from django.forms import widgets, ModelChoiceField
 from django.contrib.auth import login, authenticate, get_user_model, logout
 from django.contrib.auth.models import User
 from .models import Post, Offer, Profile
@@ -107,6 +107,7 @@ class ProfileForm(forms.ModelForm):
 
         
 class OfferForm(forms.ModelForm):
+    useroffers = forms.ModelChoiceField(queryset=User.objects.all(), required=False)
     class Meta:
         model = Offer
         exclude = [
@@ -116,6 +117,7 @@ class OfferForm(forms.ModelForm):
         fields = [
             'offertypes',
             'amount',
+            'useroffers',
         ]
         widgets = {
             'amount': forms.TextInput(attrs={'required': False, 'placeholder':'Enter amount', 'name':'offer'}),
