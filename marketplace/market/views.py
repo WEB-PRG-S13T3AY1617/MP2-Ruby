@@ -84,8 +84,15 @@ def user(request, user_id):
 def accept(request, offer_id):
     print("Accept")
     offerobj = get_object_or_404(Offer,pk=offer_id)
-    
+    postobj = get_object_or_404(Post,pk= offerobj.post.id)
+    #owner_id = offerobj.post.user.id
     user_id = offerobj.post.user.id
+    
+    buyer_id = offerobj.user.id
+    buyerobj = get_object_or_404(User,pk= buyer_id)
+    offerobj.post.user = buyerobj
+    offerobj.post.save()
+    
     if request.method == 'POST':
         reason = request.POST['reason']
         print(reason+"hello")
