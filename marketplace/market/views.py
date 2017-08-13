@@ -53,9 +53,10 @@ def user(request, user_id):
     latest_post_list = Post.objects.filter(user_id=user_id).order_by('-pub_date')[:10]
     list_offer = Offer.objects.order_by('-pub_date')
     offerobj = None
-   
-    oid = request.GET.get('offerid')
-    print(oid)
+    oid = None
+    if request.method == 'GET':
+        oid = request.GET.get('offerid')
+        print(oid)
     if oid != None:
         offerobj = get_object_or_404(Offer,pk=oid)
         
@@ -82,13 +83,28 @@ def user(request, user_id):
     return render(request, 'market/userprofile.html', context)
 def accept(request, offer_id):
     print("Accept")
+    offerobj = get_object_or_404(Offer,pk=offer_id)
+    
+    user_id = offerobj.post.user.id
+    if request.method == 'POST':
+        reason = request.POST['reason']
+        print(reason+"hello")
+        offerobj.reason = reason
+        offerobj.save()
+    
+    offerobj.status = 1
+    offerobj.save()
+    return user(request, user_id)
     
 def decline(request, offer_id):
     print("Decline")
     offerobj = get_object_or_404(Offer,pk=offer_id)
     user_id = offerobj.post.user.id
-    reason = request.POST.get('reason')
-    print(reason+"hello")
+    if request.method == 'POST':
+        reason = request.POST['reason']
+        print(reason+"hello")
+        offerobj.reason = reason
+        offerobj.save()
     offerobj.status = 2
     offerobj.save()
     return user(request, user_id)

@@ -676,9 +676,10 @@ a:hover {
 #detailoff
 {
      width: 100%;
-    height: 90%;
+    height: 70%;
     display: flex;
     flex-direction: column;
+    
     
 }
 .offername
@@ -703,9 +704,16 @@ a:hover {
     flex-direction: column
     
 }
-.btn
+#btn
 {
+    padding-top: 2em;
+    padding-right: 5em;
     display: flex;
+    
+}
+#btnA, #btnD
+{
+     margin-right: 5em;
 }
 #btnbox2
 {
@@ -739,19 +747,36 @@ a:hover {
     font-size: 16px;
     box-decoration-break: 3;
     border-radius: 3px;
+    margin-left: 3em;
 }
-#confirm
+.btndec:hover, .btnacc:hover
 {
-  margin-top: -30em;
-      width: 100%;
+    
+    cursor: pointer;
+}
+#confirmA
+{
+    position: absolute;
+    top:6em;
+    width: 100%;
     height: 50%;
     display: flex;
     flex-direction: column;
 }
-.confirmname
+#confirmD
 {
+    position: absolute;
+    top:6em;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+}
+#confirmnameA, #confirmnameD
+{
+    margin-top: -5em;
     font-family: Palatino;
-    font-size: 30;
+    font-size: 20;
     font-weight: bolder;
 }
 #reason input
@@ -759,3 +784,4 @@ a:hover {
     width: 100%;
     height: 40%;
 }
+
