@@ -82,13 +82,12 @@
                     <div id = offer_container>
                         <div class =  offerinfo>
                             <div class = offer><span>OFFER</span></div>
-                            <div></div>
                             <form action="" method="get">
-                            <div class = list>
+                            <div class = list >
                              {% for offer in list_offer %}   
                                 {% for post in latest_posts %} 
                                     {%if offer.post == post%}
-                                <div id="obj" name="offerby" ><a href="?offerid={{offer.id}}">{{offer.post.itemname}} made by {{offer.user.username}}</a></div>
+                                <a href="?offerid={{offer.id}}"><div id="obj" name="offerby">{{offer.post.itemname}} made by {{offer.user.username}}</div></a>
                                     {%endif%}
                                 {% endfor %}
                             {% endfor %}
@@ -141,15 +140,35 @@
                
 		
             </div>
-              <div id="zoomed-photo">
-                <span class="close cursor" onclick="closeModal()">x</span>
-                <div class="modal-content">
-                    <div class ="slide-container">
-                        <div id="s1" class="mySlides">
-                            <div >HIHIHI</div>
-                            
-                        </div>
-                    </div> 
+             
+            <div id="openModal1" class="modalDialog">
+                <div>
+                    <a href="#x" title="Close" class="x"><span class="close2">&times;</span></a>
+                     {%if offerobj != None%}
+                     <div id = detailoff>
+                         <div class = "offername">{{offerobj.post.itemname}}</div>
+                         <img src={{offerobj.post.tb_img.url}} alt="no photo avail" width="60" height="60"  />
+                         <div class = offertype>Offertype: For {{offerobj.offertypes}}</div>
+                         <div class = amount>Amount: P{{offerobj.amount}}</div>
+                         {%if offerobj.status == 0%}
+                         <div class = status>Status: Available</div>
+                         {% endif %}
+                         {%if offerobj.status == 1%}
+                         <div class = status>Status: Already Bought!</div>
+                         {% endif %}
+                         <div class = "offerby">Offer made by <a href = "{% url 'market:user' offerobj.user.id %}">@{{offerobj.user.username}}</a></div>
+                         <div class = date>Date offered: {{offerobj.pub_date}}</div>
+                        <form method="get" action="/page2">
+                            <button class="btnacc"  name="accept" type="submit">Accept</button>
+                            <div class="spacer"></div>
+                            <button class="btndec" name="decline" type="submit">Decline</button>
+                            <div class="spacer"></div>
+                        </form>
+                    
+                    </div>
+                    {%endif%}
+                      
+                   
                 </div>
             </div>
             
@@ -174,20 +193,16 @@
 
             </div>
         </div>
-        <script>
-            
-            function openModal() {
-                document.getElementById('zoomed-photo').style.display = "block";
-                console.log("HELLO");
-                alert('You triggered an alert!');
-            }
-            function closeModal() {
-                document.getElementById('zoomed-photo').style.display = "none";
-            }
-
-
+         <script>
+             $(document).ready(function () {
+                if(window.location.href.indexOf("offerid") != -1) 
+                {
+                   window.location.hash = '#openModal1';
+                }
+            });
+          
+          
         </script>
-
 	</body>
   
 </html>
