@@ -695,12 +695,14 @@ a:hover {
 {
     padding: 1em;
 }
-#detailoff form
+.btnbox
 {
     padding-top: 1em;
-    padding-left: 4.5em;
+    margin-left: 4em;
     display: flex;
+    
 }
+
 .btnacc
 {
     background-color: #4CAF50; /* Green */
@@ -712,6 +714,7 @@ a:hover {
     font-size: 16px;
     box-decoration-break: 3;
     border-radius: 3px;
+    margin-right: 1em;
 }
 .btndec
 {

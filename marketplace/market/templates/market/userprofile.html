@@ -158,13 +158,18 @@
                          {% endif %}
                          <div class = "offerby">Offer made by <a href = "{% url 'market:user' offerobj.user.id %}">@{{offerobj.user.username}}</a></div>
                          <div class = date>Date offered: {{offerobj.pub_date}}</div>
-                        <form action="{% url 'market:accept' offerobj.id %}" method="post"> <!--post updates the value instead of GET-->
-                        {% csrf_token %}
-                            <button class="btnacc"  name="accept" type="submit" > Accept</button>
-                            <div class="spacer"></div>
-                            <button class="btndec" name="decline" type="submit" >Decline</button>
-                            <div class="spacer"></div>
-                        </form>
+                         <div class="btnbox">
+                            <form action="{% url 'market:accept' offerobj.id %}" method="post"> <!--post updates the value instead of GET-->
+                            {% csrf_token %}
+                                <button class="btnacc"  name="accept" type="submit" > Accept</button>
+                                <div class="spacer"></div>
+                             </form>
+                            <form action="{% url 'market:decline' offerobj.id %}" method="post">
+                                {% csrf_token %}
+                                <button class="btndec" name="decline" type="submit" >Decline</button>
+                                <div class="spacer"></div>
+                            </form>
+                         </div>
                     </div>
                          
                     
