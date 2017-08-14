@@ -177,6 +177,8 @@
             $("#items").hide();
             if(window.location.href.indexOf("userid") != -1) {
                 window.location.hash = '#openModal2';
+                $("#amount").hide();
+                $("#items").hide();
             }
             $("#offertype").change(function(){
                 if(this.value == 'Exchange') {
@@ -186,7 +188,7 @@
                     $("#items").hide();
                     $("#amount").show();
                 }
-            })
+            });
         });
     </script>
 </html>

@@ -259,11 +259,37 @@
 
                          </div>
                     </div>
+                     
                     <div id = "confirmU">
                         <div id ="confirmnameU">Confirmation</div>
                             <div id ="btnD">
                                 <form action="{% url 'market:update' offertoobj.id %}" method="post">
                                     {% csrf_token %}
+                                    <div>
+                                        <label for="offertype">Type of Offer: </label>
+                                        <select name="offertype" id="offertype">
+                                        <option value="" disabled selected>Select your option</option>
+                                        <option value = "Purchase">Purchase</option>
+                                        <option value = "Exchange">Exchange</option>
+                                        </select>  
+                                    </div>
+                        
+                                    <div id="items">
+                                    <label for="items">Your Items: </label>
+                                    <select name="items">
+                                        <option value="null" disabled selected>Select an item</option>
+
+                                        {%for items in buyeritems%}
+                                        <option value = "{{items.id}}">{{items.itemname}}</option>
+                                        {%endfor%}
+                                    </select>
+                                    </div>
+                                    <div id="amount">
+                                        <label for="amount"> Amount Due: </label>
+                                            <input type="number" name="amount" min=0>
+                                    </div>
+                                    
+                                    
                                     <div id = "btn">
                                         <button  class="btnacc"  name="accept" type="submit" >Yes</button>
                                        
@@ -301,7 +327,8 @@
         </div>
            
          <script>
-             $(document).ready(function () {
+             $(document).ready(
+                function () {
                 if(window.location.href.indexOf("offerid") != -1) 
                 {
                    window.location.hash = '#openModal1';
@@ -312,12 +339,25 @@
                 }
                  if(window.location.href.indexOf("offertoid") != -1) 
                 {
-                   window.location.hash = '#openModal2';
-                   $("#confirmU").css({"visibility": "hidden"});
+                    window.location.hash = '#openModal2';
+                    $("#confirmU").css({"visibility": "hidden"});
                     $("#confirmC").css({"visibility": "hidden"});
+                    $("#amount").hide();
+                    $("#items").hide();
                 
                   //  $("#detailoff").css({"visibility": "hidden"});
                 }
+            });
+            $("#offertype").change(function(){
+                if(this.value == 'Exchange') {
+                    
+                    $("#amount").hide();
+                    $("#items").show();
+                } else if(this.value == 'Purchase') {
+                    $("#items").hide();
+                    $("#amount").show();
+                }
+              
             });
             function closeModal()
              {
