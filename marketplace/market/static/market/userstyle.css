@@ -789,14 +789,14 @@ a:hover {
 
 #myoffersection
 {
-    position: absolute;
+    position: relative;
     right:3em;
-    top:12em;
+    top:2em;
     margin-top:20px;
 	display:flex;
     flex-direction: column;
     height: 300px;
-	width:250px;
+	width:550px;
     border-radius: 5px;
     padding:1em;
     background:linear-gradient(to bottom, dodgerblue 1%, white 
