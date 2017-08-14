@@ -143,11 +143,14 @@ def update(request, offer_id):
     offertoobj = get_object_or_404(Offer,pk=offer_id)
     if 'offertype' in request.POST:
         offtype = request.POST['offertype']
-        print(offtype)
+        offertoobj.offertypes = offtype
+        offertoobj.save()
         
-    if 'youritem' in request.POST:
-        itemid = request.POST['youritem']
-        print(itemid)
+    if 'item' in request.POST: #used only if offertype is exchange
+        itemid = request.POST['item']
+        postobj = get_object_or_404(Post,pk=itemid) 
+        offertoobj.exchangepost = postobj
+        offertoobj.save()
         
     prevhttp = request.META.get('HTTP_REFERER')
     prevhttp.split("?")[0]
