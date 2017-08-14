@@ -626,7 +626,7 @@ a:hover {
 }
 
 
-.modalDialog, .modalDialog1 {
+.modalDialog {
         position: fixed;
         font-family: Arial, Helvetica, sans-serif;
         top: 0;
@@ -642,12 +642,12 @@ a:hover {
         pointer-events: none;
     }
 
-    .modalDialog:target, .modalDialog1:target  {
+    .modalDialog:target {
         opacity:1;
         pointer-events: auto;
     }
 
-    .modalDialog > div, .modalDialog1 > div {
+    .modalDialog > div {
         width: 400px;
         position: relative;
         margin: 10% auto;
@@ -681,19 +681,20 @@ a:hover {
     display: flex;
     flex-direction: column;
     
-    
 }
-.offername,.offername1
+
+
+.offername
 {
     font-family: Palatino;
     font-size: 25;
     font-weight: bolder;
 }
-#detailoff img
+#detailoff img, #detailoff1 img
 {
     align-self: center;
 }
-#detailoff div
+#detailoff div, #detailoff1 div
 {
     padding: 1em;
 }
@@ -755,7 +756,7 @@ a:hover {
     
     cursor: pointer;
 }
-#confirmA
+#confirmA,  #confirmU
 {
     position: absolute;
     top:6em;
@@ -764,7 +765,7 @@ a:hover {
     display: flex;
     flex-direction: column;
 }
-#confirmD
+#confirmD,  #confirmC
 {
     position: absolute;
     top:6em;
@@ -773,7 +774,7 @@ a:hover {
     display: flex;
     flex-direction: column;
 }
-#confirmnameA, #confirmnameD
+#confirmnameA, #confirmnameD,  #confirmnameU, #confirmnameC
 {
     margin-top: -5em;
     font-family: Palatino;
@@ -801,6 +802,9 @@ a:hover {
     background:linear-gradient(to bottom, dodgerblue 1%, white 
         30%);
     box-shadow: 1px 0px 17px 5px rgba(0,0,0,0.39);
+ 
+}
+.update
+{
     
-   
 }
