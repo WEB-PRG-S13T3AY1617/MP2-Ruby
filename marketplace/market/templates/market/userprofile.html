@@ -226,27 +226,27 @@
                     
                     </div>
                     {%endif%}
-                      
+                </div>  
                    
             </div>
-            <div id="openModal2" class="modalDialog1">
+            <div id="openModal2" class="modalDialog">
                 <div>
                     <a href="#x1" title="Close" id="x1"><span onclick="closeModal();" class="close2">&times;</span></a>
                     {%if offertoobj != None %}
                      <div id = detailoff1>
-                         <div class = "offername1">{{offeroobj.post.itemname}}</div>
-                         <img src={{offerobj.post.tb_img.url}} alt="no photo avail" width="60" height="60"  />
-                         {%if offeroobj.offertypes == "Purchase"%}
-                         <div class = offertype>Offertype: For {{offeroobj.offertypes}}</div>
-                         <div class = amount>Amount: P{{offerobj.amount}}</div>
+                         <div class = "offername1">{{offertoobj.post.itemname}}</div>
+                         <img src={{offertoobj.post.tb_img.url}} alt="no photo avail" width="60" height="60"  />
+                         {%if offertoobj.offertypes == "Purchase"%}
+                         <div class = offertype>Offertype: For {{offertoobj.offertypes}}</div>
+                         <div class = amount>Amount: P{{offertoobj.amount}}</div>
                          {% endif %}
                          
-                         {%if offeroobj.offertypes == "Exchange"%}
-                         <div class = offertype>Offertype: For {{offeroobj.offertypes}}</div>
+                         {%if offertoobj.offertypes == "Exchange"%}
+                         <div class = offertype>Offertype: For {{offertoobj.offertypes}}</div>
                           <!--query owner list of posts-->
                          {% endif %}
-                         <div class = "offerby">Offer made to <a href = "{% url 'market:user' offerobj.user.id %}">@{{offerobj.user.username}}</a></div>
-                         <div class = date>Date offered: {{offerobj.pub_date}}
+                         <div class = "offerby">Offer made to <a href = "{% url 'market:user' offertoobj.post.user.id %}">@{{offertoobj.post.user.username}}</a></div>
+                         <div class = date>Date offered: {{offertoobj.pub_date}}
                          </div>
                          <div id="btnbox2">
                              <div id="btna"class="btnacc" name="accept" onclick="openbtnboxA();">Accept</div>
@@ -270,6 +270,14 @@
                 if(window.location.href.indexOf("offerid") != -1) 
                 {
                    window.location.hash = '#openModal1';
+                   $("#confirmA").css({"visibility": "hidden"});
+                    $("#confirmD").css({"visibility": "hidden"});
+                
+                  //  $("#detailoff").css({"visibility": "hidden"});
+                }
+                 if(window.location.href.indexOf("offertoid") != -1) 
+                {
+                   window.location.hash = '#openModal2';
                    $("#confirmA").css({"visibility": "hidden"});
                     $("#confirmD").css({"visibility": "hidden"});
                 
