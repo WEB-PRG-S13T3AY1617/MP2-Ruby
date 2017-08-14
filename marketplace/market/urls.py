@@ -21,5 +21,7 @@ urlpatterns = [
     url(r'^(?P<post_course>[-\w]+)/searchcourse/$', views.searchcourse, name='searchcourse'),
     url(r'^(?P<offer_id>[0-9]+)/user/accept$', views.accept, name='accept'),
     url(r'^(?P<offer_id>[0-9]+)/user/decline$', views.decline, name='decline'),
+    url(r'^(?P<offer_id>[0-9]+)/user/update$', views.update, name='update'),
+    url(r'^(?P<offer_id>[0-9]+)/user/cancel$', views.cancel, name='cancel'),
     
 ]
