@@ -104,26 +104,3 @@ class ProfileForm(forms.ModelForm):
             'usertypes':'Occupation',
             'Degree_Program_or_Office':'Degree Program/Office',
         }
-
-        
-class OfferForm(forms.ModelForm):
-    useroffers = forms.ModelChoiceField(queryset=User.objects.all(), required=False)
-    class Meta:
-        model = Offer
-        exclude = [
-            'post',
-            'user',
-        ]
-        fields = [
-            'offertypes',
-            'amount',
-            'useroffers',
-        ]
-        widgets = {
-            'amount': forms.TextInput(attrs={'required': False, 'placeholder':'Enter amount', 'name':'offer'}),
-        }
-        
-        labels = {
-            'offertypes':'Type of Offer',
-            'amount':'Amount',
-        }

@@ -8,7 +8,7 @@ from django.urls import reverse
 
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .forms import UserLoginForm, UserForm, PostForm, ProfileForm, OfferForm
+from .forms import UserLoginForm, UserForm, PostForm, ProfileForm
 from .models import User, Post, Offer, Profile
 
 # Create your views here.
@@ -150,21 +150,21 @@ def postanitem(request):
 
 def itemdetail(request, post_id):
     list_offer = Offer.objects.order_by('-pub_date')
-    post = get_object_or_404(Post,pk=post_id)
+    post =get_object_or_404(Post,pk=post_id)
     user2 = get_object_or_404(User,pk=post.user.id)
-    form = OfferForm(request.POST or None)
-    if form.is_valid():
-        that = form.save(commit=False)
-        that.user = request.user
-        that.save()
-        return redirect('market/itemdetail.html')
+    buyeritems = None
+    if request.method == 'GET':
+        buyerid = request.GET.get('userid')
+        buyeritems = Post.objects.filter(user_id=buyerid).order_by('-pub_date')[:10]
+        
+   
+    
     context = { 
         'user2':user2,
         'post': post,
-        'form': form,
+        'buyeritems': buyeritems,
         'list_offer': list_offer,
     }
-    
     return render(request, 'market/itemdetail.html', context)
 
     

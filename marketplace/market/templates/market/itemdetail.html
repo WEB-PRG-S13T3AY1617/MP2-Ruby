@@ -70,10 +70,20 @@
                     {% if user.username != post.user.username %}
                     {% if user.is_anonymous == False %}
                     <div>
-                        <a href="#openModal2"><p id="myBtn2"> Make an offer? </p></a>
-                        <a href="#openModal3"><p id="myBtn2"> View your offer. </p></a>
+                        <a href="?userid={{user.id}}"><p id="myBtn2"> Make an offer? </p></a>
+                        
                     </div>
                     {% endif %}
+                    {% endif %}
+                    
+                    {% if user.is_anonymous == False %}
+                    <div>
+                        {% for offer in list_offer %}  
+                            {% if offer.user.id == user.id and offer.post.id == post.id%}
+                        <a href="#openModal3"><p id="myBtn2"> View your offer. </p></a>
+                        {%endif%}
+                        {%endfor%}
+                    </div>
                     {% endif %}
                 </div>
                 
@@ -105,13 +115,36 @@
             <div id="openModal2" class="modalDialog">
                 <div>
                     <a href="#x" title="Close" class="x"><span class="close2">&times;</span></a>
-                    <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit" class="button" value = "Make an Offer "/>
-                </form>
+                    <div>{{post.itemname}}</div>
+                    <form action="" method="GET" >
+                        {% csrf_token %}
+                        
+                        <div>
+                        <label for="offertype">Type of Offer: </label>
+                        <select name="offertype" id="offertype">
+                        <option value="" disabled selected>Select your option</option>
+                        <option value = "Purchase">Purchase</option>
+                        <option value = "Exchange">Exchange</option>
+                        </select>  
+                        </div>
+                        
+                        <div id="items">
+                        <label for="items">Your Items: </label>
+                        <select name="items">
+                            <option value="" disabled selected>Select an item</option>
+                            
+                            {%for items in buyeritems%}
+                            <option value = "{{items.id}}">{{items.itemname}}</option>
+                            {%endfor%}
+                        </select>
+                        </div>
+                    <div id="amount">
+                        <label for="amount"> Amount Due: </label>
+                            <input type="number" name="amount" min=0>
+                    </div>
+                        <button type="submit" class="button" onclick=""> SUBMIT </button>  
+                    </form>
                 </div>
-              
-
             </div>
             
             <div id ="openModal3" class = "modalDialog">
@@ -138,4 +171,22 @@
             </div>
         </div>
     </body>
+    <script>
+        $(document).ready(function () {
+            $("#amount").hide();
+            $("#items").hide();
+            if(window.location.href.indexOf("userid") != -1) {
+                window.location.hash = '#openModal2';
+            }
+            $("#offertype").change(function(){
+                if(this.value == 'Exchange') {
+                    $("#amount").hide();
+                    $("#items").show();
+                } else if(this.value == 'Purchase') {
+                    $("#items").hide();
+                    $("#amount").show();
+                }
+            })
+        });
+    </script>
 </html>
