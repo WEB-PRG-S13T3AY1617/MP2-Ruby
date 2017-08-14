@@ -52,8 +52,8 @@ class Post(models.Model):
         return self.condition.replace('-',' ')
 
 class Offer(models.Model):
-    post = models.ForeignKey(Post, null=True,related_name='post', on_delete=models.CASCADE)
-    exchangepost = models.ForeignKey(Post, null=True, related_name='exchangepost', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, blank = True, null=True,related_name='post', on_delete=models.CASCADE)
+    exchangepost = models.ForeignKey(Post,blank = True,  null=True, related_name='exchangepost', on_delete=models.CASCADE)
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     Exchange = 'Exchange'
     Purchase = 'Purchase'
