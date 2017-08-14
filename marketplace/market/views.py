@@ -91,19 +91,26 @@ def user(request, user_id):
     return render(request, 'market/userprofile.html', context)
 def accept(request, offer_id):
     print("Accept")
+    
+   
     offerobj = get_object_or_404(Offer,pk=offer_id)
     postobj = get_object_or_404(Post,pk= offerobj.post.id)
-    #owner_id = offerobj.post.user.id
+    
     user_id = offerobj.post.user.id
+    ownerobj = get_object_or_404(User,pk=user_id)
     
     buyer_id = offerobj.user.id
     buyerobj = get_object_or_404(User,pk= buyer_id)
     offerobj.post.user = buyerobj
     offerobj.post.save()
     
+    if offerobj.offertypes == "Exchange":
+        print("exchange")
+        offerobj.exchangepost.user = ownerobj
+        offerobj.exchangepost.save()
+    
     if request.method == 'POST':
         reason = request.POST['reason']
-        print(reason+"hello")
         offerobj.reason = reason
         offerobj.save()
     

@@ -165,8 +165,14 @@
                      <div id = detailoff>
                          <div class = "offername">{{offerobj.post.itemname}}</div>
                          <img src={{offerobj.post.tb_img.url}} alt="no photo avail" width="60" height="60"  />
+                         
                          <div class = offertype>Offertype: For {{offerobj.offertypes}}</div>
+                         {%if offerobj.offertypes == "Purchase"%}
                          <div class = amount>Amount: P{{offerobj.amount}}</div>
+                         {% endif %}
+                         {%if offerobj.offertypes == "Exchange"%}
+                         <div class = amount>Item to exchange: {{offerobj.exchangepost.itemname}}</div>
+                         {% endif %}
                          {%if offerobj.status == 0%}
                          {% endif %}
                          <div class = "offerby">Offer made by <a href = "{% url 'market:user' offerobj.user.id %}">@{{offerobj.user.username}}</a></div>
