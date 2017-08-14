@@ -54,11 +54,18 @@ def user(request, user_id):
     list_offer = Offer.objects.order_by('-pub_date')
     offerobj = None
     oid = None
+    offertoobj = None
+    offertoid = None
+    
     if request.method == 'GET':
         oid = request.GET.get('offerid')
-        print(oid)
+        offertoid = request.GET.get('offertoid')
+        print(offertoid)
     if oid != None:
         offerobj = get_object_or_404(Offer,pk=oid)
+        
+    if offertoid != None:
+        offertoobj = get_object_or_404(Offer,pk=offertoid)
         
     m = 10  
     paginator = Paginator(latest_post_list, m) # Show 10 posts per page
@@ -79,6 +86,7 @@ def user(request, user_id):
         'latest_posts': latest_post_list,
         'list_offer':list_offer,
         'offerobj':offerobj,
+        'offertoobj':offertoobj,
     }
     return render(request, 'market/userprofile.html', context)
 def accept(request, offer_id):

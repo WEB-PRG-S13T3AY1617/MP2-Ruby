@@ -223,7 +223,7 @@ h2 {
 .name_container
 {
 	height: 100px;
-	width:300px;
+	width:250px;
 	background:linear-gradient(to bottom, skyblue 50%, white 50%);
 	font-family:helvetica;
 	text-align:center;
@@ -232,7 +232,7 @@ h2 {
     flex-direction: column;
     justify-content: space-between;
     padding: 1em;
-    
+   
     
 }
 .uname
@@ -257,11 +257,12 @@ h2 {
      margin-top:20px;
 	display:flex;
     flex-direction: column;
-    height: 100px;
-	width:300px;
+    height: 300px;
+	width:250px;
     border-radius: 5px;
     padding:1em;
-    background:linear-gradient(to bottom, aqua 50%, white 50%);
+    background:linear-gradient(to bottom, aqua 5%, white 30%);
+    box-shadow: 1px 0px 17px 5px rgba(0,0,0,0.39);
     
    
 }
@@ -375,8 +376,8 @@ a:hover {
 {
 	display:flex;	
 	flex-direction:column;
-	width:50%;
-	height:1500px;
+	width:100%;
+	height:200%;
     padding:30px;
     padding-top: 60px;
     
@@ -387,9 +388,8 @@ a:hover {
 {
 	
 	font-family:helvetica;
-    background-color: ;
     display: flex;
-    height:100%;
+    height:80%;
     flex-direction: column;
     border-radius: 5px;
 }
@@ -397,13 +397,14 @@ a:hover {
 {
     display: flex;
     flex-direction: column;
-
+    height:inherit;
 }
 .post 
 {
     margin:1em;
 	padding:20px;
-    height:10%;
+    width:400px;
+    height: 200px;
     box-shadow: 2px 8px 18px -3px rgba(0,0,0,0.22);
     background:linear-gradient(to bottom, azure 20%, white 80%);
     border-radius: 5px;
@@ -625,7 +626,7 @@ a:hover {
 }
 
 
-.modalDialog {
+.modalDialog, .modalDialog1 {
         position: fixed;
         font-family: Arial, Helvetica, sans-serif;
         top: 0;
@@ -641,12 +642,12 @@ a:hover {
         pointer-events: none;
     }
 
-    .modalDialog:target {
+    .modalDialog:target, .modalDialog1:target  {
         opacity:1;
         pointer-events: auto;
     }
 
-    .modalDialog > div {
+    .modalDialog > div, .modalDialog1 > div {
         width: 400px;
         position: relative;
         margin: 10% auto;
@@ -655,7 +656,7 @@ a:hover {
         background: white;
     }
 
-    .x {
+    #x,#x1 {
         background: #606061;
         color: #FFFFFF;
         line-height: 25px;
@@ -673,7 +674,7 @@ a:hover {
         -webkit-box-shadow: 1px 1px 3px #000;
         box-shadow: 1px 1px 3px #000;
     }
-#detailoff
+#detailoff, #detailoff1
 {
      width: 100%;
     height: 70%;
@@ -682,10 +683,10 @@ a:hover {
     
     
 }
-.offername
+.offername,.offername1
 {
     font-family: Palatino;
-    font-size: 20;
+    font-size: 25;
     font-weight: bolder;
 }
 #detailoff img
@@ -785,3 +786,21 @@ a:hover {
     height: 40%;
 }
 
+#myoffersection
+{
+    position: absolute;
+    right:3em;
+    top:12em;
+    margin-top:20px;
+	display:flex;
+    flex-direction: column;
+    height: 300px;
+	width:250px;
+    border-radius: 5px;
+    padding:1em;
+    background:linear-gradient(to bottom, dodgerblue 1%, white 
+        30%);
+    box-shadow: 1px 0px 17px 5px rgba(0,0,0,0.39);
+    
+   
+}
