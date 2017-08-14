@@ -145,6 +145,16 @@ def update(request, offer_id):
         offtype = request.POST['offertype']
         offertoobj.offertypes = offtype
         offertoobj.save()
+    
+    if 'amount' in request.POST:
+        money = request.POST['amount']
+        offertoobj.amount = money
+        offertoobj.save()
+    
+    if 'offertype1' in request.POST:
+        offtype = request.POST['offertype1']
+        offertoobj.offertypes = offtype
+        offertoobj.save()
         
     if 'item' in request.POST: #used only if offertype is exchange
         itemid = request.POST['item']
@@ -185,10 +195,19 @@ def itemdetail(request, post_id):
     post =get_object_or_404(Post,pk=post_id)
     user2 = get_object_or_404(User,pk=post.user.id)
     buyeritems = None
+    offertoobj = None
+    offertoid = None
+   
+        
     if request.method == 'GET':
         buyerid = request.GET.get('userid')
+        request.GET.get('offertoid')
+        offertoid = request.GET.get('offertoid')
+
         buyeritems = Post.objects.filter(user_id=buyerid).order_by('-pub_date')[:10]
-        
+
+    if offertoid != None:
+        offertoobj = get_object_or_404(Offer,pk=offertoid)
    
     
     context = { 
@@ -196,6 +215,7 @@ def itemdetail(request, post_id):
         'post': post,
         'buyeritems': buyeritems,
         'list_offer': list_offer,
+        'offertoobj': offertoobj,
     }
     return render(request, 'market/itemdetail.html', context)
 

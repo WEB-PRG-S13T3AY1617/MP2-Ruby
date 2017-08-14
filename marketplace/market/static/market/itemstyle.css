@@ -522,3 +522,140 @@ select {
 
 
     
+
+#detailoff, #detailoff1
+{
+     width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+.offername
+{
+    font-family: Palatino;
+    font-size: 25;
+    font-weight: bolder;
+}
+#detailoff img, #detailoff1 img
+{
+    align-self: center;
+}
+#detailoff div, #detailoff1 div
+{
+    padding: 1em;
+}
+
+#confirmnameU, #confirmnameC
+{
+    margin-top: -5em;
+    font-family: Palatino;
+    font-size: 20;
+    font-weight: bolder;
+}
+
+#confirmC
+{
+    position: absolute;
+    top:6em;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#confirmU
+{
+    position: absolute;
+    top:6em;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+}
+   
+.btnupd
+{
+    background-color: slategrey; 
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-decoration-break: 3;
+    border-radius: 3px;
+    margin-right: 1em;
+    
+}
+.btncncl
+{
+     background-color: slategrey; 
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-decoration-break: 3;
+    border-radius: 3px;
+    margin-left: 3em;
+}
+.btnupd:hover, .btncncl:hover
+{
+        cursor: pointer;
+}
+
+#btnbox2
+{
+    padding-top: 1em;
+    margin-left: 2em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnacc
+{
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-decoration-break: 3;
+    border-radius: 3px;
+    margin-right: 1em;
+}
+.btndec
+{
+    background-color: #EB1818; /* Green */
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-decoration-break: 3;
+    border-radius: 3px;
+    margin-left: 3em;
+}
+.btndec:hover, .btnacc:hover
+{
+    
+    cursor: pointer;
+}
+
+#btnD
+{
+     margin-right: 5em;
+}
+
+#btn
+{
+    padding-top: 2em;
+ 
+
+    
