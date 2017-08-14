@@ -294,4 +294,25 @@
             </div>
         </div>
     </body>
+    <script>
+        $(document).ready(function () {
+            
+            $("#id_coursename").hide();
+            $("label[for='id_coursename']").hide();
+            if(window.location.href.indexOf("userid") != -1) {
+                window.location.hash = '#openModal2';
+                
+                
+            }
+            $("#id_posttypes").change(function(){
+                if(this.value == 'Academic') {
+                    $("#id_coursename").show();
+                    $("label[for='id_coursename']").show();
+                } else if(this.value == 'Office') {
+                    $("#id_coursename").hide();
+                    $("label[for='id_coursename']").hide();
+                }
+            });
+        });
+    </script>
 </html>
