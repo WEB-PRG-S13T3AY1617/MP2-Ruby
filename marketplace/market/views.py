@@ -48,6 +48,7 @@ def index(request):
     return render(request, 'market/homepage.html', context)
 
 def user(request, user_id):
+    print("user")
     user2 =get_object_or_404(User,pk=user_id)
     userprof = get_object_or_404(Profile,pk=user_id)
     latest_post_list = Post.objects.filter(user_id=user_id).order_by('-pub_date')[:10]
@@ -56,11 +57,12 @@ def user(request, user_id):
     oid = None
     offertoobj = None
     offertoid = None
-    
+   
     if request.method == 'GET':
         oid = request.GET.get('offerid')
         offertoid = request.GET.get('offertoid')
-        print(offertoid)
+        request.GET.get('offertoid')
+       
     if oid != None:
         offerobj = get_object_or_404(Offer,pk=oid)
         
@@ -87,6 +89,7 @@ def user(request, user_id):
         'list_offer':list_offer,
         'offerobj':offerobj,
         'offertoobj':offertoobj,
+    
     }
     return render(request, 'market/userprofile.html', context)
 def accept(request, offer_id):
@@ -131,7 +134,7 @@ def decline(request, offer_id):
     offerobj.save()
     return user(request, user_id)
 
-def update(request, offer_id):
+def update(request, offer_id, user_id):
     print("Update")
     offerobj = get_object_or_404(Offer,pk=offer_id)
     user_id = offerobj.post.user.id

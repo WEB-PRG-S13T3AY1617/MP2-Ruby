@@ -245,13 +245,13 @@
                          
                          {%if offertoobj.offertypes == "Exchange"%}
                          <div class = offertype>Offertype: For {{offertoobj.offertypes}}</div>
-                          <!--query owner list of posts-->
+                          <div class = exchangeobj>Exchange item:{{offertoobj.exchangepost.itemname}}</div>
                          {% endif %}
                          <div class = "offerby">Offer made to <a href = "{% url 'market:user' offertoobj.post.user.id %}">@{{offertoobj.post.user.username}}</a></div>
                          <div class = date>Date offered: {{offertoobj.pub_date}}
                          </div>
                          <div id="btnbox2">
-                             <div id="btna"class="btnupd" name="Update" onclick="openbtnboxU();">Update</div>
+                            <div id="btna"class="btnupd" name="Update" onclick="openbtnboxU();">Update</div>
                              <div class="spacer"></div>
                              
                              <div id="btnd"class="btncncl" name="Cancel" onclick="openbtnboxC();">Cancel</div>
@@ -263,7 +263,7 @@
                     <div id = "confirmU">
                         <div id ="confirmnameU">Confirmation</div>
                             <div id ="btnD">
-                                <form action="{% url 'market:update' offertoobj.id %}" method="post">
+                                <form action="{% url 'market:update' offertoobj.id user.id %}" method="post">
                                     {% csrf_token %}
                                     <div>
                                         <label for="offertype">Type of Offer: </label>
@@ -277,10 +277,9 @@
                                     <div id="items">
                                     <label for="items">Your Items: </label>
                                     <select name="items">
-                                        <option value="null" disabled selected>Select an item</option>
-
-                                        {%for items in buyeritems%}
-                                        <option value = "{{items.id}}">{{items.itemname}}</option>
+                                        <option value="" disabled selected>Select an item</option>
+                                        {%for item in latest_posts %} 
+                                        <option value ="{{post.id}}">{{item.itemname}}</option>
                                         {%endfor%}
                                     </select>
                                     </div>
@@ -347,6 +346,8 @@
                 
                   //  $("#detailoff").css({"visibility": "hidden"});
                 }
+                
+                    
             });
             $("#offertype").change(function(){
                 if(this.value == 'Exchange') {
