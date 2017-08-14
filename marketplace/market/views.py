@@ -140,8 +140,15 @@ def decline(request, offer_id):
 
 def update(request, offer_id):
     print("Update")
-    offerobj = get_object_or_404(Offer,pk=offer_id)
-    
+    offertoobj = get_object_or_404(Offer,pk=offer_id)
+    if 'offertype' in request.POST:
+        offtype = request.POST['offertype']
+        print(offtype)
+        
+    if 'youritem' in request.POST:
+        itemid = request.POST['youritem']
+        print(itemid)
+        
     prevhttp = request.META.get('HTTP_REFERER')
     prevhttp.split("?")[0]
     return HttpResponseRedirect(prevhttp.split("?")[0])
@@ -149,7 +156,7 @@ def update(request, offer_id):
 def cancel(request, offer_id):
     print("Cancel")
     offerobj = get_object_or_404(Offer,pk=offer_id)
-    #offerobj.delete()
+    offerobj.delete()
     prevhttp = request.META.get('HTTP_REFERER')
     prevhttp.split("?")[0]
     return HttpResponseRedirect(prevhttp.split("?")[0])

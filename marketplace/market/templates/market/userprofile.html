@@ -266,27 +266,26 @@
                             <div id ="btnD">
                                 <form action="{% url 'market:update' offertoobj.id %}" method="post">
                                     {% csrf_token %}
-                                    <div>
-                                        <label for="offertype">Type of Offer: </label>
-                                        <select name="offertype" id="offertype">
-                                        <option value="" disabled selected>Select your option</option>
-                                        <option value = "Purchase">Purchase</option>
-                                        <option value = "Exchange">Exchange</option>
-                                        </select>  
-                                    </div>
+                                    <label for="offertype">Type of Offer: </label>
+                                    <select name="offertype" id="offertype" required>
+                                    <option value="" disabled selected>Select your option</option>
+                                    <option value = "Purchase">Purchase</option>
+                                    <option value = "Exchange">Exchange</option>
+                                    </select>  
+                                    
                         
                                     <div id="items">
                                     <label for="items">Your Items: </label>
-                                    <select name="items">
+                                    <select id="youritem" name="youritem" >
                                         <option value="" disabled selected>Select an item</option>
                                         {%for item in latest_posts %} 
-                                        <option value ="{{post.id}}">{{item.itemname}}</option>
+                                        <option value ="{{item.id}}">{{item.itemname}}</option>
                                         {%endfor%}
                                     </select>
                                     </div>
                                     <div id="amount">
                                         <label for="amount"> Amount Due: </label>
-                                            <input type="number" name="amount" min=0>
+                                            <input id="youramount" type="number" name="amount" min=0 >
                                     </div>
                                     
                                     
@@ -355,8 +354,10 @@
                     
                     $("#amount").hide();
                     $("#items").show();
+                    $("#youritem").attr("required", "true")
                 } else if(this.value == 'Purchase') {
                     $("#items").hide();
+                    $("#youramount").attr("required", "true")
                     $("#amount").show();
                 }
               
