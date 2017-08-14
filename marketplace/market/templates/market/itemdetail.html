@@ -79,10 +79,12 @@
                     {% if user.is_anonymous == False %}
                     <div>
                         {% for offer in list_offer %}  
-                            {% if offer.user.id == user.id and offer.post.id == post.id%}
-                        <a href="#openModal3"><p id="myBtn2"> View your offer. </p></a>
-                        {%endif%}
-                        {%endfor%}
+                            {% if offer.user.id == user.id and offer.post.id == post.id%} 
+                            <a href="#openModal3"><p id="myBtn2"> View your offer. </p></a>
+                       {{ "<!--" }}
+                          {%endif%} 
+                        {%endfor%}     
+                        {{ "-->" }}
                     </div>
                     {% endif %}
                 </div>
@@ -116,12 +118,13 @@
                 <div>
                     <a href="#x" title="Close" class="x"><span class="close2">&times;</span></a>
                     <div>{{post.itemname}}</div>
-                    <form action="" method="GET" >
+                    <form action="{% url 'market:makeoffer' post.id %}" method="POST" >
                         {% csrf_token %}
                         
                         <div>
+                        <input type="text" name="userid" value="{{user.id}}" style = "display: none"/>
                         <label for="offertype">Type of Offer: </label>
-                        <select name="offertype" id="offertype">
+                        <select name="offertype" id="offertype" required>
                         <option value="" disabled selected>Select your option</option>
                         <option value = "Purchase">Purchase</option>
                         <option value = "Exchange">Exchange</option>
@@ -130,7 +133,7 @@
                         
                         <div id="items">
                         <label for="items">Your Items: </label>
-                        <select name="items">
+                        <select name="items" id="youritem">
                             <option value="" disabled selected>Select an item</option>
                             
                             {%for items in buyeritems%}
@@ -140,7 +143,7 @@
                         </div>
                     <div id="amount">
                         <label for="amount"> Amount Due: </label>
-                            <input type="number" name="amount" min=0>
+                            <input id="youramount" type="number" name="amount" min=0 step="0.01">
                     </div>
                         <button type="submit" class="button" onclick=""> SUBMIT </button>  
                     </form>
@@ -179,14 +182,17 @@
                 window.location.hash = '#openModal2';
                 $("#amount").hide();
                 $("#items").hide();
+                
             }
             $("#offertype").change(function(){
                 if(this.value == 'Exchange') {
                     $("#amount").hide();
                     $("#items").show();
+                    $("#youritem").attr("required", "true")
                 } else if(this.value == 'Purchase') {
                     $("#items").hide();
                     $("#amount").show();
+                     $("#youramount").attr("required", "true")
                 }
             });
         });

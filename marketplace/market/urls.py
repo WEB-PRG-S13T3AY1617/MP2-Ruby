@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^searchpic/$', views.searchpic, name='searchpic'),
     url(r'^(?P<user_id>[0-9]+)/user/$', views.user, name='user'),
     url(r'^(?P<post_id>[0-9]+)/itemdetail/$', views.itemdetail, name='itemdetail'),
+    url(r'^(?P<post_id>[0-9]+)/itemdetail/makeoffer$', views.makeoffer, name='makeoffer'),
     url(r'^(?P<post_tag>[-\w]+)/searchtag/$', views.searchtag, name='searchtag'),
     url(r'^(?P<post_type>[-\w]+)/searchtype/$', views.searchtype, name='searchtype'),
     url(r'^(?P<post_condition>.*)/searchcondition/$', views.searchcondition, name='searchcondition'),
@@ -23,5 +24,6 @@ urlpatterns = [
     url(r'^(?P<offer_id>[0-9]+)/user/decline$', views.decline, name='decline'),
     url(r'^(?P<offer_id>[0-9]+)/user/update$', views.update, name='update'),
     url(r'^(?P<offer_id>[0-9]+)/user/cancel$', views.cancel, name='cancel'),
+   
     
 ]

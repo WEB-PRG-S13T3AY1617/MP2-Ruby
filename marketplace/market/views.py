@@ -199,6 +199,29 @@ def itemdetail(request, post_id):
     }
     return render(request, 'market/itemdetail.html', context)
 
+def makeoffer(request, post_id):
+    postobj = get_object_or_404(Post,pk=post_id)
+    if 'userid' in request.POST:
+        buyerid = request.POST['userid']
+        buyerobj=get_object_or_404(User,pk=buyerid)
+        
+    if 'offertype' in request.POST:
+        offtype = request.POST['offertype']
+        
+    if offtype == "Purchase":
+        amt = request.POST['amount']
+        Offer.objects.create(post=postobj,user=buyerobj, offertypes=offtype,amount=float(amt) )
+        
+    if offtype == "Exchange":
+        itemid = request.POST['items']
+        xchngobj=get_object_or_404(Post,pk=itemid)
+        Offer.objects.create(post=postobj,user=buyerobj, offertypes=offtype,exchangepost=xchngobj )
+    
+        
+    prevhttp = request.META.get('HTTP_REFERER')
+    prevhttp.split("?")[0]
+    return HttpResponseRedirect(prevhttp.split("?")[0])
+
     
 def login_view(request):
     print(request.user.is_authenticated())
