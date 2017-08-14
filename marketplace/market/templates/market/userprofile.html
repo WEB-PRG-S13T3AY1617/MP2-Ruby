@@ -276,7 +276,7 @@
                         
                                     <div id="items">
                                     <label for="items">Your Items: </label>
-                                    <select id="youritem" name="youritem" >
+                                    <select id="youritem" name="item" >
                                         <option value="" disabled selected>Select an item</option>
                                         {%for item in latest_posts %} 
                                         <option value ="{{item.id}}">{{item.itemname}}</option>
