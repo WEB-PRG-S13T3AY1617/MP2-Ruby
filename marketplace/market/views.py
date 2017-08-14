@@ -99,7 +99,6 @@ def accept(request, offer_id):
     offerobj = get_object_or_404(Offer,pk=offer_id)
     postobj = get_object_or_404(Post,pk= offerobj.post.id)
     
-    user_id = offerobj.post.user.id
     ownerobj = get_object_or_404(User,pk=user_id)
     
     buyer_id = offerobj.user.id
@@ -119,12 +118,14 @@ def accept(request, offer_id):
     
     offerobj.status = 1
     offerobj.save()
-    return user(request, user_id)
+    
+    prevhttp = request.META.get('HTTP_REFERER')
+    prevhttp.split("?")[0]
+    return HttpResponseRedirect(prevhttp.split("?")[0])
     
 def decline(request, offer_id):
     print("Decline")
     offerobj = get_object_or_404(Offer,pk=offer_id)
-    user_id = offerobj.post.user.id
     if request.method == 'POST':
         reason = request.POST['reason']
         print(reason+"hello")
@@ -132,19 +133,26 @@ def decline(request, offer_id):
         offerobj.save()
     offerobj.status = 2
     offerobj.save()
-    return user(request, user_id)
+    
+    prevhttp = request.META.get('HTTP_REFERER')
+    prevhttp.split("?")[0]
+    return HttpResponseRedirect(prevhttp.split("?")[0])
 
 def update(request, offer_id):
     print("Update")
     offerobj = get_object_or_404(Offer,pk=offer_id)
-    user_id = offerobj.post.user.id
-    return user(request, user_id)
+    
+    prevhttp = request.META.get('HTTP_REFERER')
+    prevhttp.split("?")[0]
+    return HttpResponseRedirect(prevhttp.split("?")[0])
 
 def cancel(request, offer_id):
     print("Cancel")
     offerobj = get_object_or_404(Offer,pk=offer_id)
-    user_id = offerobj.post.user.id
-    return user(request, user_id)
+    #offerobj.delete()
+    prevhttp = request.META.get('HTTP_REFERER')
+    prevhttp.split("?")[0]
+    return HttpResponseRedirect(prevhttp.split("?")[0])
     
 def postanitem(request):
     if request.user.is_authenticated():
