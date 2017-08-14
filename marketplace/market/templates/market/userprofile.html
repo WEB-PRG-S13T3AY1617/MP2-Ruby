@@ -146,6 +146,7 @@
                     <div id="myoffersection">
                         <div class =  offerinfo>
                                 <div class = offer><span>MY OFFERS</span></div>
+                            
                             <div class = list >
                             {% for offer in list_offer %}   
                                 
@@ -263,7 +264,7 @@
                     <div id = "confirmU">
                         <div id ="confirmnameU">Confirmation</div>
                             <div id ="btnD">
-                                <form action="{% url 'market:update' offertoobj.id user.id %}" method="post">
+                                <form action="{% url 'market:update' offertoobj.id %}" method="post">
                                     {% csrf_token %}
                                     <div>
                                         <label for="offertype">Type of Offer: </label>
