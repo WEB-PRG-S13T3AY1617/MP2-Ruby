@@ -142,9 +142,9 @@ def postanitem(request):
         return index(request)
 
 def itemdetail(request, post_id):
-    post =get_object_or_404(Post,pk=post_id)
+    list_offer = Offer.objects.order_by('-pub_date')
+    post = get_object_or_404(Post,pk=post_id)
     user2 = get_object_or_404(User,pk=post.user.id)
-   
     form = OfferForm(request.POST or None)
     if form.is_valid():
         that = form.save(commit=False)
@@ -155,9 +155,12 @@ def itemdetail(request, post_id):
         'user2':user2,
         'post': post,
         'form': form,
+        'list_offer': list_offer,
     }
+    
     return render(request, 'market/itemdetail.html', context)
 
+    
 def login_view(request):
     print(request.user.is_authenticated())
     title = "Login"

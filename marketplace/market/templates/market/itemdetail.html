@@ -71,6 +71,7 @@
                     {% if user.is_anonymous == False %}
                     <div>
                         <a href="#openModal2"><p id="myBtn2"> Make an offer? </p></a>
+                        <a href="#openModal3"><p id="myBtn2"> View your offer. </p></a>
                     </div>
                     {% endif %}
                     {% endif %}
@@ -111,6 +112,29 @@
                 </div>
               
 
+            </div>
+            
+            <div id ="openModal3" class = "modalDialog">
+                <div>
+                    <a href="#x" title="Close" class="x"><span class="close2">&times;</span></a>
+                    <form action ="">
+                         <div id = detailoff>
+                            {% for offer in list_offer %}  
+                            {% if offer.user.id == user.id and offer.post.id == post.id%}
+                             <div class = offername>Offer name:{{offer.post.itemname}}</div>
+                                <div class = offertype>Offer Type: For {{offer.offertypes}}</div>
+                                    {% if offer.offertypes == "Purchase" %}
+                                        <div class = amount>Amount: P{{offer.amount}}</div>
+                                    
+                                    {% elif offer.offertypes == "Exchange" %}
+                                        <div class = amount>Exchange Post: {{offer.exchangepost}}</div>
+                                    {% endif%}
+                            <input type="submit" class="button" value = "Update"/>
+                            {% endif%}
+                            {%endfor%}
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </body>
