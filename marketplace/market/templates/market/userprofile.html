@@ -224,17 +224,17 @@
                     </div>
                          
                     
-                    </div>
+                    
                     {%endif%}
                 </div>  
                    
             </div>
             <div id="openModal2" class="modalDialog">
                 <div>
-                    <a href="#x1" title="Close" id="x1"><span onclick="closeModal();" class="close2">&times;</span></a>
+                    <a href="#x" title="Close" id="x"><span onclick="closeModal();" class="close2">&times;</span></a>
                     {%if offertoobj != None %}
                      <div id = detailoff1>
-                         <div class = "offername1">{{offertoobj.post.itemname}}</div>
+                         <div class = "offername">{{offertoobj.post.itemname}}</div>
                          <img src={{offertoobj.post.tb_img.url}} alt="no photo avail" width="60" height="60"  />
                          {%if offertoobj.offertypes == "Purchase"%}
                          <div class = offertype>Offertype: For {{offertoobj.offertypes}}</div>
@@ -249,16 +249,49 @@
                          <div class = date>Date offered: {{offertoobj.pub_date}}
                          </div>
                          <div id="btnbox2">
-                             <div id="btna"class="btnacc" name="accept" onclick="openbtnboxA();">Accept</div>
+                             <div id="btna"class="btnupd" name="Update" onclick="openbtnboxU();">Update</div>
                              <div class="spacer"></div>
                              
-                             <div id="btnd"class="btndec" name="decline" onclick="openbtnboxD();">Decline</div>
+                             <div id="btnd"class="btncncl" name="Cancel" onclick="openbtnboxC();">Cancel</div>
                              <div class="spacer"></div>
 
                          </div>
                     </div>
+                    <div id = "confirmU">
+                        <div id ="confirmnameU">Confirmation</div>
+                            <div id ="btnD">
+                                <form action="{% url 'market:update' offertoobj.id %}" method="post">
+                                    {% csrf_token %}
+                                    <div id = "btn">
+                                        <button  class="btnacc"  name="accept" type="submit" >Yes</button>
+                                       
+                                       <div class="btndec" name="decline" onclick="closeModal();">No</div>
+                                        
+                                    </div>
+
+                                </form>
+                             </div>
+                         
+                    </div>
+                    <div id = "confirmC">
+                        <div id ="confirmnameC">Confirmation</div>
+                            <div id ="btnD">
+                                <form action="{% url 'market:cancel' offertoobj.id %}" method="post">
+                                    {% csrf_token %}
+                                    <div id = "btn">
+                                        <button  class="btnacc"  name="accept" type="submit" >Yes</button>
+                                       
+                                       <div class="btndec" name="decline" onclick="closeModal();">No</div>
+                                        
+                                    </div>
+
+                                </form>
+                             </div>
+                         
+                    </div>
                     
                     {%endif%}
+                    
                     
                 </div>
             </div>
@@ -278,8 +311,8 @@
                  if(window.location.href.indexOf("offertoid") != -1) 
                 {
                    window.location.hash = '#openModal2';
-                   $("#confirmA").css({"visibility": "hidden"});
-                    $("#confirmD").css({"visibility": "hidden"});
+                   $("#confirmU").css({"visibility": "hidden"});
+                    $("#confirmC").css({"visibility": "hidden"});
                 
                   //  $("#detailoff").css({"visibility": "hidden"});
                 }
@@ -305,6 +338,22 @@
                  $("#confirmA, #x").css({"visibility": "hidden"});
                  $("#confirmnameD").html("<p>Confirmation: To Decline</p>");
                  $("#detailoff").css({"visibility": "hidden"});
+             }
+              function openbtnboxU()
+             {
+                 
+                 $("#confirmU").css({"visibility": "visible"});
+                 $("#confirmC, #x").css({"visibility": "hidden"});
+                 $("#confirmnameU").html("<p>Confirmation: To Update</p>");
+                 $("#detailoff1").css({"visibility": "hidden"});
+             }
+              function openbtnboxC()
+             {
+                 
+                 $("#confirmC").css({"visibility": "visible"});
+                 $("#confirmU, #x").css({"visibility": "hidden"});
+                 $("#confirmnameC").html("<p>Confirmation: To Cancel</p>");
+                 $("#detailoff1").css({"visibility": "hidden"});
              }
         </script>
 	</body>

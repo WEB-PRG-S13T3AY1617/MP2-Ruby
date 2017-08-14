@@ -804,7 +804,34 @@ a:hover {
     box-shadow: 1px 0px 17px 5px rgba(0,0,0,0.39);
  
 }
-.update
+.btnupd
 {
+    background-color: slategrey; 
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-decoration-break: 3;
+    border-radius: 3px;
+    margin-right: 1em;
     
+}
+.btncncl
+{
+     background-color: slategrey; 
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-decoration-break: 3;
+    border-radius: 3px;
+    margin-left: 3em;
+}
+.btnupd:hover, .btncncl:hover
+{
+        cursor: pointer;
 }

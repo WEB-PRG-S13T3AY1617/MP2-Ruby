@@ -130,7 +130,18 @@ def decline(request, offer_id):
     offerobj.status = 2
     offerobj.save()
     return user(request, user_id)
-    
+
+def update(request, offer_id):
+    print("Update")
+    offerobj = get_object_or_404(Offer,pk=offer_id)
+    user_id = offerobj.post.user.id
+    return user(request, user_id)
+
+def cancel(request, offer_id):
+    print("Cancel")
+    offerobj = get_object_or_404(Offer,pk=offer_id)
+    user_id = offerobj.post.user.id
+    return user(request, user_id)
     
 def postanitem(request):
     if request.user.is_authenticated():
