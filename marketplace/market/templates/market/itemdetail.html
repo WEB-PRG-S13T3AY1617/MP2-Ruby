@@ -813,7 +813,7 @@ select {
                     {% if user.is_anonymous == False %}
                     <div>
                         {% for offer in list_offer %}  
-                            {% if offer.user.id == user.id and offer.post.id == post.id%} 
+                            {% if offer.user.id == user.id and offer.post.id == post.id  and offer.post.user.id != offer.user.id%} 
                             <a href="?offertoid={{offer.id}}&userid={{user.id}}"><p id="myBtn2" class="btnoffer"> View your offer.</p></a>
                           {%endif%} 
                         {%endfor%}   

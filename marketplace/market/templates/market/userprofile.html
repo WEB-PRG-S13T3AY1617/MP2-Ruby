@@ -1036,7 +1036,7 @@ a:hover {
                             <div class = list >
                             {% for offer in list_offer %}   
                                 
-                                {%if offer.status == 0 and offer.user.id == user2.id %}
+                                {%if offer.status == 0 and offer.user.id == user2.id and offer.post.user.id != offer.user.id %}
                                 <a href="?offertoid={{offer.id}}"><div id="obj" name="offerto"><p class="offertitle">{{offer.post.itemname}} </p> <p class="offered"> offered to  {{offer.post.user.username}} </p></div></a>
                                 {%endif%}
                                 
