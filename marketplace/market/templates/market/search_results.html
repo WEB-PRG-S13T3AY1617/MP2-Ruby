@@ -16,6 +16,9 @@
     </script>
     
     <style>
+        .s:hover, .t:hover, #u:hover, .uname {
+            color: dodgerblue;
+        }
         
         body {
             margin: 0;
@@ -256,6 +259,17 @@
     padding:1mm;
   
 }
+        
+        .itemname {
+            font-size: 1.1em;
+            margin-top: -1em;
+            color: black;
+            font-style: oblique;
+        }
+        
+        .tag {
+            font-weight: lighter;
+        }
     </style>
     <body>
         <div class = "homepage">
@@ -263,18 +277,18 @@
                 <div class = "bar">
                     <div class = "item-container">
                         {% if user.is_authenticated == True %}
-                         <div class = "bar-item">Hi, <a href="{% url 'market:user' user.id %}"> {{ user.username }} </a> !</div>
+                         <div class = "bar-item">Hi, <a href="{% url 'market:user' user.id %}"><span class="uname"> {{ user.username }} </span> </a> !</div>
                         {% else %}
-                        <a href="/register/"><div class = "bar-item">Register</div></a>
+                        <a href="/register/"><div class = "bar-item" id="u">Register</div></a>
                         {% endif %}
                         
                         {% if user.is_authenticated == True %}
                         <a href="/logout/">
-                            <div class = "bar-item">Logout</div>
+                            <div class = "bar-item" id="u">Logout</div>
                             </a>
                         {% else %}
                         <a href="/login/">
-                            <div class = "bar-item">Login</div>
+                            <div class = "bar-item" id="u">Login</div>
                         </a>
                          {% endif %}
                     </div>
@@ -309,7 +323,7 @@
                         <a href = "{% url 'market:itemdetail' post.id %}"><img src= "{{ post.tb_img.url }}" id ="thumb"  alt="no photo loaded yet"></a>
                         <div class = info>
                         <div class = itemname>{{post.itemname}}</div>
-                        <div class = tag>{{post.tag}}</div>
+                        <div class = tag>#{{post.tag}}</div>
                         <a href = "{% url 'market:user' post.user.id %}"><div class = uname>{{post.user.username}}</div></a>
                         </div>
                     </div>

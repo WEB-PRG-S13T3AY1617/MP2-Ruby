@@ -1,7 +1,7 @@
 {% load static %}
 <html>
     <head><title>View Item</title>
-        <link rel="stylesheet" type="text/css" href="{%static 'market/itemstyle.css' %}">
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
     </head>
     
@@ -14,21 +14,755 @@
         });
     
 </script>
+    <style>
+        body {
+    font-family: Helvetica;
+    margin: 0;
+    background-image:url("photograph.jpg"); 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
    
+}
+
+.container
+{    
+            margin: 15em;
+            margin-top: 1em;
+            display: flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+            width:70%;
+            height:50%;
+}
+
+/*header styling*/
+        a:link {
+            text-decoration: none;
+        }
+        
+        a:hover {
+            cursor: pointer;
+        }
+        
+        .left-container {
+            width: 35%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .middle-container {
+            width: 35%;
+        }
+        
+        .right-container {
+            width: 30%;
+            display: flex;
+            flex-direction: row;
+            align-content:flex-end;
+        }
+        
+        .rcc {
+            position: relative;
+            bottom: 3.2em;
+            right: 0.8em;
+        }
+        
+        .bar-item, .home, .ppost {
+            font-family: "Open Sans";
+            font-size: 15px;
+            font-style:normal;
+            font-variant:normal;
+            font-weight:500;
+            line-height: 26.4px;
+            color: darkgray;
+        }
+        
+        .bar-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .bar {
+            height: 1.5em;
+            display: flex;
+            flex-direction: row;
+            justify-content:flex-end;
+            width: 95%;
+            border-bottom-style: ridge;
+            border-bottom-color: #d3d3d3;
+            border-bottom-width: thin;
+        }
+        
+        .item-container {
+            width: 20%;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .a-container {
+           
+            display: flex;
+            flex-direction: row;
+            width: 95%;
+            height: 5em;
+        }
+        
+        .b-container {
+            
+            width: 25%;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .menu {
+          
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 95%;
+            height: 2em;
+            border-bottom-style: ridge;
+            border-bottom-color: #d3d3d3;
+            border-bottom-width: thin;
+            border-top-style: ridge;
+            border-top-color: #d3d3d3;
+            border-top-width: thin;
+            
+        }
+        
+        .home, .ppost {
+            
+            vertical-align: baseline;
+            line-height: 2.1em;
+            border-right-style: ridge;
+            border-right-color: #d3d3d3;
+            border-right-width: thin;
+            
+        }
+        
+        .t {
+            margin-right: 1.8em;
+        }
+        
+        .s {
+            margin-right: 3.7em;
+        }
+
+input[type="text"] {
+    width: 90%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+        
+        .search, input[name="tag"] {
+            width: 65%;
+            height: 55%;
+            padding: 12px 20px 12px 40px;
+            margin-top: 1.4em;
+            margin-left: 11.3em;
+            display: inline-flex;
+            box-sizing: border-box;
+            background-image: url('magnifyglass.png');
+            background-position: 10px 8px; 
+            background-size: 25px;
+            background-repeat: no-repeat;
+            border-style:inset;
+            border-radius: 0px;
+        }
+
+
+#page
+{
+    display: flex;
+    flex-direction: column;
+    background-size: auto;
+}
+
+.album {
+    
+   justify-content: center; 
+    color: white;
+    display: flex;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.album-name {
+    width: 700px;
+    height: 50  px;
+    text-align: center;
+    font-size:36;
+    font-weight: bolder;
+    font-family:impact; 
+    color: darkgoldenrod;
+    
+   
+}
+.title_album 
+{	
+    font-size: 30;
+    width: inherit;
+    color:C56000;
+    font-weight: bolder;
+    font-variant-caps:all-petite-caps;
+    text-align: center;
+    font-family:arial black;
+    text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+    
+}
+
+
+
+
+.header
+{
+    top:0px;
+    right: 0px;
+    height: 50px;
+    width:100%;
+    background-color:white;
+    box-shadow: 1px 9px 5px -8px rgba(0,0,0,1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+
+/*Resize the wrap to see the search bar change!*/
+
+
+h2 {
+    text-align: center;
+    
+    color: dimgrey;
+}
+
+#main-container {
+    margin:1em;
+    display: flex;
+    flex-direction: row;
+    background-color: ghostwhite;
+    height:80%;
+    
+   
+}
+
+#photobox {
+   
+   
+    padding: 2em;
+   
+    
+}
+
+.detail-info
+{
+    display: flex;
+    flex-direction: column;
+   
+    width: 80%;
+    margin-top: 1em;
+    padding: 2em;
+    
+}
+.detail-info div
+{
+    padding: 1em;
+}
+
+#zoomed-photo {
+    display: none;
+    position: fixed;
+    padding-top: 150px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+}
+#photo
+{
+   width: inherit;
+    height: inherit;
+}
+
+/* Modal Content */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 29%;
+    max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+.slide-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content:center ;
+    
+}
+        
+        .itemttl {
+            font-size: 1.1em;
+            margin-top: -1em;
+            color: black;
+            font-style: oblique;
+        }
+        
+        .iteminner {
+            font-weight: lighter;
+            color: dodgerblue;
+        }
+.mySlides {
+    margin-top: -5em;
+    width:500px;
+    height:500px;
+    
+}
+        
+        .btnoffer:hover {
+            color:dodgerblue;
+        }
+        
+        .btnoffer {
+            color: slategrey;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+.cursor {
+    cursor: pointer;
+}
+
+/* Next and previous button */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.prev
+{
+    left:-4em;
+    top:10em;
+    
+}
+/* "next button" at right */
+.next {
+    right: -4em;
+    top:10em;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#thumb {
+    margin-bottom: -4px;
+    padding: 10px;
+    width: 150px;
+    height: 150px;
+    box-shadow: -1px 3px 53px -5px rgba(0,0,0,0.75);
+}
+
+.pics {
+    height: 170;
+   
+}
+
+.hover-shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+.offerbtn:hover {
+            cursor: pointer;
+        }
+
+/* TSUM TSUM */
+
+.modal2 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content2 {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close2 {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close2:hover,
+.close2:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header2 {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body2 {padding: 2px 16px;}
+
+.modal-footer2 {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modalDialog {
+        position: fixed;
+        font-family: Arial, Helvetica, sans-serif;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0,0,0,0.8);
+        z-index: 99999;
+        opacity:0;
+        -webkit-transition: opacity 400ms ease-in;
+        -moz-transition: opacity 400ms ease-in;
+        transition: opacity 400ms ease-in;
+        pointer-events: none;
+    }
+
+        .modalDialog:target {
+            opacity:1;
+            pointer-events: auto;
+        }
+
+        .modalDialog > div {
+            width: 400px;
+            position: relative;
+            margin: 10% auto;
+            padding: 5px 20px 13px 20px;
+            border-radius: 10px;
+            background: white;
+        }
+
+        .x {
+            background: #606061;
+            color: #FFFFFF;
+            line-height: 25px;
+            position: absolute;
+            right: -12px;
+            text-align: center;
+            top: 0px;
+            width: 19px;
+            text-decoration: none;
+            font-weight: bold;
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 12px;
+            border-radius: 12px;
+            -moz-box-shadow: 1px 1px 3px #000;
+            -webkit-box-shadow: 1px 1px 3px #000;
+            box-shadow: 1px 1px 3px #000;
+        }
+
+.button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    margin: 2em 2em;
+    width: 89%;
+    border: none;
+    cursor: pointer;
+}
+
+select {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+
+
+    
+
+#detailoff, #detailoff1
+{
+     width: 90%;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    
+}
+        
+        .uname {
+            color:dodgerblue;
+        }
+        .t {
+            margin-right: 1.8em;
+        }
+        
+        .s {
+            margin-right: 3.7em;
+        }
+        
+        .s:hover, .t:hover, #u:hover {
+            color: dodgerblue;
+        }
+
+
+/*
+.offername
+{
+    font-family: Palatino;
+    font-size: 25;
+    font-weight: bolder;
+}
+*/
+#detailoff img, #detailoff1 img
+{
+    align-self: center;
+}
+#detailoff div, #detailoff1 div
+{
+    padding: 1em;
+}
+
+#confirmnameU, #confirmnameC
+{
+    margin-top: -5em;
+    font-family: Palatino;
+    font-size: 20;
+    font-weight: bolder;
+}
+
+#confirmC
+{
+    position: absolute;
+    top:6em;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#confirmU
+{
+    position: absolute;
+    top:6em;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+}
+   
+.btnupd
+{
+    background-color: slategrey; 
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-decoration-break: 3;
+    border-radius: 3px;
+    margin-right: 1em;
+    
+}
+.btncncl
+{
+     background-color: slategrey; 
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-decoration-break: 3;
+    border-radius: 3px;
+    margin-left: 3em;
+}
+.btnupd:hover, .btncncl:hover
+{
+        cursor: pointer;
+}
+
+#btnbox2
+{
+    padding-top: 1em;
+    margin-left: 2em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnacc
+{
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-decoration-break: 3;
+    border-radius: 3px;
+    margin-right: 1em;
+}
+.btndec
+{
+    background-color: #EB1818; /* Green */
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-decoration-break: 3;
+    border-radius: 3px;
+    margin-left: 3em;
+}
+.btndec:hover, .btnacc:hover
+{
+    
+    cursor: pointer;
+}
+
+#btnD
+{
+     margin-right: 5em;
+}
+
+#btn
+{
+    padding-top: 2em;
+ 
+}
+.pp {
+    margin-top: -1em;
+        margin-left: 1.5em;
+        font-family: "Open Sans";
+        font-size: 20px;
+        font-style:normal;
+        font-weight: bold;
+        font-variant:normal;
+    color: white;
+            
+}
+        
+        .aa {
+            margin-left: 5em;
+            color: white;
+        }
+        
+        .header3{
+            margin-left: 7em;
+            padding: 10px 16px;
+/*    background-color: #5cb85c;*/
+    color: black;
+        }
+        
+        .title3 {
+            margin-left: 0.3em;
+            font-family: Palatino;
+            font-size: 1.7em;
+            font-weight: bold;
+        }
+    
+
+    
+    
+    </style>
     <body>
         <div id = page>
            <div class = "bar-container">
                 <div class = "bar">
                     <div class = "item-container">
                         {% if user.is_authenticated == True %}
-                        <div class = "bar-item">Hi, <a href="{% url 'market:user' user.id %}"> {{ user.username }} </a> !</div>
+                        <div class = "bar-item">Hi, <a href="{% url 'market:user' user.id %}"><span class="uname"> {{ user.username }}</span> </a> !</div>
                         {% else %}
                         <a href="/register/"><div class = "bar-item">Register</div></a>
                         {% endif %}
                         
                         {% if user.is_authenticated == True %}
                         <a href="/logout/">
-                            <div class = "bar-item">Logout</div>
+                            <div class = "bar-item" id="u">Logout</div>
                             </a>
                         {% else %}
                         <a href="/login/">
@@ -70,7 +804,7 @@
                     {% if user.username != post.user.username %}
                     {% if user.is_anonymous == False %}
                     <div>
-                        <a href="?userid={{user.id}}"><p id="myBtn2"> Make an offer? </p></a>
+                        <a href="?userid={{user.id}}"><p id="myBtn2" class="btnoffer"> Make an offer? </p></a>
                         
                     </div>
                     {% endif %}
@@ -80,25 +814,24 @@
                     <div>
                         {% for offer in list_offer %}  
                             {% if offer.user.id == user.id and offer.post.id == post.id%} 
-                            <a href="?offertoid={{offer.id}}&userid={{user.id}}"><p id="myBtn2 "> View your offer. </p></a>
-                       {{ "<!--" }}
+                            <a href="?offertoid={{offer.id}}&userid={{user.id}}"><p id="myBtn2" class="btnoffer"> View your offer. </p></a>
+                       
                           {%endif%} 
-                        {%endfor%}     
-                        {{ "-->" }}
+                        {%endfor%}   
                     </div>
                     {% endif %}
                 </div>
                 
                 <div class = "detail-info">
-                    <div>Itemname: {{post.itemname}}</div>
-                    <div>Quantity x {{post.quantity}}</div>
-                    <div>Condition: <a href = "{% url 'market:searchcondition' post.condition %}"> {{post.me}}</a></div>
-                    <div>Type: <a href = "{% url 'market:searchtype' post.posttypes %}">{{post.posttypes}}</a></div>
+                    <div><span class = "itemttl">Itemname:</span><span class="iteminner"> {{post.itemname}}</span></div>
+                    <div><span class = "itemttl">Quantity </span><span class="iteminner"> x {{post.quantity}} </span></div>
+                    <div><span class = "itemttl">Condition: </span><a href = "{% url 'market:searchcondition' post.condition %}"> <span class="iteminner">{{post.me}} </span></a></div>
+                    <div><span class = "itemttl">Type:</span> <a href = "{% url 'market:searchtype' post.posttypes %}"><span class="iteminner">{{post.posttypes}} </span></a></div>
                     {%if post.posttypes == "Academic"%}
-                    <div>Course Name: <a href = "{% url 'market:searchcourse' post.coursename %}">{{post.coursename}}</a></div>
+                    <div><span class = "itemttl">Course Name: </span><a href = "{% url 'market:searchcourse' post.coursename %}"><span class="iteminner">{{post.coursename}}</span></a></div>
                     {%endif%}
-                    <div>Tag:<a href = "{% url 'market:searchtag' post.tag %}"> #{{post.tag}}</a></div>
-                   <div> posted by <a href = "{% url 'market:user' post.user.id %}">{{post.user.username}}</a></div>
+                    <div><span class = "itemttl">Tag:</span><a href = "{% url 'market:searchtag' post.tag %}"> <span class="iteminner">#{{post.tag}}</span></a></div>
+                   <div><span class = "itemttl"> posted by</span> <a href = "{% url 'market:user' post.user.id %}"><span class="iteminner">{{post.user.username}}</span></a></div>
                 </div>
                     
                 
@@ -115,16 +848,16 @@
             
             <!-- The Modal -->
             <div id="openModal2" class="modalDialog">
-                <div>
+                <div style="background-color:black;">
                     <a href="#x" title="Close" class="x"><span class="close2">&times;</span></a>
-                    <div>{{post.itemname}}</div>
+                    <div class="title3" style="color:white; margin-top: 1em; margin-bottom:1em;">{{post.itemname}}</div>
                     <form action="{% url 'market:makeoffer' post.id %}" method="POST" >
                         {% csrf_token %}
                         
                         <div>
                         <input type="text" name="userid" value="{{user.id}}" style = "display: none"/>
-                        <label for="offertype">Type of Offer: </label>
-                        <select name="offertype" id="offertype" required>
+                        <label for="offertype" class="pp" style="color:white;">Type of Offer: </label>
+                        <select name="offertype" id="offertype" required style="margin-bottom:2.5em; margin-left: 1.7em;">
                         <option value="" disabled selected>Select your option</option>
                         <option value = "Purchase">Purchase</option>
                         <option value = "Exchange">Exchange</option>
@@ -132,8 +865,8 @@
                         </div>
                         
                         <div id="items">
-                        <label for="items">Your Items: </label>
-                        <select name="items" id="youritem">
+                        <label for="items" class="pp" style="color:white;">Your Items: </label>
+                        <select name="items" id="youritem" style="margin-left: 1.7em;">
                             <option value="" disabled selected>Select an item</option>
                             
                             {%for items in buyeritems%}
@@ -142,7 +875,7 @@
                         </select>
                         </div>
                     <div id="amount">
-                        <label for="amount"> Amount Due: </label>
+                        <label for="amount" class="pp" style="color:white;"> Amount Due: </label>
                             <input id="youramount" type="number" name="amount" min=0 step="0.01">
                     </div>
                         <button type="submit" class="button" onclick=""> SUBMIT </button>  
@@ -151,23 +884,25 @@
             </div>
             
             
-<div id ="openModal3" class = "modalDialog">
-                                        
-                <div>
+            <div id ="openModal3" class = "modalDialog">
+                                       
+                <div style="background-color: black; height: 32em;">
                     <a href="#x" title="Close" class="x"><span class="close2">&times;</span></a>
+                    <h4 class="title3" style="color:white; margin-top: 1em; margin-bottom:1em;">My Offer</h4>
+                    
                     {%if offertoobj != None %}
-                         <div id = detailoff>
-                             <div class = offername>Offer name: {{offertoobj.post.itemname}}</div>
-                                <div class = offertype>Offer Type: For {{offertoobj.offertypes}}</div>
+                    <div id = detailoff>
+                        <div class = offername><p class="pp">Offer name:</p><span class="aa">{{offertoobj.post.itemname}}</span> </div>
+                        <div class = offertype><p class="pp">Offer Type:</p> <span class="aa">For {{offertoobj.offertypes}}</span> </div>
                                     {% if offertoobj.offertypes == "Purchase" %}
-                                        <div class = amount>Amount: P{{offertoobj.amount}}</div>
+                        <div class = amount><p class="pp">Amount:</p> <span class="aa">P{{offertoobj.amount}}</span> </div>
                                     
                                     {% elif offertoobj.offertypes == "Exchange" %}
-                                        <img  src= "{{ offertoobj.exchangepost.tb_img.url }}" id="thumb" alt="No photo loaded yet">
-                                        <div class = amount>Exchange Post: {{offertoobj.exchangepost}}</div>
+                        
+                        <div class = amount><p class="pp">Exchange Post:</p> <span class="aa">{{offertoobj.exchangepost}}</span> </div>
                                     {% endif%}
                         <div id="btnbox2">
-                             <div id="btna"class="btnupd" name="Update" onclick="openbtnboxU();">Update</div>
+                            <div id="btna"class="btnupd" name="Update" onclick="openbtnboxU();">Update</div>
                              <div class="spacer"></div>
                              
                              <div id="btnd"class="btncncl" name="Cancel" onclick="openbtnboxC();">Cancel</div>
@@ -175,13 +910,13 @@
                          </div>
                            </div>  
                     <div id = "confirmU">
-                        <div id ="confirmnameU">Confirmation</div>
+                        <div id ="confirmnameU" style="margin-top: -1.5em; margin-left: 0.5em; color:white;">Confirmation</div>
                             <div id ="btnD">
                                 <form action="{% url 'market:update' offertoobj.id %}" method="post">
                                     {% csrf_token %}
                                     <div>
-                                        <label for="offertype1">Type of Offer: </label>
-                                        <select name="offertype1" id="offertype1">
+                                        <label for="offertype1"  class="pp" style="color:white;">Type of Offer: </label>
+                                        <select name="offertype1" id="offertype1" style="margin-bottom:2.5em; margin-left: 1.7em;">
                                         <option value="" disabled selected>Select your option</option>
                                         <option value = "Purchase">Purchase</option>
                                         <option value = "Exchange">Exchange</option>
@@ -189,8 +924,8 @@
                                     </div>
                         
                                     <div id="items1">
-                                    <label for="items1">Your Items: </label>
-                                    <select id="youritem" name="item">
+                                    <label for="items1" class="pp" style="color:white;">Your Items: </label>
+                                    <select id="youritem" name="item" style="margin-bottom:2.5em; margin-left: 1.7em;">
                                         <option value="null" disabled selected>Select an item</option>
 
                                         {%for items1 in buyeritems%}
@@ -201,13 +936,13 @@
                                     </select>
                                     </div>
                                     <div id="amount1">
-                                        <label for="amount1"> Amount Due: </label>
+                                        <label for="amount1" class="pp" style="color:white;"> Amount Due: </label>
                                             <input type="number" name="amount" min=0>
                                     </div>
                                     
                                     
                                     <div id = "btn">
-                                        <button  class="btnacc"  name="accept" type="submit" >Yes</button>
+                                        <button  class="btnacc"  name="accept" type="submit" style="margin-bottom:2.5em; margin-left: 4em;" >Yes</button>
                                        
                                        <div class="btndec" name="decline" onclick="closeModal();">No</div>
                                         
@@ -219,7 +954,7 @@
                     </div>
 
                     <div id = "confirmC">
-                        <div id ="confirmnameC">Confirmation</div>
+                        <div id ="confirmnameC" style="margin-top: -1.5em; margin-left: 0.5em; color:white;">Confirmation</div>
                             <div id ="btnD">
                                 <form action="{% url 'market:cancel' offertoobj.id %}" method="post">
                                     {% csrf_token %}
@@ -244,7 +979,7 @@
                     
                 </div>
             </div>
-        </div>
+            </div>
     </body>
     <script>
         $(document).ready(function () {

@@ -313,3 +313,14 @@ h2 {
     padding:1mm;
   
 }
+
+ .itemname {
+            font-size: 1.1em;
+            margin-top: -1em;
+            color: black;
+            font-style: oblique;
+        }
+        
+        .thetag {
+            font-weight: lighter;
+        }

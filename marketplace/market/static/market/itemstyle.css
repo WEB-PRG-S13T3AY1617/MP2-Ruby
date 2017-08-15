@@ -657,5 +657,14 @@ select {
 {
     padding-top: 2em;
  
-
+}
+p {
+        margin-left: -1em;
+        font-family: "Open Sans";
+        font-size: 20px;
+        font-style:normal;
+        font-weight: bold;
+        font-variant:normal;
+            
+}
     

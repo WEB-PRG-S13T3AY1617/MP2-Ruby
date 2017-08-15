@@ -207,17 +207,11 @@
             <div class = "bar-container">
                 <div class = "bar">
                     <div class = "item-container">
-                        {% if user.is_authenticated == True %}
-                        <div class = "bar-item">Hi, <a href="{% url 'market:user' user.id %}"> {{ user.username }} </a> !</div>
-                        {% else %}
-                        <a href="/register/"><div class = "bar-item">Register</div></a>
-                        {% endif %}
                         
-                        {% if user.is_authenticated == True %}
-                        <a href="/logout/">
-                            <div class = "bar-item">Logout</div>
-                            </a>
-                         {% endif %}
+                        <a href="/register/"><div class = "bar-item">Register</div></a>
+                        <a href="/login/"><div class = "bar-item">Login</div></a>
+                        
+                        
                     </div>
                 </div>
             </div>

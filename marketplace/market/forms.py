@@ -69,7 +69,7 @@ class PostForm(forms.ModelForm):
             'itemname': forms.TextInput(attrs={'required': True, 'placeholder':'Enter item name'}),
             'condition': forms.TextInput(attrs={'required': True, 'placeholder': 'Enter condition of item'}),
             'tag': forms.TextInput(attrs={'required': True, 'placeholder': 'Enter tag for item'}),
-            #'posttypes': forms.TextInput(attrs={'required': True}),
+            'quantity': forms.NumberInput(attrs={'required': True, 'min':'0'}),
             'coursename': forms.TextInput(attrs={'required': False, 'placeholder': 'Enter coursename'}),
             
         }

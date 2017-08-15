@@ -1,7 +1,7 @@
 {% load static %}
 <html>
 	<head><title>User Profile</title>
-		<link rel="stylesheet" type="text/css" href="{%static 'market/userstyle.css' %}"/>
+		
       
 	</head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
@@ -13,21 +13,896 @@
         });
     
 </script>
+    <style>
+        body {
+    font-family: Helvetica;
+    overflow-x: hidden;
+    margin: 0;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+}
+
+.container
+{    
+            margin: 15em;
+            margin-top: 1em;
+            display: flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+            width:70%;
+            height:50%;
+}
+
+/*header styling*/
+        a:link {
+            text-decoration: none;
+        }
+        
+        a:hover {
+            cursor: pointer;
+        }
+        
+        .left-container {
+            width: 35%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .middle-container {
+            width: 35%;
+        }
+        
+        .right-container {
+            width: 30%;
+            display: flex;
+            flex-direction: row;
+            align-content:flex-end;
+        }
+        
+        .rcc {
+            position: relative;
+            bottom: 3.2em;
+            right: 0.8em;
+        }
+        
+        .bar-item, .home, .ppost {
+            font-family: "Open Sans";
+            font-size: 15px;
+            font-style:normal;
+            font-variant:normal;
+            font-weight:500;
+            line-height: 26.4px;
+            color: darkgray;
+        }
+        
+        .bar-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .bar {
+            height: 1.5em;
+            display: flex;
+            flex-direction: row;
+            justify-content:flex-end;
+            width: 95%;
+            border-bottom-style: ridge;
+            border-bottom-color: #d3d3d3;
+            border-bottom-width: thin;
+        }
+        
+        .item-container {
+            width: 20%;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .a-container {
+           
+            display: flex;
+            flex-direction: row;
+            width: 95%;
+            height: 5em;
+        }
+        
+        .b-container {
+            
+            width: 25%;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .menu {
+          
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 95%;
+            height: 2em;
+            border-bottom-style: ridge;
+            border-bottom-color: #d3d3d3;
+            border-bottom-width: thin;
+            border-top-style: ridge;
+            border-top-color: #d3d3d3;
+            border-top-width: thin;
+            
+        }
+        
+        .home, .ppost {
+            
+            vertical-align: baseline;
+            line-height: 2.1em;
+            border-right-style: ridge;
+            border-right-color: #d3d3d3;
+            border-right-width: thin;
+            
+        }
+        
+        .t {
+            margin-right: 1.8em;
+        }
+        
+        .s {
+            margin-right: 3.7em;
+        }
+        
+        .search {
+            width: 65%;
+            height: 55%;
+            padding: 12px 20px 12px 40px;
+            margin-top: 1.4em;
+            margin-left: 11.3em;
+            display: inline-flex;
+            box-sizing: border-box;
+            background-image: url('magnifyglass.png');
+            background-position: 10px 8px; 
+            background-size: 25px;
+            background-repeat: no-repeat;
+            border-style:inset;
+        }
+
+
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    text-decoration-color: darkgrey;
+    cursor: pointer;
     
+    
+}
+
+.header 
+{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    top:0px;
+    right: 0px;
+    height: 50px;
+    width:100%;
+    background-color:white;
+    box-shadow: 1px 9px 5px -8px rgba(0,0,0,1);
+ 
+    justify-content: space-around;
+}
+
+.account
+{
+    display: flex;
+    margin-right: -13em;
+    padding:1em;
+    flex-direction: row;
+    justify-content: space-between;
+
+   
+}
+
+h1 {
+    font-size: 25px;
+    color: dimgrey;
+    font-family: Helvetica;
+}
+
+h2 {
+    padding-right: 3em;
+    font-size: 15px;
+    color: dimgrey;
+}
+
+#page
+{
+    display: flex;
+    flex-direction: column;
+    background-size: auto;
+}
+
+.full_container
+{
+    display: flex;
+    
+}
+    
+.mydata
+{	
+	display:flex;
+	flex-direction:row;
+    width: 100%;
+    padding:30px;
+    padding-top: 75px;
+}
+.name_container
+{
+	height: 100px;
+	width:250px;
+	background:linear-gradient(to bottom, skyblue 50%, white 50%);
+	font-family:helvetica;
+	text-align:center;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
+   
+    
+}
+.uname
+{
+    color:cornflowerblue;
+}
+#info_container
+{	
+    margin-top:20px;
+	display:flex;
+    flex-direction: column;
+    height: 100px;
+	width:300px;
+    border-radius: 5px;
+    padding:1em;
+    background-color: white;
+    
+	
+}
+#offer_container
+{
+     margin-top:20px;
+	display:flex;
+    flex-direction: column;
+    height: 300px;
+	width:250px;
+    border-radius: 5px;
+    padding:1em;
+    background:linear-gradient(to bottom, aqua 5%, white 30%);
+    box-shadow: 1px 0px 17px 5px rgba(0,0,0,0.39);
+    
+   
+}
+.offerinfo div
+{
+    display: flex;
+    flex-direction: column;
+   
+    
+}
+.offer
+{
+    margin-top: 1em;   
+    text-align: center;
+    font-size: 1.02em;
+    font-weight: bolder;
+    margin-left: -0.1em;
+}
+.list
+{
+    margin-left: 1.5em;
+   margin-top: 1em;
+   padding-top: 2em;
+    font-size: 13;
+}
+.list div
+{
+    padding: 0.5em;
+    
+}
+.list div:hover 
+{
+    padding: 0.5em;
+    cursor: pointer;
+    
+}
+
+a:hover {
+    text-decoration-line: underline;
+    text-decoration-color: black;
+}
+
+
+.listinfo 
+{
+	
+	flex-direction:column;
+	list-style-type: none;
+	text-align:left;
+	font-size:15;
+	width:20:%;
+	
+
+}
+.listinfo div
+{
+     color:darkslateblue;
+    font-family: helvetica;
+	text-align:left;
+    padding: 1em;
+}
+.add_container
+{
+	
+	flex-direction:column;
+	text-align:left;
+	font-size:15;
+    font-family: helvetica;
+	width:20:%;
+    color:darkslateblue;
+  
+}
+
+.add_container div
+{
+	padding:10px;
+    color:darkslateblue;
+    font-family: helvetica;
+	text-align:left;
+    
+}
+.company_info
+{
+	
+	flex-direction:column;
+	list-style-type: none;
+	text-align:left;
+	font-size:15;
+	width:20:%;
+    color:darkslateblue;
+    font-family: helvetica;
+	padding-top: 10px;
+
+}
+.company_info div
+{
+    color:indigo;
+    font-family: helvetica;
+	text-align:left;
+    padding-left: 10px;
+}
+
+
+
+#map
+{
+    width:20:%;
+	height:25%;
+    
+    
+}
+
+#psection
+{
+	display:flex;	
+	flex-direction:column;
+	width:33%;
+	height:200%;
+    padding-left:30px;
+    margin-top: -1em;
+    
+    
+}
+
+#post_container
+{
+	
+	font-family:helvetica;
+    display: flex;
+    height:200%;
+    flex-direction: column;
+    border-radius: 5px;
+    width: 40%;
+}
+#post_box
+{
+    display: flex;
+    flex-direction: column;
+    height:inherit;
+}
+.post 
+{
+    margin:1em;
+	padding:20px;
+    width:400px;
+    height: 200px;
+    box-shadow: 2px 8px 18px -3px rgba(0,0,0,0.22);
+    background:linear-gradient(to bottom, azure 20%, white 80%);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+      
+	
+}
+
+.post:hover {
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+#thumb {
+   margin: 1.5em;
+    padding: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+.info
+{
+    font-size: 15px;
+    font-family: helvetica;
+    padding-top: 2em;
+    display: block;
+    
+    
+}
+
+.info div
+{
+    padding:1mm;
+  
+}
+
+
+.all
+{
+    
+    padding:20px;
+    margin-left: 1em;
+    margin-right: 1em;
+    height:2%;
+    text-align: center;
+    color: cornflowerblue;
+    box-shadow: 2px 8px 18px -3px rgba(0,0,0,0.22);
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    
+    
+}
+
+p span
+{
+    
+    color: blue;
+}
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    text-decoration-color: darkgrey;
+    cursor: pointer;
+    
+    
+}
+
+#zoomed-photo {
+    display: none;
+    position: fixed;
+    padding-top: 150px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+}
+#photo
+{
+   width: inherit;
+    height: inherit;
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 29%;
+    max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+.slide-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content:center ;
+    
+}
+.mySlides {
+    margin-top: -5em;
+    width:500px;
+    height:500px;
+    
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+/* Next and previous button */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.prev
+{
+    left:-4em;
+    top:10em;
+    
+}
+/* "next button" at right */
+.next {
+    right: -4em;
+    top:10em;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.modal1 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content1 {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close2 {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close2:hover,
+.close2:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.modalDialog {
+        position: fixed;
+        font-family: Arial, Helvetica, sans-serif;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0,0,0,0.8);
+        z-index: 99999;
+        opacity:0;
+        -webkit-transition: opacity 400ms ease-in;
+        -moz-transition: opacity 400ms ease-in;
+        transition: opacity 400ms ease-in;
+        pointer-events: none;
+    }
+
+    .modalDialog:target {
+        opacity:1;
+        pointer-events: auto;
+    }
+
+    .modalDialog > div {
+        width: 400px;
+        position: relative;
+        margin: 10% auto;
+        padding: 5px 20px 13px 20px;
+        border-radius: 10px;
+        background: white;
+    }
+
+    #x,#x1 {
+        background: #606061;
+        color: #FFFFFF;
+        line-height: 25px;
+        position: absolute;
+        right: -12px;
+        text-align: center;
+        top: 0px;
+        width: 19px;
+        text-decoration: none;
+        font-weight: bold;
+        -webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        border-radius: 12px;
+        -moz-box-shadow: 1px 1px 3px #000;
+        -webkit-box-shadow: 1px 1px 3px #000;
+        box-shadow: 1px 1px 3px #000;
+    }
+#detailoff, #detailoff1
+{
+     width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+.offername
+{
+    font-family: Palatino;
+    font-size: 25;
+    font-weight: bolder;
+}
+#detailoff img, #detailoff1 img
+{
+    align-self: center;
+}
+#detailoff div, #detailoff1 div
+{
+    padding: 1em;
+}
+#btnbox
+{
+    padding-top: 1em;
+    margin-left: 4em;
+    display: flex;
+    flex-direction: column
+    
+}
+#btn
+{
+    padding-top: 2em;
+    padding-right: 5em;
+    display: flex;
+    
+}
+#btnA, #btnD
+{
+     margin-right: 5em;
+}
+#btnbox2
+{
+    padding-top: 1em;
+    margin-left: 2em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnacc
+{
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-decoration-break: 3;
+    border-radius: 3px;
+    margin-right: 1em;
+}
+.btndec
+{
+    background-color: #EB1818; /* Green */
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-decoration-break: 3;
+    border-radius: 3px;
+    margin-left: 3em;
+}
+.btndec:hover, .btnacc:hover
+{
+    
+    cursor: pointer;
+}
+#confirmA,  #confirmU
+{
+    position: absolute;
+    top:6em;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+}
+#confirmD,  #confirmC
+{
+    position: absolute;
+    top:6em;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+}
+#confirmnameA, #confirmnameD,  #confirmnameU, #confirmnameC
+{
+    margin-top: -5em;
+    font-family: Palatino;
+    font-size: 20;
+    font-weight: bolder;
+}
+#reason input
+{
+    width: 100%;
+    height: 40%;
+}
+        
+        .t {
+            margin-right: 1.8em;
+        }
+        
+        .s {
+            margin-right: 3.7em;
+        }
+        
+        .s:hover, .t:hover, #u:hover {
+            color: dodgerblue;
+        }
+
+#myoffersection
+{
+    margin-left: 2.5em;
+	display:flex;
+    flex-direction: column;
+    height: 300px;
+	width:250px;
+    border-radius: 5px;
+    padding:1em;
+    background:linear-gradient(to bottom, dodgerblue 1%, white 
+        30%);
+    box-shadow: 1px 0px 17px 5px rgba(0,0,0,0.39);
+ 
+}
+.btnupd
+{
+    background-color: slategrey; 
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-decoration-break: 3;
+    border-radius: 3px;
+    margin-right: 1em;
+    
+}
+.btncncl
+{
+     background-color: slategrey; 
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-decoration-break: 3;
+    border-radius: 3px;
+    margin-left: 3em;
+}
+
+        .offertitle, .itemtitle {
+            font-size: 1.1em;
+            margin-top: -1em;
+            color: black;
+            font-style: oblique;
+        }
+        
+        .thetag {
+            font-weight: lighter;
+        }
+        
+        .offertitle:hover{
+            color: dodgerblue;
+        }
+        
+        .offered {
+            margin-top: -0.8em;
+            margin-left: 1em;
+            font-weight: 100;
+            color: black;
+        }
+        
+.btnupd:hover, .btncncl:hover
+{
+        cursor: pointer;
+}
+    </style>
    	<body>
         <div id = page>
 			<div class = "bar-container">
                 <div class = "bar">
                     <div class = "item-container">
                         {% if user.is_authenticated == True %}
-                        <div class = "bar-item">Hi, <a href="{% url 'market:user' user.id %}"> {{ user.username }} </a> !</div>
+                        <div class = "bar-item">Hi, <a href="{% url 'market:user' user.id %}"> <span class="uname"> {{ user.username }} </span></a> !</div>
                         {% else %}
                         <a href="/register/"><div class = "bar-item">Register</div></a>
                         {% endif %}
                         
                         {% if user.is_authenticated == True %}
                         <a href="/logout/">
-                            <div class = "bar-item">Logout</div>
+                            <div class = "bar-item" id="u">Logout</div>
                             </a>
                         {% else %}
                         <a href="/login/">
@@ -62,6 +937,7 @@
             
 			<div class = full_container>
 				<div class = mydata>
+                    <div class = "thedata">
 					<div class = name_container>
                         <div class = name_text>{{user2.first_name}} {{user2.last_name}}</div>
                         <div></div>
@@ -78,9 +954,9 @@
                         </div>
        
                     </div>
-                      {%if user.username == user2.username %}
+                        {%if user.username == user2.username %}
                     <div id = offer_container>
-                        <div class =  offerinfo>
+                        <div class =  "offerinfo">
                             <div class = offer><span>OFFERS made by buyers</span></div>
                             <form action="" method="get">
                             <div class = list >
@@ -88,7 +964,7 @@
                                 {% for post in latest_posts %} 
                                     {%if offer.post == post and offer.status == 0 %}
                                     
-                                <a href="?offerid={{offer.id}}"><div id="obj" name="offerby">{{offer.post.itemname}} made by {{offer.user.username}}</div></a>
+                                <a href="?offerid={{offer.id}}"><div id="obj" name="offerby"><p class="offertitle">{{offer.post.itemname}}</p> <p class="offered"> made by {{offer.user.username}} </p></div></a>
                                     {%endif%}
                                 {% endfor %}
                             {% endfor %}
@@ -97,28 +973,27 @@
                         </div>
                     </div>
                     {%endif%}
-				</div>
-					
-				
-				
-		
-                    <div id = psection>
+                        
+                    </div>
+                    
                         {% if latest_posts %}
                         <div id = post_container>
                             {% for post in latest_posts %}
                             <div id = post_box>
-                                <div class = post id = 1 >
-                                   <a href = "{% url 'market:itemdetail' post.id %}"><img src = "{{ post.tb_img.url }}" id ="thumb"  alt="no photo loaded yet"></a>
+                                <div class = post id = 1>
+                                   <a href = "{% url 'market:itemdetail' post.id %}">
+                                       <img src = "{{ post.tb_img.url }}" id ="thumb"  alt="no photo loaded yet"></a>
                                     <div class = info>
-                                        <div>{{post.itemname}}</div>
-                                        <div>#{{post.tag}}</div>
+                                        <div class="itemtitle">{{post.itemname}}</div>
+                                        <div class="thetag">#{{post.tag}}</div>
 
                                     </div>
                                 </div>
-                                {% endfor %}
-                                {% endif %}
+                                
+                                
 
                             </div>
+                            {% endfor %}
 
                             <div class="pagination">
                         <span class="step-links">
@@ -136,22 +1011,33 @@
                         </span>
                         </div>
                         </div>
-                    </div>
+                    {%else %}
+                            <div id = post_box>
+                                <div class = post id = 1>
+                                   
+                                    <div class = info>
+                                        <div class="itemtitle">No items yet :(</div>
+                                        <a href="/market/postanitem"><div class="thetag">add an item?</div></a>
 
-               
-		
-            </div>
-             
-                                 {%if user.username == user2.username %}
+                                    </div>
+                                </div>
+                                
+                                
+
+                            </div>
+                        {% endif %}
+                        
+                    
+                    {%if user.username == user2.username %}
                     <div id="myoffersection">
-                        <div class =  offerinfo>
+                        <div class =  "offerinfo">
                                 <div class = offer><span>MY OFFERS</span></div>
                             
                             <div class = list >
                             {% for offer in list_offer %}   
                                 
                                 {%if offer.status == 0 and offer.user.id == user2.id %}
-                                <a href="?offertoid={{offer.id}}"><div id="obj" name="offerto">{{offer.post.itemname}} offered to  {{offer.post.user.username}}</div></a>
+                                <a href="?offertoid={{offer.id}}"><div id="obj" name="offerto"><p class="offertitle">{{offer.post.itemname}} </p> <p class="offered"> offered to  {{offer.post.user.username}} </p></div></a>
                                 {%endif%}
                                 
                             {% endfor %}
@@ -160,6 +1046,13 @@
                             </div>
                     </div>
                       {%endif%}
+                    
+                      
+				</div>
+                
+            </div>
+             
+                                 
             
             <div id="openModal1" class="modalDialog">
                 <div>
@@ -185,7 +1078,7 @@
                              <div id="btna"class="btnacc" name="accept" onclick="openbtnboxA();">Accept</div>
                              <div class="spacer"></div>
                              
-                             <div id="btnd"class="btndec" name="decline" onclick="openbtnboxD();">Decline</div>
+                             <div id="btnd"class="btndec" name="decline" onclick="openbtnboxD();" style="margin-left:2em;">Decline</div>
                              <div class="spacer"></div>
 
                          </div>
@@ -255,7 +1148,7 @@
                             <div id="btna"class="btnupd" name="Update" onclick="openbtnboxU();">Update</div>
                              <div class="spacer"></div>
                              
-                             <div id="btnd"class="btncncl" name="Cancel" onclick="openbtnboxC();">Cancel</div>
+                             <div id="btnd"class="btncncl" name="Cancel" onclick="openbtnboxC();" style="margin-left:2em;">Cancel</div>
                              <div class="spacer"></div>
 
                          </div>

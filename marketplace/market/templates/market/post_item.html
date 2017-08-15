@@ -36,6 +36,17 @@
         </script>
     
     <style>
+        .t {
+            margin-right: 1.8em;
+        }
+        
+        .s {
+            margin-right: 3.7em;
+        }
+        
+        .s:hover, .t:hover, #u:hover {
+            color: dodgerblue;
+        }
         
         body {
             margin: 0;
@@ -236,6 +247,10 @@
             cursor: pointer;
         }
         
+        .uname {
+            color: dodgerblue;
+        }
+        
     </style>
     <body>
         <div class = "homepage">
@@ -243,14 +258,14 @@
                 <div class = "bar">
                     <div class = "item-container">
                         {% if user.is_authenticated == True %}
-                        <div class = "bar-item">Hi, <a href="{% url 'market:user' user.id %}"> {{ user.username }} </a> !</div>
+                        <div class = "bar-item">Hi, <a href="{% url 'market:user' user.id %}"><span class="uname"> {{ user.username }}</span> </a> !</div>
                         {% else %}
                         <a href="/register/"><div class = "bar-item">Register</div></a>
                         {% endif %}
                         
                         {% if user.is_authenticated == True %}
                         <a href="/logout/">
-                            <div class = "bar-item">Logout</div>
+                            <div class = "bar-item" id="u">Logout</div>
                             </a>
                         {% else %}
                         <a href="/login/">
