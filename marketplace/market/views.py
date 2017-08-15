@@ -295,11 +295,31 @@ def logout_view(request):
     return redirect("/market/")
 
 def searchpic(request):
-    query = request.GET.get('tag')
-    latest_post_list = Post.objects.filter(tag=query).order_by('-pub_date')
     
-    page = request.GET.get('page1', 1)
-    paginator = Paginator(latest_post_list, 10) # Show 10 pics per page
+    if (request.GET.get('tag', "") != ""):
+        request.session['tag'] = request.GET.get('tag', "")
+    
+    if 'tag' in request.session:
+        query = request.session['tag']
+        
+        
+    latest_post_list = Post.objects.filter(tag=query).order_by('-pub_date')
+
+    request.session['paginate_by'] = 10
+    
+    if request.GET and ('paginate_by' in request.session or 'paginate_by' in request.get):
+
+        if request.session['paginate_by'] != int(request.GET.get('paginate_by', 10)):
+            request.session['paginate_by'] = int(request.GET.get('paginate_by', 10))
+        
+    if 'paginate_by' in request.session:
+        m = request.session['paginate_by']
+    else: 
+        m = 10
+    
+    paginator = Paginator(latest_post_list, m) # Show 10 posts per page
+
+    page = request.GET.get('page')
 
     try:
         latest_post_list = paginator.page(page)
@@ -311,6 +331,8 @@ def searchpic(request):
         latest_post_list = paginator.page(paginator.num_pages)
     context = { 
         'latest_posts': latest_post_list,
+        'paginate_by': m,
+        'tag': query
     }
     
    

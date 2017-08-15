@@ -231,7 +231,17 @@
     height: 100px;
     
 }
-        
+.footer {
+    flex-wrap: wrap;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    position: relative;
+    flex-basis: auto;
+}
         #post_container
 {
 	
@@ -301,7 +311,7 @@
                         <img src = "{%static 'photos/rccshop.png' %}" width="300" height="200" class = "rcc"/>
                     </div>
                     <div class = "right-container">
-                       <form action="{% url 'market:searchpic' %}">
+                       <form action="{% url 'market:searchpic' %}" method = "get">
                             <input type="text" class="search" name = "tag" placeholder="Search tag..." style="background-image:url('{%static 'photos/magnifyglass.png' %}')">
                         </form>
                     </div>
@@ -316,7 +326,7 @@
                 </div>
             </div>
             
-                        <div id ="post_container">
+            <div id ="post_container">
                 <div id = post_box>
                     {% for post in latest_posts %}
                     <div class = post id = 1 >
@@ -330,7 +340,36 @@
                     {% endfor %}
                 </div>
 
-            </div>
+            
+                            <div class = "footer">
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if latest_posts.has_previous %}
+                        <a href="?page={{ latest_posts.previous_page_number }} &paginate_by={{ paginate_by }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ latest_posts.number }} of {{ latest_posts.paginator.num_pages }}.
+                        </span>
+
+                        {% if latest_posts.has_next %}
+                        <a href="?page={{ latest_posts.next_page_number }} &paginate_by={{ paginate_by }}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+                
+
+                    <form action="" method="get">
+                    <select name="paginate_by" class = pager onchange="this.form.submit()" >
+                        <option></option>
+                        <option value = "10">10</option>
+                        <option value = "15">15</option>
+                        <option value = "20">20</option>
+                    </select>  
+                        
+                    </form>
+                </div>
         </div>
+            </div>
     </body>
 </html>
