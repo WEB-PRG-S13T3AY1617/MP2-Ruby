@@ -881,15 +881,14 @@ select {
             <div id = "openModal4" class = "modalDialog">
                 <div style="background-color: black; height: 32em;">
                     <a href="#x" title="Close" class="x"><span class="close2">&times;</span></a>
-                    <h4 class="title3" style="color:white; margin-top: 1em; margin-bottom:1em;">My Offer</h4>
+                    <h4 class="title3" style="color:white; margin-top: 1em; margin-bottom:1em;">My Offers</h4>
                 <div id = detailoff1>
-                    <div class = offername>All your offers.</div>
                     {% for offer in list_offer %}  
                          {% if offer.user.id == user.id and offer.post.id == post.id  and offer.post.user.id != offer.user.id%} 
                             {%if offer.offertypes == "Purchase"%}
-                    <div class = amount><p class="pp"><a href="?offertoid={{offer.id}}&userid={{user.id}}"><p id="myBtn2" class="btnoffer">Purchase for P{{offer.amount}}</p></a></p></div>
+                    <div class = amount><a href="?offertoid={{offer.id}}&userid={{user.id}}"><p id="myBtn2" class="btnoffer">Purchase for P{{offer.amount}}</p></a></div>
                         {%elif offer.offertypes == "Exchange"%}
-                    <div class = amount><p class="pp"><a href="?offertoid={{offer.id}}&userid={{user.id}}"><p id="myBtn2" class="btnoffer"> Exchange for {{offer.exchangepost}}</p></a></p></div>
+                    <div class = amount><a href="?offertoid={{offer.id}}&userid={{user.id}}"><p id="myBtn2" class="btnoffer"> Exchange for {{offer.exchangepost}}</p></a></div>
                         {%endif%} 
                     {%endif%} 
                     {%endfor%} 

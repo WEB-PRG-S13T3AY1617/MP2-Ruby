@@ -264,7 +264,7 @@ h2 {
     border-radius: 5px;
     padding:1em;
     background-color: white;
-    display: block;
+    display: fixed;
     overflow:auto;
 	
 }
@@ -809,12 +809,13 @@ a:hover {
         #offer_container
 {
      margin-top:20px;
+    height: 250px;
 	width:250px;
     border-radius: 5px;
     padding:1em;
     background:linear-gradient(to bottom, aqua 5%, white 30%);
     box-shadow: 1px 0px 17px 5px rgba(0,0,0,0.39);
-    display:block;
+    display:fixed;
 overflow:auto;
 }
 
@@ -828,7 +829,7 @@ overflow:auto;
     background:linear-gradient(to bottom, dodgerblue 1%, white 
         30%);
     box-shadow: 1px 0px 17px 5px rgba(0,0,0,0.39);
-    display:block;
+    display:fixed;
 overflow:auto;
  
 }
@@ -1073,10 +1074,10 @@ overflow:auto;
                          <div class = date>Date offered: {{offerobj.pub_date}}
                          </div>
                          <div id="btnbox2">
-                             <div id="btna"class="btnacc" name="accept" onclick="openbtnboxA();">Accept</div>
+                             <div id="btna"class="btnacc" name="accept" onclick="openbtnboxA(); " style="margin-right:2em;">Accept</div>
                              <div class="spacer"></div>
                              
-                             <div id="btnd"class="btndec" name="decline" onclick="openbtnboxD();" style="margin-left:2em;">Decline</div>
+                             <div id="btnd"class="btndec" name="decline" onclick="openbtnboxD();" style="margin-right:2em;">Decline</div>
                              <div class="spacer"></div>
 
                          </div>
@@ -1143,7 +1144,7 @@ overflow:auto;
                          <div class = date>Date offered: {{offertoobj.pub_date}}
                          </div>
                          <div id="btnbox2">
-                            <div id="btna"class="btnupd" name="Update" onclick="openbtnboxU();">Update</div>
+                            <div id="btna"class="btnupd" name="Update" onclick="openbtnboxU();" style="margin-right:2em;">Update</div>
                              <div class="spacer"></div>
                              
                              <div id="btnd"class="btncncl" name="Cancel" onclick="openbtnboxC();" style="margin-left:2em;">Cancel</div>
