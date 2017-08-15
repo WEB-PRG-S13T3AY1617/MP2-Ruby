@@ -98,7 +98,7 @@ def accept(request, offer_id):
     offerobj = get_object_or_404(Offer,pk=offer_id)
     postobj = get_object_or_404(Post,pk= offerobj.post.id)
     
-    ownerobj = get_object_or_404(User,pk=user_id)
+    ownerobj = get_object_or_404(User,pk=offerobj.post.user.id)
     
     buyer_id = offerobj.user.id
     buyerobj = get_object_or_404(User,pk= buyer_id)
@@ -140,12 +140,13 @@ def decline(request, offer_id):
 def update(request, offer_id):
     print("Update")
     offertoobj = get_object_or_404(Offer,pk=offer_id)
+    offtype = ""
     if 'offertype' in request.POST:
         offtype = request.POST['offertype']
         offertoobj.offertypes = offtype
         offertoobj.save()
     
-    if 'amount' in request.POST:
+    if 'amount' in request.POST and offtype == "Purchase":
         money = request.POST['amount']
         offertoobj.amount = money
         offertoobj.save()
