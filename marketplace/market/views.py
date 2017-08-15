@@ -341,15 +341,22 @@ def searchpic(request):
 def searchtag(request, post_tag):
     latest_post_list = Post.objects.filter(tag=post_tag).order_by('-pub_date')
     
-    m = 10
+    request.session['paginate_by'] = 10
     
-    if request.GET:
-        m = request.GET.get('paginate_by', 10)
+    if request.GET and ('paginate_by' in request.session or 'paginate_by' in request.get):
+
+        if request.session['paginate_by'] != int(request.GET.get('paginate_by', 10)):
+            request.session['paginate_by'] = int(request.GET.get('paginate_by', 10))
+        
+    if 'paginate_by' in request.session:
+        m = request.session['paginate_by']
+    else: 
+        m = 10
+    
     
     paginator = Paginator(latest_post_list, m) # Show 10 posts per page
 
     page = request.GET.get('page')
-
     try:
         latest_post_list = paginator.page(page)
     except PageNotAnInteger:
@@ -360,15 +367,24 @@ def searchtag(request, post_tag):
         latest_post_list = paginator.page(paginator.num_pages)
     context = { 
         'latest_posts': latest_post_list,
+        'paginate_by': m,
     }
     return render(request, 'market/homepage.html', context)
 def searchcondition(request, post_condition):
     latest_post_list = Post.objects.filter(condition=post_condition).order_by('-pub_date')
-    m = 10
     
-    if request.GET:
-        m = request.GET.get('paginate_by', 10)
+    request.session['paginate_by'] = 10
     
+    if request.GET and ('paginate_by' in request.session or 'paginate_by' in request.get):
+
+        if request.session['paginate_by'] != int(request.GET.get('paginate_by', 10)):
+            request.session['paginate_by'] = int(request.GET.get('paginate_by', 10))
+        
+    if 'paginate_by' in request.session:
+        m = request.session['paginate_by']
+    else: 
+        m = 10
+        
     paginator = Paginator(latest_post_list, m) # Show 10 posts per page
 
     page = request.GET.get('page')
@@ -383,16 +399,24 @@ def searchcondition(request, post_condition):
         latest_post_list = paginator.page(paginator.num_pages)
     context = { 
         'latest_posts': latest_post_list,
+        'paginate_by': m,
     }
     return render(request, 'market/homepage.html', context)
 def searchtype(request, post_type):
     latest_post_list = Post.objects.filter(posttypes=post_type).order_by('-pub_date')
     
-    m = 10
+    request.session['paginate_by'] = 10
     
-    if request.GET:
-        m = request.GET.get('paginate_by', 10)
-    
+    if request.GET and ('paginate_by' in request.session or 'paginate_by' in request.get):
+
+        if request.session['paginate_by'] != int(request.GET.get('paginate_by', 10)):
+            request.session['paginate_by'] = int(request.GET.get('paginate_by', 10))
+        
+    if 'paginate_by' in request.session:
+        m = request.session['paginate_by']
+    else: 
+        m = 10
+        
     paginator = Paginator(latest_post_list, m) # Show 10 posts per page
 
     page = request.GET.get('page')
@@ -407,16 +431,24 @@ def searchtype(request, post_type):
         latest_post_list = paginator.page(paginator.num_pages)
     context = { 
         'latest_posts': latest_post_list,
+        'paginate_by': m,
     }
     return render(request, 'market/homepage.html', context)
 def searchcourse(request, post_course):
     latest_post_list = Post.objects.filter(coursename=post_course).order_by('-pub_date')
     
-    m = 10
+    request.session['paginate_by'] = 10
     
-    if request.GET:
-        m = request.GET.get('paginate_by', 10)
-    
+    if request.GET and ('paginate_by' in request.session or 'paginate_by' in request.get):
+
+        if request.session['paginate_by'] != int(request.GET.get('paginate_by', 10)):
+            request.session['paginate_by'] = int(request.GET.get('paginate_by', 10))
+        
+    if 'paginate_by' in request.session:
+        m = request.session['paginate_by']
+    else: 
+        m = 10
+        
     paginator = Paginator(latest_post_list, m) # Show 10 posts per page
 
     page = request.GET.get('page')
@@ -431,6 +463,7 @@ def searchcourse(request, post_course):
         latest_post_list = paginator.page(paginator.num_pages)
     context = { 
         'latest_posts': latest_post_list,
+        'paginate_by': m,
     }
     return render(request, 'market/homepage.html', context)
 
