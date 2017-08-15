@@ -812,11 +812,7 @@ select {
                     
                     {% if user.is_anonymous == False %}
                     <div>
-                        {% for offer in list_offer %}  
-                            {% if offer.user.id == user.id and offer.post.id == post.id  and offer.post.user.id != offer.user.id%} 
-                            <a href="?offertoid={{offer.id}}&userid={{user.id}}"><p id="myBtn2" class="btnoffer"> View your offer.</p></a>
-                          {%endif%} 
-                        {%endfor%}   
+                            <a href="#openModal4"><p id="myBtn2" class="btnoffer"> View all your offers.</p></a>
                     </div>
                     {% endif %}
                 </div>
@@ -882,6 +878,24 @@ select {
                 </div>
             </div>
             
+            <div id = "openModal4" class = "modalDialog">
+                <div style="background-color: black; height: 32em;">
+                    <a href="#x" title="Close" class="x"><span class="close2">&times;</span></a>
+                    <h4 class="title3" style="color:white; margin-top: 1em; margin-bottom:1em;">My Offer</h4>
+                <div id = detailoff1>
+                    <div class = offername>All your offers.</div>
+                    {% for offer in list_offer %}  
+                         {% if offer.user.id == user.id and offer.post.id == post.id  and offer.post.user.id != offer.user.id%} 
+                            {%if offer.offertypes == "Purchase"%}
+                    <div class = amount><p class="pp"><a href="?offertoid={{offer.id}}&userid={{user.id}}"><p id="myBtn2" class="btnoffer">Purchase for P{{offer.amount}}</p></a></p></div>
+                        {%elif offer.offertypes == "Exchange"%}
+                    <div class = amount><p class="pp"><a href="?offertoid={{offer.id}}&userid={{user.id}}"><p id="myBtn2" class="btnoffer"> Exchange for {{offer.exchangepost}}</p></a></p></div>
+                        {%endif%} 
+                    {%endif%} 
+                    {%endfor%} 
+                </div>
+                </div>
+            </div>
             
             <div id ="openModal3" class = "modalDialog">
                                        
@@ -990,7 +1004,7 @@ select {
                 $("#items").hide();
                 
             }
-                        if(window.location.href.indexOf("offertoid") != -1) 
+            if(window.location.href.indexOf("offertoid") != -1) 
                 {
                     window.location.hash = '#openModal3';
                     $("#confirmU").css({"visibility": "hidden"});
@@ -1000,6 +1014,7 @@ select {
                 
                 }
             });
+        
         
             $("#offertype").change(function(){
                 if(this.value == 'Exchange') {
@@ -1023,7 +1038,7 @@ select {
                 }
               
             });
-        
+
          function openbtnboxU()
              {
                  
